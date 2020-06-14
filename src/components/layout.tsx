@@ -7,7 +7,7 @@
  */
 import { graphql, useStaticQuery } from 'gatsby'
 import { FC, Fragment } from 'react'
-import { Box, jsx } from 'theme-ui'
+import { Box, Link, jsx } from 'theme-ui'
 
 import { Header } from './header'
 
@@ -36,7 +36,7 @@ export const Layout: FC = ({ children }) => {
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <Link href="https://www.gatsbyjs.org">Gatsby</Link>
         </footer>
       </Box>
     </Fragment>

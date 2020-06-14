@@ -1,7 +1,8 @@
 /** @jsx jsx */
-import { Link } from 'gatsby'
 import { FC } from 'react'
 import { Box, Heading, jsx } from 'theme-ui'
+
+import { GatsbyLink } from './gatsbyLink'
 
 export const Header: FC<{ siteTitle: string }> = ({ siteTitle = '' }) => (
   <Box
@@ -18,7 +19,7 @@ export const Header: FC<{ siteTitle: string }> = ({ siteTitle = '' }) => (
       }}
     >
       <Heading style={{ margin: 0 }}>
-        <Link
+        <GatsbyLink
           style={{
             color: `white`,
             textDecoration: `none`,
@@ -26,7 +27,7 @@ export const Header: FC<{ siteTitle: string }> = ({ siteTitle = '' }) => (
           to="/"
         >
           {siteTitle}
-        </Link>
+        </GatsbyLink>
       </Heading>
     </Box>
   </Box>
