@@ -1,16 +1,8 @@
 /** @jsx jsx */
-import { GatsbyLinkProps, Link } from 'gatsby'
-import { jsx } from 'theme-ui'
 
-export const GatsbyLink = <T extends {}>(props: GatsbyLinkProps<T>) => (
-  // @ts-ignore
-  <Link
-    {...props}
-    activeClassName="active"
-    sx={{
-      '&.active': {
-        color: 'primary',
-      },
-    }}
-  />
-)
+import { Link as GatsbyLinkCore, GatsbyLinkProps } from 'gatsby'
+import { Link, LinkProps, jsx } from 'theme-ui'
+
+export const GatsbyLink = <T extends {}>(
+  props: LinkProps & GatsbyLinkProps<T>,
+) => <Link as={GatsbyLinkCore} {...props} />

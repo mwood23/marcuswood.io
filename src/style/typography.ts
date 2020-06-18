@@ -1,9 +1,9 @@
 export default {
   title: 'Marcus Wood',
-  baseFontSize: '16px',
+  baseFontSize: '18px',
   baseLineHeight: 1.625,
   headerFontFamily: [
-    'Roboto Slab',
+    'Inter',
     '-apple-system',
     'BlinkMacSystemFont',
     'Segoe UI',
@@ -30,8 +30,8 @@ export default {
   ],
   scaleRatio: 2,
   bodyColor: 'hsla(0,0%,0%,0.8)',
-  headerWeight: 600,
+  headerWeight: 400,
   bodyWeight: 'normal',
   boldWeight: 600,
-  blockMarginBottom: 0.5,
+  blockMarginBottom: 1,
 }

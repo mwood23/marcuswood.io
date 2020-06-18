@@ -251,6 +251,12 @@ exports.onCreateNode = ({ node, actions }) => {
     })
 
     createNodeField({
+      name: 'unlisted',
+      node,
+      value: node.frontmatter.unlisted || false,
+    })
+
+    createNodeField({
       name: 'redirects',
       node,
       value: node.frontmatter.redirects,
@@ -297,4 +303,76 @@ exports.onCreateNode = ({ node, actions }) => {
       )}`,
     })
   }
+}
+
+/**
+ * Helping schema inference so that the types work.
+ */
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+  type Site implements Node {
+    siteMetadata: SiteSiteMetadata!
+  }
+  
+  type SiteSiteMetadata {
+    title: String!
+    description: String!
+    canonicalUrl: String!
+    author: SiteSiteMetadataAuthor!
+    image: String!
+    siteUrl: String!
+    social: SiteSiteMetadataSocial!
+    keywords: [String!]!
+    organization: SiteSiteMetadataOrganization!
+  }
+
+  type SiteSiteMetadataAuthor {
+    name: String!
+    minibio: String!
+  }
+
+  type SiteSiteMetadataSocial {
+    twitter: String!
+    fbAppID: String!
+  }
+
+  type SiteSiteMetadataOrganization {
+    name: String!
+    url: String!
+    logo: String!
+  }
+
+  type Mdx implements Node {
+    fields: MdxFields!
+    frontmatter: MdxFrontmatter!
+  }
+
+  type MdxFields {
+    id: String!
+    title: String!
+    author: String!
+    description: String!
+    plainTextDescription: String!
+    slug: String!
+    date(
+      formatString: String
+      fromNow: Boolean
+      difference: String
+      locale: String
+    ): Date!
+    banner: File!
+    bannerCredit: String
+    categories: [String!]!
+    keywords: [String!]!
+    unlisted: Boolean!
+    redirects: [String!]
+    isBlog: Boolean!
+    productionUrl: String!
+    editLink: String!
+    historyLink: String!
+    }
+`
+
+  createTypes(typeDefs)
 }

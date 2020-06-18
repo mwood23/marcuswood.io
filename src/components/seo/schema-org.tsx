@@ -6,7 +6,7 @@ type SchemaOrgProps = {
     name: string
   }
   canonicalUrl: string
-  datePublished: string
+  datePublished: string | false
   defaultTitle: string
   description: string
   image: string

@@ -14,9 +14,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
-    "paths": {
-      "@waves/shared": ["packages/shared/src"]
-    }
+    "jsx": "react"
   }
 }

@@ -35,6 +35,7 @@ module.exports = {
       }),
     )
   },
+  // Update type-defs in gatsby-node if you touch these!
   siteMetadata: {
     title: config.siteTitle,
     description: config.siteDescription,
@@ -49,6 +50,7 @@ module.exports = {
       twitter: config.twitterHandle,
       fbAppID: '',
     },
+    keywords: config.keywords,
     organization: {
       name: config.organization,
       url: siteUrl,
@@ -74,8 +76,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'images',
         path: `${__dirname}/src/images`,
+        name: 'images',
       },
     },
     {
@@ -86,6 +88,13 @@ module.exports = {
       },
     },
     'gatsby-plugin-theme-ui',
+    'gatsby-plugin-mdx',
+    {
+      resolve: 'gatsby-plugin-graphql-codegen',
+      options: {
+        documentPaths: ['./src/**/*.{ts,tsx}'],
+      },
+    },
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {

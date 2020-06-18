@@ -3,42 +3,47 @@ import React, { FC } from 'react'
 import { Helmet } from 'react-helmet'
 
 import config from '../../../config/website'
+import { SeoSiteMetadataQuery } from '../../../graphql-types'
 // import defaultMetaImage from '../../../static/images/metaImage.jpg'
 import SchemaOrg from './schema-org'
 
 export type SEOProps = {
   isBlogPost: boolean
-  postData: {
-    childMarkdownRemark: {
-      frontmatter: any
-      excerpt: any
-    }
+  postData?: {
+    plainTextDescription?: string
+    description?: string
+    slug?: string
+    datePublished?: string
+    title?: string
+    [x: string]: any
   }
   metaImage?: string
   pageTitle?: string
+  siteMetadata: SeoSiteMetadataQuery
 }
 
-const SEOComponent: FC<SEOProps & { siteMetadata: any }> = ({
-  siteMetadata: seo,
-  postData,
+const SEOComponent: FC<SEOProps> = ({
+  siteMetadata,
+  postData = {},
   metaImage,
   isBlogPost,
   pageTitle,
 }) => {
-  const postMeta = postData.childMarkdownRemark.frontmatter || {}
+  const seo = siteMetadata.site!.siteMetadata
+
   const title =
-    postMeta.title || pageTitle
-      ? `${pageTitle} | ${config.siteTitle}`
-      : config.siteTitle
+    postData.title ??
+    (pageTitle ? `${pageTitle} | ${config.siteTitle}` : config.siteTitle)
   const description =
-    postMeta.plainTextDescription || postMeta.description || seo.description
+    postData.plainTextDescription ?? postData.description ?? seo.description
   // TODO
   // const image = `${seo.canonicalUrl}${metaImage ?? defaultMetaImage}`
   const image = `${seo.canonicalUrl}${metaImage}`
-  const url = postMeta.slug
-    ? `${seo.canonicalUrl}${postMeta.slug}`
+  const url = postData.slug
+    ? `${seo.canonicalUrl}${postData.slug}`
     : seo.canonicalUrl
-  const datePublished = isBlogPost ? postMeta.datePublished : false
+  // TODO
+  const datePublished = isBlogPost ? postData.datePublished ?? false : false
 
   return (
     <>
@@ -81,19 +86,12 @@ const SEOComponent: FC<SEOProps & { siteMetadata: any }> = ({
 
 export const SEO: FC<Partial<SEOProps>> = ({
   isBlogPost = false,
-  postData = {
-    childMarkdownRemark: {
-      frontmatter: undefined,
-      excerpt: undefined,
-    },
-  },
+  postData = {},
   metaImage,
   pageTitle,
 }) => {
-  const {
-    site: { siteMetadata },
-  } = useStaticQuery(graphql`
-    {
+  const data = useStaticQuery<SeoSiteMetadataQuery>(graphql`
+    query SEOSiteMetadata {
       site {
         siteMetadata {
           title
@@ -116,13 +114,14 @@ export const SEO: FC<Partial<SEOProps>> = ({
       }
     }
   `)
+
   return (
     <SEOComponent
       isBlogPost={isBlogPost}
       metaImage={metaImage}
       pageTitle={pageTitle}
       postData={postData}
-      siteMetadata={siteMetadata}
+      siteMetadata={data}
     />
   )
 }
