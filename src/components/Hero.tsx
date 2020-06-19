@@ -32,7 +32,7 @@ const ImageContainer = styled(Box)`
     height: 50%;
     max-width: 200px;
     object-fit: contain;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
   }
 `
 
@@ -58,8 +58,9 @@ export const Hero: FC<HeroProps> = () => {
     <Box
       sx={{
         height: ['auto', '380px'],
-        background:
-          'linear-gradient(90deg, rgba(23,23,190,1) 0%, rgba(0,0,226,1) 27%, rgba(0,44,232,1) 42%, rgba(0,212,255,1) 100%)',
+        mb: [4, 5],
+        // background:
+        //   'linear-gradient(90deg, rgba(23,23,190,1) 0%, rgba(0,0,226,1) 27%, rgba(0,44,232,1) 42%, rgba(0,212,255,1) 100%)',
         mt: (theme) => [
           `-${theme.sizes.mobileNavHeight}`,
           `-${theme.sizes.desktopNavHeight}`,
@@ -71,7 +72,7 @@ export const Hero: FC<HeroProps> = () => {
           position: 'relative',
           display: 'flex',
           flexDirection: ['column', 'row'],
-          alignItems: 'center',
+          alignItems: ['center', 'flex-end'],
           height: '100%',
           pt: (theme) => [`calc(${theme.sizes.mobileNavHeight} + 20px)`, 0],
           px: 3,
@@ -84,12 +85,11 @@ export const Hero: FC<HeroProps> = () => {
           as="h1"
           sx={{
             textAlign: ['center', 'left'],
-            pb: [5, 0],
+            pb: [0],
             width: [null, '50%'],
           }}
         >
-          My name is Marcus and I like building web applications for the
-          enterprise.
+          My name is Marcus and I build web applications that scale.
         </Heading>
       </Container>
     </Box>

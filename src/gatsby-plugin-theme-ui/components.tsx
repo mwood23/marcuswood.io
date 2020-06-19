@@ -34,7 +34,7 @@ const ZoomableImage: FC = (props) => {
   const { theme } = useThemeUI()
 
   const backGrounds = {
-    default: {
+    light: {
       overlayBgColorStart: 'rgba(255, 255, 255, 0.95)',
       overlayBgColorEnd: 'rgba(255, 255, 255, 0)',
     },

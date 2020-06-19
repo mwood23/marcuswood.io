@@ -26,7 +26,7 @@ const BASE_THEME = merge(base, toTheme(typographyTheme), {
 })
 
 // You have to manually update this for now
-export type ColorModes = 'default' | 'dark'
+export type ColorModes = 'light' | 'dark'
 
 const CUSTOM_THEME = merge(
   BASE_THEME,
@@ -44,7 +44,8 @@ const CUSTOM_THEME = merge(
     colors: {
       text: '#333',
       background: '#fff',
-      primary: '#07c',
+      secondaryBackground: '#F5F5F5',
+      primary: '#4770A7',
       secondary: '#05a',
       accent: '#609',
       muted: '#f6f6f6',
@@ -52,6 +53,7 @@ const CUSTOM_THEME = merge(
         dark: {
           text: 'hsl(210, 50%, 96%)',
           background: 'hsl(230, 25%, 18%)',
+          secondaryBackground: '#11162B',
           primary: 'hsl(260, 100%, 80%)',
           secondary: 'hsl(290, 100%, 80%)',
           highlight: 'hsl(260, 20%, 40%)',

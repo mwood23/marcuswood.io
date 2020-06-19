@@ -83,7 +83,7 @@ const BlogItem: FC<{
         transform: props.xys.interpolate(trans),
       }}
       sx={{
-        mb: 4,
+        mb: [3, 4],
         boxShadow: '0px 10px 30px -5px rgba(0, 0, 0, 0.3)',
         transition: 'box-shadow 0.5s',
         willChange: 'transform',
@@ -118,19 +118,25 @@ const BlogItem: FC<{
             flex: 1,
           }}
         >
-          <Heading as="h3" mb="3">
+          <Heading as="h3" mb="2">
             {title}
           </Heading>
           <Text
             sx={{
-              fontSize: 2,
+              fontSize: 1,
               fontStyle: 'italic',
               mb: 2,
             }}
           >
             {date} / {timeToRead} minutes to read
           </Text>
-          <Text>{excerpt}</Text>
+          <Text
+            sx={{
+              fontSize: 1,
+            }}
+          >
+            {excerpt}
+          </Text>
         </Box>
       </Box>
     </animated.div>
@@ -145,7 +151,7 @@ export const LatestFromOurBlog: FC<LatestFromOurBlogProps> = () => {
   return (
     <Section
       sx={{
-        pt: 5,
+        pt: [0, 3],
       }}
       title="Blog"
     >

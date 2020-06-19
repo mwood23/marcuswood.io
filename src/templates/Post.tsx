@@ -1,10 +1,13 @@
+/** @jsx jsx */
+
 import { graphql } from 'gatsby'
 import MdxRenderer from 'gatsby-plugin-mdx/mdx-renderer'
-import React, { FC } from 'react'
-import { Box, Heading, Link } from 'theme-ui'
+import { FC } from 'react'
+import { Box, Heading, Link, jsx } from 'theme-ui'
 
 import { PostQuery } from '../../graphql-types'
 import { AboutBlurb, Image, Layout, SEO } from '../components'
+import { EmailCTA } from '../components/EmailCTA'
 import { ShareIcons } from '../components/ShareIcons'
 
 type PostProps = {
@@ -17,12 +20,13 @@ const Post: FC<PostProps> = ({ data: { mdx, site } }) => {
     : undefined
 
   return (
-    <Layout>
+    <Layout addTopPadding>
       <SEO postData={mdx?.fields} />
       <Heading
         as="h1"
         sx={{
-          mb: 4,
+          fontSize: [4, 5],
+          mb: [3, 4],
           textAlign: 'center',
         }}
       >
@@ -38,6 +42,7 @@ const Post: FC<PostProps> = ({ data: { mdx, site } }) => {
       >
         {mdx?.body}
       </MdxRenderer>
+      <EmailCTA />
       <ShareIcons
         description={mdx?.fields.description}
         image={socialShareImage}

@@ -37,4 +37,5 @@ module.exports = {
   twitterHandle: '@marcuswood23',
   github: 'https://github.com/mwood23/',
   rss: 'https://marcuswood.io/blog/rss.xml',
+  linkedin: 'https://www.linkedin.com/in/mwood23/',
 }

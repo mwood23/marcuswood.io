@@ -15,7 +15,7 @@ import { GatsbyLink } from '../GatsbyLink'
 import { Image } from '../Image'
 import { Hamburger } from './Hamburger'
 
-const SCROLL_THRESHOLD = 40
+const SCROLL_THRESHOLD = 20
 
 export interface NavProps extends CommonComponentProps {
   siteTitle: string
@@ -156,17 +156,19 @@ export const Nav: FC<NavProps> = ({ siteTitle }) => {
         to="/"
       >
         <Flex sx={{ alignItems: 'center' }}>
-          <Box
-            sx={{
-              mr: 1,
-              height: '40px',
-              width: '40px',
-              borderRadius: '50%',
-              overflow: 'hidden',
-            }}
-          >
-            <Image sharpImage={data.avatarImage} style={{ height: '100%' }} />
-          </Box>
+          {isSecondaryPage && (
+            <Box
+              sx={{
+                mr: 1,
+                height: '40px',
+                width: '40px',
+                borderRadius: '50%',
+                overflow: 'hidden',
+              }}
+            >
+              <Image sharpImage={data.avatarImage} style={{ height: '100%' }} />
+            </Box>
+          )}
           <Text>{siteTitle}</Text>
         </Flex>
       </GatsbyLink>

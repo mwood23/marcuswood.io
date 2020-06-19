@@ -3,7 +3,7 @@ export default {
   baseFontSize: '18px',
   baseLineHeight: 1.625,
   headerFontFamily: [
-    'Inter',
+    'Archivo',
     '-apple-system',
     'BlinkMacSystemFont',
     'Segoe UI',
@@ -30,7 +30,7 @@ export default {
   ],
   scaleRatio: 2,
   bodyColor: 'hsla(0,0%,0%,0.8)',
-  headerWeight: 400,
+  headerWeight: 700,
   bodyWeight: 'normal',
   boldWeight: 600,
   blockMarginBottom: 1,

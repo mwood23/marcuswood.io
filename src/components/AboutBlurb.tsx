@@ -1,6 +1,8 @@
+/** @jsx jsx */
+
 import { graphql, useStaticQuery } from 'gatsby'
-import React, { FC } from 'react'
-import { Box, Flex, Text } from 'theme-ui'
+import { FC } from 'react'
+import { Box, Flex, Text, jsx } from 'theme-ui'
 
 import { AboutBlurbQuery } from '../../graphql-types'
 import { Image } from './Image'
@@ -35,16 +37,20 @@ export const AboutBlurb: FC<AboutBlurbProps> = () => {
   return (
     <Flex
       sx={{
+        flexDirection: ['column', 'row'],
         justifyContent: 'space-between',
+        alignItems: ['center', 'flex-start'],
+        mb: 4,
       }}
     >
       <Box
         sx={{
-          height: '100px',
-          width: '100px',
+          height: ['150px', '100px'],
+          width: ['150px', '100px'],
           overflow: 'hidden',
           borderRadius: '50%',
-          mr: 3,
+          mr: [0, 4],
+          mb: [3, 0],
         }}
       >
         <Image sharpImage={data.avatarImage} style={{ height: '100%' }} />

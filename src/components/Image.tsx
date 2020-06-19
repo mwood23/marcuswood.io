@@ -1,5 +1,8 @@
+/** @jsx jsx */
+
 import Img from 'gatsby-image'
-import React, { FC } from 'react'
+import { FC } from 'react'
+import { jsx } from 'theme-ui'
 
 import { CommonComponentProps } from '../types'
 

@@ -1,4 +1,6 @@
-import React, { CSSProperties, FC } from 'react'
+/** @jsx jsx */
+
+import { CSSProperties, FC } from 'react'
 import {
   EmailIcon,
   EmailShareButton,
@@ -15,14 +17,16 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from 'react-share'
+import { Box, jsx } from 'theme-ui'
 
 import config from '../../config/website'
 import styled from '../style/styled'
 
-const ShareIconsContainer = styled.div`
+const ShareIconsContainer = styled(Box)`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1rem;
 
   > button {
     margin: 0 5px;

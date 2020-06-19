@@ -99,7 +99,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Inter', 'Roboto Slab'],
+          families: ['Inter', 'Archivo'],
         },
       },
     },

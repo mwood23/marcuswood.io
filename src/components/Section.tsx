@@ -1,17 +1,32 @@
-import React, { FC } from 'react'
-import { Box, BoxProps, Container, Heading } from 'theme-ui'
+/** @jsx jsx */
+
+import { FC } from 'react'
+import { Box, BoxProps, Container, Heading, jsx } from 'theme-ui'
 
 import { CommonComponentProps } from '../types'
 
 export interface SectionProps extends CommonComponentProps, BoxProps {
   title?: string
+  /**
+   * Adds a light background to the section. Use to break up sections and give the page a nice flow.
+   */
+  secondaryBackground?: boolean
 }
 
-export const Section: FC<SectionProps> = ({ children, title, ...rest }) => (
+export const Section: FC<SectionProps> = ({
+  children,
+  title,
+  secondaryBackground = false,
+  ...rest
+}) => (
   <Box
     as="section"
     sx={{
-      p: 4,
+      px: [2, 4],
+      py: [3, 4],
+      backgroundColor: secondaryBackground
+        ? 'secondaryBackground'
+        : 'background',
     }}
     {...rest}
   >
@@ -19,7 +34,7 @@ export const Section: FC<SectionProps> = ({ children, title, ...rest }) => (
       {title && (
         <Heading
           sx={{
-            mb: 4,
+            mb: [3, 4],
           }}
         >
           {title}
