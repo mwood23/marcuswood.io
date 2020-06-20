@@ -37,7 +37,7 @@ const CUSTOM_THEME = merge(
     // fontSizes: [12, 14, 18, 16, 20, 24, 32, 48, 64, 72],
     zIndices: [0, 10, 20, 30, 40, 50, 60],
     sizes: {
-      container: '810px',
+      container: '830px',
       desktopNavHeight: '80px',
       mobileNavHeight: '60px',
     },

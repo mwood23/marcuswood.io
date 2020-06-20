@@ -69,15 +69,18 @@ function createBlogPages({ data, actions }) {
 }
 
 const createProducts = (createPage, edges) => {
-  edges.forEach(({ node }) => {
+  edges.forEach(({ node }, i) => {
+    const prev = i === 0 ? null : edges[i - 1].node
+    const next = i === edges.length - 1 ? null : edges[i + 1].node
+    const pagePath = node.fields.slug
+
     createPage({
-      path: node.fields.slug,
+      path: pagePath,
       component: path.resolve(`./src/templates/Product.tsx`),
       context: {
-        slug: node.fields.slug,
-        simpleCastId: node.frontmatter.simpleCastId,
-        title: node.fields.title,
-        season: node.frontmatter.season,
+        id: node.id,
+        prev,
+        next,
       },
     })
   })
@@ -170,7 +173,8 @@ exports.onCreateNode = ({ node, actions }) => {
 
   if (node.internal.type === `Mdx`) {
     let slug = node.frontmatter.slug
-    let { isBlog, isProduct } = false
+    let isBlog = false
+    let isProduct = false
 
     if (node.fileAbsolutePath.includes('content/blog/')) {
       slug = `/blog/${node.frontmatter.slug || slugify(node.frontmatter.title)}`
@@ -314,7 +318,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   type Site implements Node {
     siteMetadata: SiteSiteMetadata!
   }
-  
+
   type SiteSiteMetadata {
     title: String!
     description: String!

@@ -1,0 +1,32 @@
+{
+  "Functional component": {
+    "prefix": "fc",
+    "scope": "typescriptreact,typescript",
+    "body": [
+      "/** @jsx jsx */",
+      "",
+      "import { Box, jsx } from 'theme-ui'",
+      "import { FC } from 'react'",
+      "",
+      "type ${TM_FILENAME_BASE}Props = {",
+      "\t",
+      "}",
+      "",
+      "export const ${1:${TM_FILENAME_BASE}}: FC<${TM_FILENAME_BASE}Props> = () => {",
+      "\treturn (",
+      "\t\t<Box>",
+      "\t\t\t$0 ${TM_FILENAME_BASE} component",
+      "\t\t</Box>",
+      "\t)",
+      "}",
+      ""
+    ],
+    "description": "Creates a Typescript Theme UI functional component."
+  },
+  "MDX Section": {
+    "prefix": "mds",
+    "scope": "markdown",
+    "body": ["<Section $1>", "", "$0", "", "</Section>"],
+    "description": "Creates a MDX section."
+  }
+}

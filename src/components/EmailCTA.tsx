@@ -10,7 +10,7 @@ type EmailCTAProps = {}
 export const EmailCTA: FC<EmailCTAProps> = () => (
   <Box
     sx={{
-      my: 4,
+      marginBottom: 4,
       //   maxWidth: '80%',
       mx: 'auto',
     }}

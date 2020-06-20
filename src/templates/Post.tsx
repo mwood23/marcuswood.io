@@ -6,7 +6,7 @@ import { FC } from 'react'
 import { Box, Heading, Link, jsx } from 'theme-ui'
 
 import { PostQuery } from '../../graphql-types'
-import { AboutBlurb, Image, Layout, SEO } from '../components'
+import { AboutBlurb, Image, Layout, SEO, Section } from '../components'
 import { EmailCTA } from '../components/EmailCTA'
 import { ShareIcons } from '../components/ShareIcons'
 
@@ -20,44 +20,42 @@ const Post: FC<PostProps> = ({ data: { mdx, site } }) => {
     : undefined
 
   return (
-    <Layout addTopPadding>
+    <Layout fluid>
       <SEO postData={mdx?.fields} />
-      <Heading
-        as="h1"
-        sx={{
-          fontSize: [4, 5],
-          mb: [3, 4],
-          textAlign: 'center',
-        }}
-      >
-        {mdx?.fields.title}
-      </Heading>
-      <Box sx={{ mb: 3 }}>
-        <Image sharpImage={mdx?.fields.banner} />
-      </Box>
-      <MdxRenderer
-        sx={{
-          mb: 2,
-        }}
-      >
-        {mdx?.body}
-      </MdxRenderer>
-      <EmailCTA />
-      <ShareIcons
-        description={mdx?.fields.description}
-        image={socialShareImage}
-        title={mdx?.fields.description}
-        url={mdx?.fields.productionUrl}
-      />
-      <Box
-        sx={{
-          mb: 3,
-          textAlign: 'right',
-        }}
-      >
-        <Link href={mdx?.fields.editLink}>Edit Post on Github</Link>
-      </Box>
-      <AboutBlurb />
+      <Section style={{ paddingBottom: 0 }}>
+        <Heading
+          as="h1"
+          sx={{
+            fontSize: [4, 5],
+            mb: [3, 4],
+            textAlign: 'center',
+          }}
+        >
+          {mdx?.fields.title}
+        </Heading>
+        <Box sx={{ mb: 3 }}>
+          <Image sharpImage={mdx?.fields.banner} />
+        </Box>
+      </Section>
+      <MdxRenderer>{mdx?.body}</MdxRenderer>
+      <Section noTopPadding>
+        <EmailCTA />
+        <ShareIcons
+          description={mdx?.fields.description}
+          image={socialShareImage}
+          title={mdx?.fields.description}
+          url={mdx?.fields.productionUrl}
+        />
+        <Box
+          sx={{
+            mb: 3,
+            textAlign: 'right',
+          }}
+        >
+          <Link href={mdx?.fields.editLink}>Edit Post on Github</Link>
+        </Box>
+        <AboutBlurb />
+      </Section>
     </Layout>
   )
 }

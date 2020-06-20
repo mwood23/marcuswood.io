@@ -40,3 +40,21 @@ export const Warn: FC<SVGProps<SVGSVGElement>> = (props) => (
     />
   </svg>
 )
+
+export const Arrow: FC<SVGProps<SVGSVGElement>> = (props) => (
+  <svg
+    fill="none"
+    height="16"
+    viewBox="0 0 59 16"
+    width="59"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      clipRule="evenodd"
+      d="M41.75 15.7942L59 7.99998L41.75 0.20575V6.00001H0V10H41.75V15.7942Z"
+      fill="currentColor"
+      fillRule="evenodd"
+    />
+  </svg>
+)
