@@ -1,5 +1,5 @@
 import styled, { CreateStyled } from '@emotion/styled'
 
-import { MyTheme } from '../gatsby-plugin-theme-ui'
+import { MyTheme } from './theme'
 
 export default styled as CreateStyled<MyTheme>

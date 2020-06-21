@@ -10,7 +10,7 @@ import {
   jsx,
 } from 'theme-ui'
 
-import { MOBILE_BREAKPOINT } from '../gatsby-plugin-theme-ui'
+import { MOBILE_BREAKPOINT } from '../style'
 import styled from '../style/styled'
 import { CommonComponentProps } from '../types'
 
@@ -170,7 +170,7 @@ export const Section: FC<SectionProps> = ({
     <StyledContainer
       sx={{
         px: fluid || noPadding ? 0 : smallPadding ? [2, 2] : [3, 3, 2],
-        py: noPadding ? 0 : smallPadding ? [3, 3] : [3, 3],
+        py: noPadding ? 0 : smallPadding ? [3, 3] : [3, 4],
         // Smells like a bug, px and py are higher specificity than just paddingTop
         ...(noTopPadding ? { paddingTop: '0  !important' } : {}),
         ...(fluid

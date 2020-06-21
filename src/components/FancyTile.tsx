@@ -1,12 +1,12 @@
 import { Box } from 'theme-ui'
 
-import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from '../gatsby-plugin-theme-ui'
+import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from '../style'
 import styled from '../style/styled'
 
 export const FancyTile = styled(Box)`
   padding: 3rem 2rem;
   border-radius: 60px;
-  box-shadow: 0 0px 15px rgba(54, 163, 252, 0.3);
+  box-shadow: 0 0px 15px ${(props) => props.theme.colors.shadow};
   text-align: center;
   font-size: 2.5rem;
   font-weight: bold;

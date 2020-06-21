@@ -60,7 +60,7 @@ const BlogItem: FC<{
       }}
       sx={{
         mb: [3, 4],
-        boxShadow: '0px 10px 30px -5px rgba(0, 0, 0, 0.3)',
+        boxShadow: (theme) => `0px 10px 30px -5px ${theme.colors.shadow}`,
         transition: 'box-shadow 0.5s',
         willChange: 'transform',
         borderRadius: '5px',

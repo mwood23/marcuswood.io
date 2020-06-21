@@ -18,7 +18,7 @@ export const EmailCTA: FC<EmailCTAProps> = () => (
     <Flex
       sx={{
         flexDirection: 'column',
-        boxShadow: '0px 10px 30px -5px rgba(0, 0, 0, 0.3)',
+        boxShadow: (theme) => `0px 10px 30px -5px ${theme.colors.shadow}`,
         py: [3, 4],
         px: [3, 4],
         borderRadius: '3px',

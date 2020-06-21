@@ -5,7 +5,7 @@ import React, { FC, useState } from 'react'
 import { animated, config, useTransition } from 'react-spring'
 import { Box, Button, Input, Text, jsx } from 'theme-ui'
 
-import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from '../gatsby-plugin-theme-ui'
+import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from '../style'
 import styled from '../style/styled'
 import { emailIsValid } from '../utils'
 import { Error, Warn } from './SVG'
@@ -60,7 +60,10 @@ const StyledEmailForm = styled.form<{ micro: boolean }>`
     `}
 `
 
-const StyledFancyInput = styled(Input)<{
+const StyledFancyInput = styled(Input, {
+  shouldForwardProp: (prop) =>
+    !['warn', 'error', 'micro', 'onDarkBackground'].includes(prop),
+})<{
   warn: boolean
   error: boolean
   micro: boolean
@@ -162,7 +165,7 @@ const FancyInputButton = styled(Button)<{
     background-color: ${(props) => props.theme.colors.primary};
   }
   &:disabled {
-    background-color: rgba(70, 70, 70, 0.25);
+    background-color: ${(props) => props.theme.colors.muted};
     cursor: not-allowed;
   }
 

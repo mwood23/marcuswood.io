@@ -3,7 +3,7 @@
 import { FC } from 'react'
 import { Box, Heading, Image, ImageProps, jsx } from 'theme-ui'
 
-import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from '../gatsby-plugin-theme-ui'
+import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from '../style'
 import styled from '../style/styled'
 import { GatsbyLink as Link } from './GatsbyLink'
 import { ArrowRightCircle } from './SVG'
@@ -136,7 +136,7 @@ export const ImageLinkSection: FC<ImageLinkSectionProps> = ({
     {...rest}
   >
     {imageConfig && (
-      <Link to={to}>
+      <Link tabIndex={-1} to={to}>
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <Image {...imageConfig} />
       </Link>

@@ -4,7 +4,7 @@ import { css } from '@emotion/core'
 import { FC } from 'react'
 import { Box, jsx } from 'theme-ui'
 
-import { MOBILE_BREAKPOINT } from '../gatsby-plugin-theme-ui'
+import { MOBILE_BREAKPOINT } from '../style'
 import styled from '../style/styled'
 import { ArrowRight } from './SVG'
 
@@ -14,7 +14,7 @@ export const FancySteps = styled(Box)``
 
 const StyledFancyStep = styled(Box)`
   padding: ${STEP_SPACING};
-  box-shadow: 0 0px 15px rgba(54, 163, 252, 0.3);
+  box-shadow: 0 0px 15px ${(props) => props.theme.colors.shadow};
   margin: 2rem;
   border-radius: 2rem;
   line-height: 1.5;

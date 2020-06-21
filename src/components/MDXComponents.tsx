@@ -4,7 +4,7 @@ import { css } from '@emotion/core'
 import { FC, Fragment } from 'react'
 import { ImageProps, Image as ImageThemeUI, jsx } from 'theme-ui'
 
-import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from '../gatsby-plugin-theme-ui'
+import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from '../style'
 import styled from '../style/styled'
 import { createOptimizedCloudinary } from '../utils'
 import { ImageZoom } from './ImageZoom'

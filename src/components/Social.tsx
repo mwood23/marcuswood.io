@@ -1,5 +1,6 @@
 /** @jsx jsx */
 
+import { alpha } from '@theme-ui/color'
 /**
  * Icons pulled from https://github.com/kentcdodds/kentcdodds.com/blob/edf7011bbd89be0a28fe9ffc629a771a04cb8adb/src/components/social.js
  */
@@ -7,25 +8,20 @@ import { FC } from 'react'
 import { Link, jsx } from 'theme-ui'
 
 import config from '../../config/website'
-import { ColorModes } from '../gatsby-plugin-theme-ui'
 
 type SocialProps = {
-  mode?: ColorModes
   url?: string
 }
 
-export const Twitter: FC<SocialProps> = ({
-  mode = 'light',
-  url = `${config.twitter}`,
-}) => (
+export const Twitter: FC<SocialProps> = ({ url = `${config.twitter}` }) => (
   <Link
     aria-label="Visit my Twitter"
     href={url}
     sx={{
-      color: mode === 'dark' ? `rgba(255,255,255,0.7)` : `rgba(0,0,0,0.7)`,
+      color: (theme) => alpha(theme.colors.iconColor, 0.7),
       marginRight: '20px',
       ':hover': {
-        color: mode === 'dark' ? `rgba(255,255,255,1)` : `rgba(0,0,0,1)`,
+        color: (theme) => alpha(theme.colors.iconColor, 1),
       },
     }}
   >
@@ -44,18 +40,15 @@ export const Twitter: FC<SocialProps> = ({
   </Link>
 )
 
-export const LinkedIn: FC<SocialProps> = ({
-  mode = 'light',
-  url = `${config.linkedin}`,
-}) => (
+export const LinkedIn: FC<SocialProps> = ({ url = `${config.linkedin}` }) => (
   <Link
     aria-label="Visit my LinkedIn"
     href={url}
     sx={{
-      color: mode === 'dark' ? `rgba(255,255,255,0.7)` : `rgba(0,0,0,0.7)`,
+      color: (theme) => alpha(theme.colors.iconColor, 0.7),
       marginRight: '20px',
       ':hover': {
-        color: mode === 'dark' ? `rgba(255,255,255,1)` : `rgba(0,0,0,1)`,
+        color: (theme) => alpha(theme.colors.iconColor, 1),
       },
     }}
   >
@@ -73,18 +66,15 @@ export const LinkedIn: FC<SocialProps> = ({
   </Link>
 )
 
-export const GitHub: FC<SocialProps> = ({
-  mode = 'light',
-  url = `${config.github}`,
-}) => (
+export const GitHub: FC<SocialProps> = ({ url = `${config.github}` }) => (
   <Link
     aria-label="Visit my GitHub"
     href={url}
     sx={{
-      color: mode === 'dark' ? `rgba(255,255,255,0.7)` : `rgba(0,0,0,0.7)`,
+      color: (theme) => alpha(theme.colors.iconColor, 0.7),
       marginRight: '20px',
       ':hover': {
-        color: mode === 'dark' ? `rgba(255,255,255,1)` : `rgba(0,0,0,1)`,
+        color: (theme) => alpha(theme.colors.iconColor, 1),
       },
     }}
   >
@@ -104,16 +94,15 @@ export const GitHub: FC<SocialProps> = ({
 )
 
 // export const YouTube: FC<SocialProps> = ({
-//   mode = 'light',
 //   url = `${config.youtube}`,
 // }) => (
 //   <Link
 //     aria-label="Visit my YouTube"
 // sx={{
-//     color: mode === 'dark' ? `rgba(255,255,255,0.7)` : `rgba(0,0,0,0.7)`,
+//     color: theme => alpha(theme.colors.iconColor, 0.7),
 //     marginRight: '20px',
 //     ':hover': {
-//       color: mode === 'dark' ? `rgba(255,255,255,1)` : `rgba(0,0,0,1)`,
+//       color: theme => alpha(theme.colors.iconColor, 1),
 //     },
 //   }}
 //     href={url}

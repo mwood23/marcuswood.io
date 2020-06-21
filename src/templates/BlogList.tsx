@@ -19,7 +19,7 @@ type BlogListProps = PageProps & {
   }
 }
 
-export const BlogList: FC<BlogListProps> = ({ data, pageContext, ...rest }) => (
+export const BlogList: FC<BlogListProps> = ({ data, pageContext }) => (
   <Layout addTopPadding>
     <Heading as="h1" mb={4}>
       Blog

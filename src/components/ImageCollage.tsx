@@ -6,7 +6,7 @@ import Carousel, { Dots } from '@brainhubeu/react-carousel'
 import { FC, useState } from 'react'
 import { Box, BoxProps, jsx } from 'theme-ui'
 
-import { MOBILE_BREAKPOINT } from '../gatsby-plugin-theme-ui'
+import { MOBILE_BREAKPOINT } from '../style'
 import styled from '../style/styled'
 import { FancyLayoutImage, FancyLayoutImageProps } from './MDXComponents'
 

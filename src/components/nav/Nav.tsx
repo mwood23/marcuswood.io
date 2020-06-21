@@ -7,8 +7,8 @@ import { FC, useEffect, useState } from 'react'
 import { Box, Button, Flex, Text, jsx, useColorMode } from 'theme-ui'
 
 import { AvatarImageQuery } from '../../../graphql-types'
-import { MOBILE_BREAKPOINT } from '../../gatsby-plugin-theme-ui'
 import { useScrollLock } from '../../hooks/useScrollLock'
+import { MOBILE_BREAKPOINT } from '../../style'
 import styled from '../../style/styled'
 import { CommonComponentProps } from '../../types'
 import { GatsbyLink } from '../GatsbyLink'
@@ -140,7 +140,8 @@ export const Nav: FC<NavProps> = ({ siteTitle }) => {
             scrolled || hamburgerOpen || isSecondaryPage
               ? 'background'
               : 'none',
-          boxShadow: scrolled ? '0px 0px 5px rgba(0 ,0,0,.3)' : 'none',
+          boxShadow: (theme) =>
+            scrolled ? `0px 0px 5px ${theme.colors.shadow}` : 'none',
           transition: 'all 250ms linear',
         },
       }}

@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { FC } from 'react'
 import { Box, Container, Heading, jsx } from 'theme-ui'
 
-import { MOBILE_BREAKPOINT } from '../gatsby-plugin-theme-ui'
+import { MOBILE_BREAKPOINT } from '../style'
 import styled from '../style/styled'
 import { CommonComponentProps } from '../types'
 import { Image } from './Image'
@@ -59,8 +59,6 @@ export const Hero: FC<HeroProps> = () => {
       sx={{
         height: ['auto', '380px'],
         mb: [4, 5],
-        // background:
-        //   'linear-gradient(90deg, rgba(23,23,190,1) 0%, rgba(0,0,226,1) 27%, rgba(0,44,232,1) 42%, rgba(0,212,255,1) 100%)',
         mt: (theme) => [
           `-${theme.sizes.mobileNavHeight}`,
           `-${theme.sizes.desktopNavHeight}`,
