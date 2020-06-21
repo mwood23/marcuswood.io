@@ -14,7 +14,6 @@ const IMAGE_HEIGHT = `${WORK_DETAIL_HEIGHT} + ${WORK_OVERFLOW}`
 
 const StyledImageLinkSection = styled(Box)<{
   reverse: boolean
-  mobileContainerPadding: string
 }>`
   background-color: rgba(0, 128, 238, 0.07);
   height: ${WORK_DETAIL_HEIGHT};
@@ -73,12 +72,12 @@ const StyledImageLinkSection = styled(Box)<{
       props.reverse ? '30px 0 0 30px' : '0 30px 30px 0'};
     margin-left: ${(props) =>
       props.reverse
-        ? props.mobileContainerPadding
-        : `-${props.mobileContainerPadding}`};
+        ? props.theme.sizes.productsSectionSpacing
+        : `-${props.theme.sizes.productsSectionSpacing}`};
     margin-right: ${(props) =>
       props.reverse
-        ? `-${props.mobileContainerPadding}`
-        : props.mobileContainerPadding};
+        ? `-${props.theme.sizes.productsSectionSpacing}`
+        : props.theme.sizes.productsSectionSpacing};
 
     > a {
       width: 60%;
@@ -119,10 +118,6 @@ type ImageLinkSectionProps = {
   description: string
   to: string
   reverse?: boolean
-  /**
-   * Used to calculate the negative margin needed to show the section flush with the corner.
-   */
-  mobileContainerPadding: string
 }
 
 export const ImageLinkSection: FC<ImageLinkSectionProps> = ({

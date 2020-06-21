@@ -5,12 +5,16 @@ import { FC } from 'react'
 import { Box, BoxProps, jsx } from 'theme-ui'
 
 import { LatestProductsQuery } from '../../graphql-types'
+import styled from '../style/styled'
 import { ImageLinkSection } from './ImageLinkSection'
 import { Section } from './Section'
 
 export interface FeaturedProductsProps extends Omit<BoxProps, 'ref'> {}
 
-const MOBILE_PADDING = '3rem'
+export const ProductsListWrapper = styled(Section)`
+  padding-left: ${(props) => props.theme.sizes.productsSectionSpacing};
+  padding-right: ${(props) => props.theme.sizes.productsSectionSpacing};
+`
 
 export const latestProductsQuery = graphql`
   query LatestProducts {
@@ -21,58 +25,45 @@ export const latestProductsQuery = graphql`
     ) {
       edges {
         node {
-          id
-          timeToRead
-          # The field date doesn't work for some reason
-          frontmatter {
-            date(formatString: "MMMM Do, YYYY")
-          }
-          fields {
-            slug
-            categories
-            title
-            description
-            productImage
-            author
-          }
-          excerpt(pruneLength: 250)
+          ...ProductPost
         }
       }
     }
   }
 `
 
-export const FeaturedProducts: FC<FeaturedProductsProps> = () => {
-  const {
+export const ProductList: FC<{ data: LatestProductsQuery }> = ({
+  data: {
     allMdx: { edges },
-  } = useStaticQuery<LatestProductsQuery>(latestProductsQuery)
+  },
+}) => (
+  <Box>
+    {edges.map(({ node }, i) => (
+      <ImageLinkSection
+        description={node.fields.description}
+        // It'll be there for products
+        imageConfig={{ src: node.fields.productImage! }}
+        key={node.id}
+        // Reverse if odd
+        reverse={Boolean(i % 2)}
+        title={node.fields.title}
+        to={node.fields.slug}
+      />
+    ))}
+  </Box>
+)
+
+export const FeaturedProducts: FC<FeaturedProductsProps> = () => {
+  const data = useStaticQuery<LatestProductsQuery>(latestProductsQuery)
 
   return (
-    <Section
-      style={{
-        paddingLeft: MOBILE_PADDING,
-        paddingRight: MOBILE_PADDING,
-      }}
+    <ProductsListWrapper
       sx={{
         pt: [0, 3],
       }}
       title="Products"
     >
-      <Box>
-        {edges.map(({ node }, i) => (
-          <ImageLinkSection
-            description={node.fields.description}
-            // It'll be there for products
-            imageConfig={{ src: node.fields.productImage! }}
-            key={node.id}
-            // Reverse if odd
-            mobileContainerPadding={MOBILE_PADDING}
-            reverse={Boolean(i % 2)}
-            title={node.fields.title}
-            to={node.fields.slug}
-          />
-        ))}
-      </Box>
-    </Section>
+      <ProductList data={data} />
+    </ProductsListWrapper>
   )
 }

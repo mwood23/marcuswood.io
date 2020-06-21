@@ -2619,12 +2619,24 @@ export type SitePageContext = {
   id?: Maybe<Scalars['String']>;
   prev?: Maybe<SitePageContextPrev>;
   next?: Maybe<SitePageContextNext>;
+  limit?: Maybe<Scalars['Int']>;
+  skip?: Maybe<Scalars['Int']>;
+  pageCount?: Maybe<Scalars['Int']>;
+  currentPageNum?: Maybe<Scalars['Int']>;
+  previousPage?: Maybe<Scalars['String']>;
+  nextPage?: Maybe<Scalars['String']>;
 };
 
 export type SitePageContextFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   prev?: Maybe<SitePageContextPrevFilterInput>;
   next?: Maybe<SitePageContextNextFilterInput>;
+  limit?: Maybe<IntQueryOperatorInput>;
+  skip?: Maybe<IntQueryOperatorInput>;
+  pageCount?: Maybe<IntQueryOperatorInput>;
+  currentPageNum?: Maybe<IntQueryOperatorInput>;
+  previousPage?: Maybe<StringQueryOperatorInput>;
+  nextPage?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageContextNext = {
@@ -2837,6 +2849,12 @@ export type SitePageFieldsEnum =
   | 'context___next___fields___date'
   | 'context___next___fields___categories'
   | 'context___next___fields___keywords'
+  | 'context___limit'
+  | 'context___skip'
+  | 'context___pageCount'
+  | 'context___currentPageNum'
+  | 'context___previousPage'
+  | 'context___nextPage'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -2892,7 +2910,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___maxWidth'
   | 'pluginCreator___pluginOptions___target'
   | 'pluginCreator___pluginOptions___rel'
-  | 'pluginCreator___pluginOptions___siteUrl'
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
   | 'pluginCreator___pluginOptions___background_color'
@@ -2910,6 +2927,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___feeds___title'
   | 'pluginCreator___pluginOptions___trackingId'
   | 'pluginCreator___pluginOptions___pathCheck'
+  | 'pluginCreator___pluginOptions___siteUrl'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___ssrAPIs'
@@ -3123,7 +3141,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___maxWidth'
   | 'pluginOptions___target'
   | 'pluginOptions___rel'
-  | 'pluginOptions___siteUrl'
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
   | 'pluginOptions___background_color'
@@ -3144,6 +3161,7 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___env___deploy_preview___policy'
   | 'pluginOptions___trackingId'
   | 'pluginOptions___pathCheck'
+  | 'pluginOptions___siteUrl'
   | 'nodeAPIs'
   | 'browserAPIs'
   | 'ssrAPIs'
@@ -3269,7 +3287,6 @@ export type SitePluginPluginOptions = {
   maxWidth?: Maybe<Scalars['Int']>;
   target?: Maybe<Scalars['String']>;
   rel?: Maybe<Scalars['String']>;
-  siteUrl?: Maybe<Scalars['String']>;
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
   background_color?: Maybe<Scalars['String']>;
@@ -3285,6 +3302,7 @@ export type SitePluginPluginOptions = {
   env?: Maybe<SitePluginPluginOptionsEnv>;
   trackingId?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
+  siteUrl?: Maybe<Scalars['String']>;
 };
 
 export type SitePluginPluginOptionsEnv = {
@@ -3390,7 +3408,6 @@ export type SitePluginPluginOptionsFilterInput = {
   maxWidth?: Maybe<IntQueryOperatorInput>;
   target?: Maybe<StringQueryOperatorInput>;
   rel?: Maybe<StringQueryOperatorInput>;
-  siteUrl?: Maybe<StringQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
   background_color?: Maybe<StringQueryOperatorInput>;
@@ -3406,6 +3423,7 @@ export type SitePluginPluginOptionsFilterInput = {
   env?: Maybe<SitePluginPluginOptionsEnvFilterInput>;
   trackingId?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  siteUrl?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsGatsbyRemarkPlugins = {
@@ -3553,10 +3571,7 @@ export type AboutBlurbQuery = { site?: Maybe<{ siteMetadata: { author: Pick<Site
 export type LatestProductsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type LatestProductsQuery = { allMdx: { edges: Array<{ node: (
-        Pick<Mdx, 'id' | 'timeToRead' | 'excerpt'>
-        & { frontmatter: Pick<MdxFrontmatter, 'date'>, fields: Pick<MdxFields, 'slug' | 'categories' | 'title' | 'description' | 'productImage' | 'author'> }
-      ) }> } };
+export type LatestProductsQuery = { allMdx: { edges: Array<{ node: ProductPostFragment }> } };
 
 export type HeroImageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3566,13 +3581,7 @@ export type HeroImageQuery = { heroImage?: Maybe<{ childImageSharp?: Maybe<{ flu
 export type LatestBlogsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type LatestBlogsQuery = { allMdx: { edges: Array<{ node: (
-        Pick<Mdx, 'timeToRead' | 'excerpt'>
-        & { frontmatter: Pick<MdxFrontmatter, 'date'>, fields: (
-          Pick<MdxFields, 'slug' | 'categories' | 'title' | 'description' | 'author' | 'bannerCredit'>
-          & { banner?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }> }
-        ) }
-      ) }> } };
+export type LatestBlogsQuery = { allMdx: { edges: Array<{ node: BlogPostFragment }> } };
 
 export type SiteTitleQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3591,6 +3600,32 @@ export type SeoSiteMetadataQuery = { site?: Maybe<{ siteMetadata: (
       Pick<SiteSiteMetadata, 'title' | 'description' | 'canonicalUrl' | 'image'>
       & { author: Pick<SiteSiteMetadataAuthor, 'name'>, organization: Pick<SiteSiteMetadataOrganization, 'name' | 'url' | 'logo'>, social: Pick<SiteSiteMetadataSocial, 'twitter' | 'fbAppID'> }
     ) }> };
+
+export type ProductPostFragment = (
+  Pick<Mdx, 'id' | 'timeToRead' | 'excerpt'>
+  & { frontmatter: Pick<MdxFrontmatter, 'date'>, fields: Pick<MdxFields, 'slug' | 'categories' | 'title' | 'description' | 'productImage' | 'author'> }
+);
+
+export type ProductsListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ProductsListQuery = { allMdx: { edges: Array<{ node: ProductPostFragment }> } };
+
+export type BlogPostFragment = (
+  Pick<Mdx, 'timeToRead' | 'excerpt'>
+  & { frontmatter: Pick<MdxFrontmatter, 'date'>, fields: (
+    Pick<MdxFields, 'slug' | 'categories' | 'title' | 'description' | 'author' | 'bannerCredit'>
+    & { banner?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }> }
+  ) }
+);
+
+export type BlogListQueryVariables = Exact<{
+  skip: Scalars['Int'];
+  limit: Scalars['Int'];
+}>;
+
+
+export type BlogListQuery = { allMdx: { edges: Array<{ node: BlogPostFragment }> } };
 
 export type PostQueryVariables = Exact<{
   id: Scalars['String'];

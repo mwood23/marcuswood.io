@@ -8,19 +8,24 @@
  */
 import { graphql, useStaticQuery } from 'gatsby'
 import { FC, Fragment } from 'react'
-import { Container, jsx } from 'theme-ui'
+import { Container, ContainerProps, jsx } from 'theme-ui'
 
 import styled from '../style/styled'
 import { CommonComponentProps } from '../types'
 import { Footer } from './Footer'
 import { Nav } from './nav/Nav'
 
-interface LayoutProps extends CommonComponentProps {
+interface LayoutProps
+  extends CommonComponentProps,
+    Omit<ContainerProps, 'ref'> {
   fluid?: boolean
   showNav?: boolean
+  noTopMargin?: boolean
   showFooter?: boolean
   addTopPadding?: boolean
 }
+
+interface LayoutContainerProps extends LayoutProps {}
 
 const StyledContainer = styled(Container)`
   /* the permalink icon */
@@ -48,10 +53,44 @@ const StyledContainer = styled(Container)`
     opacity: 1;
   }
 `
+/**
+ * If we layout needs to be fluid we need to able to get this
+ * individually to wrap parts of the page that doesn't need fluid or section parts
+ */
+export const LayoutContainer: FC<LayoutContainerProps> = ({
+  children,
+  fluid,
+  showNav,
+  noTopMargin,
+  addTopPadding,
+  ...rest
+}) => (
+  <StyledContainer
+    sx={{
+      mt: (theme) => [
+        showNav === false || noTopMargin ? 0 : theme.sizes.mobileNavHeight,
+        0,
+      ],
+      pt: addTopPadding ? [4, 5] : 0,
+      mx: 'auto',
+      px: fluid ? 0 : 2,
+      ...(fluid
+        ? {
+            maxWidth: '100%',
+            width: '100%',
+          }
+        : {}),
+    }}
+    {...rest}
+  >
+    {children}
+  </StyledContainer>
+)
 
 export const Layout: FC<LayoutProps> = ({
   fluid = false,
   showNav = true,
+  noTopMargin = false,
   showFooter = true,
   addTopPadding = false,
   children,
@@ -70,26 +109,16 @@ export const Layout: FC<LayoutProps> = ({
   return (
     <Fragment>
       {showNav && <Nav siteTitle={data.site.siteMetadata.title} />}
-      <StyledContainer
-        sx={{
-          mt: (theme) => [
-            showNav === false ? 0 : theme.sizes.mobileNavHeight,
-            0,
-          ],
-          pt: addTopPadding ? [4, 5] : 0,
-          mx: 'auto',
-          px: fluid ? 0 : 2,
-          ...(fluid
-            ? {
-                maxWidth: '100%',
-                width: '100%',
-              }
-            : {}),
-        }}
+      <LayoutContainer
+        addTopPadding={addTopPadding}
+        fluid={fluid}
+        noTopMargin={noTopMargin}
+        showFooter={showFooter}
+        showNav={showNav}
         {...rest}
       >
         {children}
-      </StyledContainer>
+      </LayoutContainer>
       {showFooter && <Footer />}
     </Fragment>
   )

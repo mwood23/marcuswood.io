@@ -1,11 +1,13 @@
 /** @jsx jsx */
 
+import { PageProps } from 'gatsby'
+import { FC } from 'react'
 import { Heading, Text, jsx } from 'theme-ui'
 
 import { Layout, SEO } from '../components'
 
 // TODO
-const NotFoundPage = () => (
+const NotFoundPage: FC<PageProps> = () => (
   <Layout>
     <SEO pageTitle="404: Not found" />
     <Heading as="h1">NOT FOUND</Heading>

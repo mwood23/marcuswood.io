@@ -1,6 +1,6 @@
 /** @jsx jsx */
 
-import { graphql } from 'gatsby'
+import { PageProps, graphql } from 'gatsby'
 import MdxRenderer from 'gatsby-plugin-mdx/mdx-renderer'
 import { FC } from 'react'
 import { Box, Heading, Link, jsx } from 'theme-ui'
@@ -10,7 +10,7 @@ import { AboutBlurb, Image, Layout, SEO, Section } from '../components'
 import { EmailCTA } from '../components/EmailCTA'
 import { ShareIcons } from '../components/ShareIcons'
 
-type PostProps = {
+type PostProps = PageProps & {
   data: PostQuery
 }
 

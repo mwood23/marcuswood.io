@@ -40,6 +40,7 @@ const CUSTOM_THEME = merge(
       container: '830px',
       desktopNavHeight: '80px',
       mobileNavHeight: '60px',
+      productsSectionSpacing: '3rem',
     },
     colors: {
       text: '#333',

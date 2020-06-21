@@ -57,7 +57,36 @@ const createPosts = (createPage, createRedirect, edges) => {
   })
 }
 
-function createBlogPages({ data, actions }) {
+const createPaginatedPages = (createPage, edges, pathPrefix, context) => {
+  // Paging
+  const { postsPerPage } = config
+  const pageCount = Math.ceil(edges.length / postsPerPage)
+
+  // This creates the home page and pagination
+  ;[...Array(pageCount)].forEach((_val, index) => {
+    const pageNum = index + 1
+
+    createPage({
+      path: `${pathPrefix}${pageNum === 1 ? '/' : `/${pageNum}/`}`,
+      component: path.resolve(`./src/templates/BlogList.tsx`),
+      context: {
+        limit: postsPerPage,
+        skip: index * postsPerPage,
+        pageCount,
+        currentPageNum: pageNum,
+        previousPage:
+          pageNum === 1
+            ? undefined
+            : `${pathPrefix}${pageNum - 1 === 1 ? '' : pageNum - 1}`,
+        nextPage:
+          pageNum === pageCount ? undefined : `${pathPrefix}/${pageNum + 1}`,
+        ...context,
+      },
+    })
+  })
+}
+
+function createBlogPages({ data, actions, blogPath }) {
   if (!data.edges.length === 0) {
     throw new Error('There are no posts!')
   }
@@ -65,6 +94,10 @@ function createBlogPages({ data, actions }) {
   const { edges } = data
   const { createRedirect, createPage } = actions
   createPosts(createPage, createRedirect, edges)
+
+  createPaginatedPages(actions.createPage, edges, blogPath, {
+    categories: [],
+  })
   return null
 }
 

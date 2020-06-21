@@ -22,32 +22,7 @@ export const latestBlogsQuery = graphql`
     ) {
       edges {
         node {
-          timeToRead
-          # The field date doesn't work for some reason
-          frontmatter {
-            date(formatString: "MMMM Do, YYYY")
-          }
-          fields {
-            slug
-            categories
-            title
-            description
-            author
-            banner {
-              childImageSharp {
-                fluid(maxWidth: 700) {
-                  # TODO: Needs types and global fragments don't work https://github.com/gatsbyjs/gatsby/blob/ad7cd6ba23d3460bdcd707c1a154adcbc45eb155/packages/gatsby-transformer-sharp/src/fragments.js
-                  base64
-                  aspectRatio
-                  src
-                  srcSet
-                  sizes
-                }
-              }
-            }
-            bannerCredit
-          }
-          excerpt(pruneLength: 250)
+          ...BlogPost
         }
       }
     }
@@ -89,7 +64,7 @@ const BlogItem: FC<{
         transition: 'box-shadow 0.5s',
         willChange: 'transform',
         borderRadius: '5px',
-        overflow: 'hidden',
+        // overflow: 'hidden',
       }}
     >
       <Box
@@ -144,24 +119,32 @@ const BlogItem: FC<{
   )
 }
 
-export const LatestFromOurBlog: FC<LatestFromOurBlogProps> = () => {
-  const {
+export const BlogItemList: FC<{ data: LatestBlogsQuery }> = ({
+  data: {
     allMdx: { edges },
-  } = useStaticQuery<LatestBlogsQuery>(latestBlogsQuery)
+  },
+}) => (
+  <Box>
+    {edges.map(({ node }) => (
+      <BlogItem
+        banner={node.fields.banner}
+        date={node.frontmatter.date}
+        excerpt={node.excerpt}
+        key={node.fields.slug}
+        slug={node.fields.slug}
+        timeToRead={node.timeToRead ?? 0}
+        title={node.fields.title}
+      />
+    ))}
+  </Box>
+)
+
+export const LatestFromOurBlog: FC<LatestFromOurBlogProps> = () => {
+  const data = useStaticQuery<LatestBlogsQuery>(latestBlogsQuery)
 
   return (
     <Section title="Blog">
-      {edges.map(({ node }) => (
-        <BlogItem
-          banner={node.fields.banner}
-          date={node.frontmatter.date}
-          excerpt={node.excerpt}
-          key={node.fields.slug}
-          slug={node.fields.slug}
-          timeToRead={node.timeToRead ?? 0}
-          title={node.fields.title}
-        />
-      ))}
+      <BlogItemList data={data} />
     </Section>
   )
 }
