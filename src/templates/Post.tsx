@@ -14,51 +14,45 @@ type PostProps = PageProps & {
   data: PostQuery
 }
 
-const Post: FC<PostProps> = ({ data: { mdx, site } }) => {
-  const socialShareImage = mdx?.fields?.banner?.publicURL
-    ? `${site?.siteMetadata.siteUrl}${mdx?.fields.banner.publicURL}`
-    : undefined
-
-  return (
-    <Layout fluid>
-      <SEO postData={mdx?.fields} />
-      <Section style={{ paddingBottom: 0 }}>
-        <Heading
-          as="h1"
-          sx={{
-            fontSize: [4, 5],
-            mb: [3, 4],
-            textAlign: 'center',
-          }}
-        >
-          {mdx?.fields.title}
-        </Heading>
-        <Box sx={{ mb: 3 }}>
-          <Image sharpImage={mdx?.fields.banner} />
-        </Box>
-      </Section>
-      <MdxRenderer>{mdx?.body}</MdxRenderer>
-      <Section noTopPadding>
-        <EmailCTA />
-        <ShareIcons
-          description={mdx?.fields.description}
-          image={socialShareImage}
-          title={mdx?.fields.description}
-          url={mdx?.fields.productionUrl}
-        />
-        <Box
-          sx={{
-            mb: 3,
-            textAlign: 'right',
-          }}
-        >
-          <Link href={mdx?.fields.editLink}>Edit Post on Github</Link>
-        </Box>
-        <AboutBlurb />
-      </Section>
-    </Layout>
-  )
-}
+const Post: FC<PostProps> = ({ data: { mdx } }) => (
+  <Layout fluid>
+    <SEO postData={mdx?.fields} />
+    <Section style={{ paddingBottom: 0 }}>
+      <Heading
+        as="h1"
+        sx={{
+          fontSize: [4, 5],
+          mb: [3, 4],
+          textAlign: 'center',
+        }}
+      >
+        {mdx?.fields.title}
+      </Heading>
+      <Box sx={{ mb: 3 }}>
+        <Image sharpImage={mdx?.fields.banner} />
+      </Box>
+    </Section>
+    <MdxRenderer>{mdx?.body}</MdxRenderer>
+    <Section noTopPadding>
+      <EmailCTA />
+      <ShareIcons
+        description={mdx?.fields.description}
+        image={mdx?.fields?.banner?.childImageSharp?.fluid?.src}
+        title={mdx?.fields.description}
+        url={mdx?.fields.productionUrl}
+      />
+      <Box
+        sx={{
+          mb: 3,
+          textAlign: 'right',
+        }}
+      >
+        <Link href={mdx?.fields.editLink}>Edit Post on Github</Link>
+      </Box>
+      <AboutBlurb />
+    </Section>
+  </Layout>
+)
 
 export default Post
 
@@ -75,7 +69,6 @@ export const pageQuery = graphql`
         author
         bannerCredit
         banner {
-          publicURL
           childImageSharp {
             fluid(maxWidth: 810) {
               # TODO: Needs types and global fragments don't work https://github.com/gatsbyjs/gatsby/blob/ad7cd6ba23d3460bdcd707c1a154adcbc45eb155/packages/gatsby-transformer-sharp/src/fragments.js

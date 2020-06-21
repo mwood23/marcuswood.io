@@ -3636,10 +3636,7 @@ export type PostQuery = { site?: Maybe<{ siteMetadata: Pick<SiteSiteMetadata, 'k
     Pick<Mdx, 'body'>
     & { fields: (
       Pick<MdxFields, 'author' | 'bannerCredit' | 'categories' | 'date' | 'description' | 'keywords' | 'editLink' | 'historyLink' | 'plainTextDescription' | 'id' | 'isBlog' | 'productionUrl' | 'slug' | 'title'>
-      & { banner?: Maybe<(
-        Pick<File, 'publicURL'>
-        & { childImageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }
-      )> }
+      & { banner?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> }> }
     ) }
   )> };
 
