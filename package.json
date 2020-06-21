@@ -118,5 +118,9 @@
     ".js,.jsx,.ts,.tsx": {
       "style": "module"
     }
+  },
+  "engines": {
+    "node": "10.18.1",
+    "yarn": "1.19.2"
   }
 }

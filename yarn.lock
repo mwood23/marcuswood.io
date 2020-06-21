@@ -2380,7 +2380,7 @@
     "@theme-ui/css" "^0.4.0-highlight.0"
     deepmerge "^4.2.2"
 
-"@theme-ui/color@*", "@theme-ui/color@^0.3.1":
+"@theme-ui/color@^0.3.1":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@theme-ui/color/-/color-0.3.1.tgz#fceffc0be305ad6ca6be9755ac9cafc955b1e6f5"
   integrity sha512-Bgew6etspp087AdrKuMpcWjIQDQ8UTp28wtHCXgi1Ip5ClFn9i91DvaKgqXk9UwQJFL/IwydX8Bks/+u9tf0WA==
@@ -2853,13 +2853,6 @@
     "@types/styled-system__css" "*"
     "@types/theme-ui__components" "*"
     csstype "^2.6.6"
-
-"@types/theme-ui__color@^0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@types/theme-ui__color/-/theme-ui__color-0.3.2.tgz#a9f73ec97ef6c4f26ccfe96cf7a8e8be8d259815"
-  integrity sha512-QWlewM+2XtjSJDDLNX2en7ZFJffs0Nsi5JZXUotDtTqYN0gfZDmy+kp+B+vRj38fSzDvjzuQD3+emagwDv4Jhw==
-  dependencies:
-    "@theme-ui/color" "*"
 
 "@types/theme-ui__components@*", "@types/theme-ui__components@^0.2.3":
   version "0.2.5"
@@ -13083,7 +13076,7 @@ pnp-webpack-plugin@^1.6.4:
   dependencies:
     ts-pnp "^1.1.6"
 
-polished@^3.4.1, polished@^3.6.5:
+polished@^3.4.1:
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/polished/-/polished-3.6.5.tgz#dbefdde64c675935ec55119fe2a2ab627ca82e9c"
   integrity sha512-VwhC9MlhW7O5dg/z7k32dabcAFW1VI2+7fSe8cE/kXcfL7mVdoa5UxciYGW2sJU78ldDLT6+ROEKIZKFNTnUXQ==
