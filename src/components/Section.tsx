@@ -17,7 +17,7 @@ import { CommonComponentProps } from '../types'
 const COLUMN_BREAKPOINT = '1300px'
 
 const StyledContainer = styled(Container)`
-  *:last-child {
+  p:last-child {
     margin-bottom: 0;
   }
 `
@@ -171,7 +171,7 @@ export const Section: FC<SectionProps> = ({
   >
     <StyledContainer
       sx={{
-        px: fluid || noPadding ? 0 : smallPadding ? [2, 2] : [2, 2],
+        px: fluid || noPadding ? 0 : smallPadding ? [2, 2] : [3, 3, 2],
         py: noPadding ? 0 : smallPadding ? [3, 3] : [4, 4],
         // Smells like a bug, px and py are higher specificity than just paddingTop
         ...(noTopPadding ? { paddingTop: '0  !important' } : {}),

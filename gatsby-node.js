@@ -243,6 +243,12 @@ exports.onCreateNode = ({ node, actions }) => {
     })
 
     createNodeField({
+      name: 'productImage',
+      node,
+      value: node.frontmatter.productImage,
+    })
+
+    createNodeField({
       name: 'categories',
       node,
       value: node.frontmatter.categories || [],
@@ -365,7 +371,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       difference: String
       locale: String
     ): Date!
-    banner: File!
+    banner: File
     bannerCredit: String
     categories: [String!]!
     keywords: [String!]!

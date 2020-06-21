@@ -98,11 +98,15 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "dev": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "eslint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "eslint:fix": "yarn eslint --fix",
+    "tsc": "tsc -p tsconfig.json",
+    "lint": "run-s tsc eslint",
+    "lint:fix": "yarn tsc && yarn eslint:fix"
   },
   "repository": {
     "type": "git",

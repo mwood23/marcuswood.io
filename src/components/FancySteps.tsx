@@ -6,7 +6,7 @@ import { Box, jsx } from 'theme-ui'
 
 import { MOBILE_BREAKPOINT } from '../gatsby-plugin-theme-ui'
 import styled from '../style/styled'
-import { Arrow } from './SVG'
+import { ArrowRight } from './SVG'
 
 const STEP_SPACING = '2rem'
 
@@ -49,7 +49,7 @@ const ARROW_DOWN = css`
 
 type FancyStepArrowDirection = 'right' | 'down'
 
-const FancyStepNumberArrow = styled(Arrow)<{
+const FancyStepNumberArrow = styled(ArrowRight)<{
   arrowDirection: FancyStepArrowDirection
 }>`
   position: absolute;

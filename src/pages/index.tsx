@@ -2,7 +2,7 @@
 
 import { jsx } from 'theme-ui'
 
-import { Hero, Layout, SEO, Section } from '../components'
+import { FeaturedProducts, Hero, Layout, SEO, Section } from '../components'
 import { EmailCTA } from '../components/EmailCTA'
 import { LatestFromOurBlog } from '../components/LatestFromOurBlog'
 
@@ -11,6 +11,7 @@ const IndexPage = () => (
     <SEO pageTitle="Home" />
     <Hero />
     <LatestFromOurBlog />
+    <FeaturedProducts />
     <Section>
       <EmailCTA />
     </Section>

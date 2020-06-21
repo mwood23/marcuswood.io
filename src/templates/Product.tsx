@@ -14,7 +14,7 @@ type ProductProps = {
   data: PostQuery
 }
 
-const Product: FC<ProductProps> = ({ data: { mdx, site } }) => (
+const Product: FC<ProductProps> = ({ data: { mdx } }) => (
   <Layout fluid>
     <SEO postData={mdx?.fields} />
     <MdxRenderer
@@ -28,6 +28,7 @@ const Product: FC<ProductProps> = ({ data: { mdx, site } }) => (
       <EmailCTA />
       <ShareIcons
         description={mdx?.fields.description}
+        // TODO
         // image={socialShareImage}
         title={mdx?.fields.description}
         url={mdx?.fields.productionUrl}

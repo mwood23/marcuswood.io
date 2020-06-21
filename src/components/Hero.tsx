@@ -89,7 +89,8 @@ export const Hero: FC<HeroProps> = () => {
             width: [null, '50%'],
           }}
         >
-          My name is Marcus and I build web applications that scale.
+          Hi, I&apos;m Marcus. I build ambitious products with TypesScript,
+          React, and Graphql.
         </Heading>
       </Container>
     </Box>

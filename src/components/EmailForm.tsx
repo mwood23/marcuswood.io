@@ -282,7 +282,7 @@ export const EmailForm: FC<EmailFormProps> = ({
   const [email, setEmail] = useState('')
   const [emailTouched, setEmailTouched] = useState(false)
   const [submitting, setSubmitting] = useState(false)
-  const [result, setResult] = useState<object>()
+  const [result, setResult] = useState<{ result: string }>()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()

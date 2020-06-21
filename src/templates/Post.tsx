@@ -15,7 +15,7 @@ type PostProps = {
 }
 
 const Post: FC<PostProps> = ({ data: { mdx, site } }) => {
-  const socialShareImage = mdx?.fields.banner.publicURL
+  const socialShareImage = mdx?.fields?.banner?.publicURL
     ? `${site?.siteMetadata.siteUrl}${mdx?.fields.banner.publicURL}`
     : undefined
 

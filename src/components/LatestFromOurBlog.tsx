@@ -5,6 +5,7 @@ import { FC } from 'react'
 import { animated, useSpring } from 'react-spring'
 import { Box, Heading, Text, jsx } from 'theme-ui'
 
+import { LatestBlogsQuery } from '../../graphql-types'
 import { CommonComponentProps } from '../types'
 import { GatsbyLink } from './GatsbyLink'
 import { Image } from './Image'
@@ -13,7 +14,7 @@ import { Section } from './Section'
 export interface LatestFromOurBlogProps extends CommonComponentProps {}
 
 export const latestBlogsQuery = graphql`
-  query LatestBlogsQuery {
+  query LatestBlogs {
     allMdx(
       filter: { fields: { isBlog: { eq: true }, unlisted: { eq: false } } }
       limit: 4
@@ -146,23 +147,18 @@ const BlogItem: FC<{
 export const LatestFromOurBlog: FC<LatestFromOurBlogProps> = () => {
   const {
     allMdx: { edges },
-  } = useStaticQuery(latestBlogsQuery)
+  } = useStaticQuery<LatestBlogsQuery>(latestBlogsQuery)
 
   return (
-    <Section
-      sx={{
-        pt: [0, 3],
-      }}
-      title="Blog"
-    >
-      {edges.map(({ node }: { node: any }) => (
+    <Section title="Blog">
+      {edges.map(({ node }) => (
         <BlogItem
           banner={node.fields.banner}
           date={node.frontmatter.date}
           excerpt={node.excerpt}
           key={node.fields.slug}
           slug={node.fields.slug}
-          timeToRead={node.timeToRead}
+          timeToRead={node.timeToRead ?? 0}
           title={node.fields.title}
         />
       ))}
