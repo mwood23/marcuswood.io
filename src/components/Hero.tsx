@@ -39,7 +39,7 @@ const ImageContainer = styled(Box)`
 export const Hero: FC<HeroProps> = () => {
   const data = useStaticQuery(graphql`
     query HeroImage {
-      heroImage: file(name: { eq: "marcus-hero" }) {
+      heroImage: file(name: { eq: "marcus-profile" }) {
         childImageSharp {
           fluid(maxWidth: 305) {
             # TODO: Needs types and global fragments don't work https://github.com/gatsbyjs/gatsby/blob/ad7cd6ba23d3460bdcd707c1a154adcbc45eb155/packages/gatsby-transformer-sharp/src/fragments.js

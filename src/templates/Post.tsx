@@ -34,7 +34,7 @@ const Post: FC<PostProps> = ({ data: { mdx } }) => (
     </Section>
     <MdxRenderer>{mdx?.body}</MdxRenderer>
     <Section noTopPadding>
-      <EmailCTA />
+      <EmailCTA tags={mdx?.fields.tags} />
       <ShareIcons
         description={mdx?.fields.description}
         image={mdx?.fields?.banner?.childImageSharp?.fluid?.src}
@@ -80,10 +80,9 @@ export const pageQuery = graphql`
             }
           }
         }
-        categories
+        tags
         date(formatString: "MMMM Do, YYYY")
         description
-        keywords
         editLink
         historyLink
         plainTextDescription

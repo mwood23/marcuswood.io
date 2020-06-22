@@ -5,9 +5,11 @@ import { Box, Flex, Heading, Text, jsx } from 'theme-ui'
 
 import { EmailForm } from './EmailForm'
 
-type EmailCTAProps = {}
+type EmailCTAProps = {
+  tags?: string[]
+}
 
-export const EmailCTA: FC<EmailCTAProps> = () => (
+export const EmailCTA: FC<EmailCTAProps> = ({ tags = [] }) => (
   <Box
     sx={{
       marginBottom: 4,
@@ -31,7 +33,7 @@ export const EmailCTA: FC<EmailCTAProps> = () => (
         Sign up to my newletter to be the first to see new content, get early
         access to my products, and more!
       </Text>
-      <EmailForm />
+      <EmailForm tags={tags} />
     </Flex>
   </Box>
 )

@@ -86,7 +86,7 @@ const ROUTES = [
 export const Nav: FC<NavProps> = ({ siteTitle }) => {
   const data = useStaticQuery<AvatarImageQuery>(graphql`
     query AvatarImage {
-      avatarImage: file(name: { eq: "marcus-hero" }) {
+      avatarImage: file(name: { eq: "marcus-profile" }) {
         childImageSharp {
           fluid(maxWidth: 50) {
             # TODO: Needs types and global fragments don't work https://github.com/gatsbyjs/gatsby/blob/ad7cd6ba23d3460bdcd707c1a154adcbc45eb155/packages/gatsby-transformer-sharp/src/fragments.js

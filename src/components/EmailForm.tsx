@@ -1,9 +1,10 @@
 /** @jsx jsx */
 
 import { css, keyframes } from '@emotion/core'
+import { useLocation } from '@reach/router'
 import React, { FC, useState } from 'react'
 import { animated, config, useTransition } from 'react-spring'
-import { Box, Button, Input, Text, jsx } from 'theme-ui'
+import { Box, Button, Input, Label, Text, jsx } from 'theme-ui'
 
 import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from '../style'
 import styled from '../style/styled'
@@ -249,7 +250,7 @@ const SubmitSuccessState = styled(Box)<{ micro?: boolean }>`
     `}
 `
 
-const StyledLabel = styled.label<{
+const StyledLabel = styled(Label)<{
   micro: boolean
 }>`
   display: block;
@@ -276,28 +277,76 @@ const StyledLabel = styled.label<{
 export type EmailFormProps = {
   micro?: boolean
   onDarkBackground?: boolean
+  tags?: string[]
+}
+
+/**
+ * Helper to parse the referrer URL if there is one.
+ * This is pretty dumb at the moment because there could be valuable if the referrer
+ * is an internal page or param? We could potentially append certain params at channels
+ * to get better insights on where people are coming in from.
+ */
+function getReferrer() {
+  const a = document.createElement('a')
+  a.href = document.referrer
+
+  return { url: a.hostname ?? '', params: a.search ?? '' }
 }
 
 export const EmailForm: FC<EmailFormProps> = ({
   micro = false,
   onDarkBackground = false,
+  tags = [],
 }) => {
   const [email, setEmail] = useState('')
   const [emailTouched, setEmailTouched] = useState(false)
   const [submitting, setSubmitting] = useState(false)
-  const [result, setResult] = useState<{ result: string }>()
+  const [result, setResult] = useState<'SUCCESS' | 'ERROR'>()
+  const location = useLocation()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     setSubmitting(true)
+    const referrer = getReferrer()
+    const bodyString = JSON.stringify({
+      email_address: email,
+      tags,
+      fields: {
+        referrer: referrer.url,
+        referrer_params: referrer.params,
+        subscribed_url: location.pathname,
+      },
+    })
 
-    // TODO: Do the things here
-    // const result = await addToMailchimp(email.trim())
+    try {
+      const response = await fetch(
+        'https://app.convertkit.com/forms/1469923/subscriptions',
+        {
+          method: 'post',
+          body: bodyString,
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        },
+      )
 
-    setResult({ result: 'success' })
+      const json = await response.json()
+
+      if (json.status === 'success') {
+        setResult('SUCCESS')
+        return
+      }
+
+      setResult('ERROR')
+    } catch (err) {
+      setResult('ERROR')
+    }
+
     setSubmitting(false)
   }
-  const isSuccessful = result?.result === 'success'
+  const isSuccessful = result === 'SUCCESS'
 
   const transition = useTransition(!isSuccessful, {
     from: { position: 'absolute', width: '100%', opacity: 0 },
@@ -320,6 +369,7 @@ export const EmailForm: FC<EmailFormProps> = ({
                   <StyledFancyInput
                     error={Boolean(emailTouched && isEmailInvalid && !result)}
                     micro={micro}
+                    name="email_address"
                     onBlur={() => setEmailTouched(true)}
                     onChange={(e) => setEmail(e.target.value)}
                     onDarkBackground={onDarkBackground}
@@ -342,13 +392,12 @@ export const EmailForm: FC<EmailFormProps> = ({
                   <Text>Please enter a valid email address.</Text>
                 </StatusText>
               )}
-              {result && (
+              {result === 'ERROR' && (
                 <StatusText warn>
                   <Warn />
                   <Text>
-                    {isSuccessful
-                      ? null
-                      : 'Email is not valid or you have already subscribed, please try again.'}
+                    Email is not valid or you have already subscribed, please
+                    try again.
                   </Text>
                 </StatusText>
               )}

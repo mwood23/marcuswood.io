@@ -39,7 +39,7 @@ export const pageQuery = graphql`
     }
     fields {
       slug
-      categories
+      tags
       title
       description
       productImage

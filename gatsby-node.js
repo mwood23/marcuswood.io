@@ -19,6 +19,7 @@ const path = require('path')
 const { URL } = require('url')
 const remark = require('remark')
 const stripMarkdownPlugin = require('strip-markdown')
+const _ = require('lodash')
 
 function stripMarkdown(markdownString) {
   // eslint-disable-next-line no-sync
@@ -57,7 +58,7 @@ const createPosts = (createPage, createRedirect, edges) => {
   })
 }
 
-const createPaginatedPages = (createPage, edges, pathPrefix, context) => {
+const createPaginatedPages = (createPage, edges, pathPrefix, context = {}) => {
   // Paging
   const { postsPerPage } = config
   const pageCount = Math.ceil(edges.length / postsPerPage)
@@ -95,9 +96,59 @@ function createBlogPages({ data, actions, blogPath }) {
   const { createRedirect, createPage } = actions
   createPosts(createPage, createRedirect, edges)
 
-  createPaginatedPages(actions.createPage, edges, blogPath, {
-    categories: [],
+  createPaginatedPages(actions.createPage, edges, blogPath)
+
+  return null
+}
+
+const createTags = (createPage, edges, tagName, context = {}) => {
+  // Paging
+  const { postsPerPage } = config
+  const pageCount = Math.ceil(edges.length / postsPerPage)
+  const pathPrefix = `/tags/${tagName}`
+
+  // This creates the home page and pagination
+  ;[...Array(pageCount)].forEach((_val, index) => {
+    const pageNum = index + 1
+
+    createPage({
+      path: `${pathPrefix}${pageNum === 1 ? '/' : `/${pageNum}/`}`,
+      component: path.resolve(`./src/templates/Tag.tsx`),
+      context: {
+        limit: postsPerPage,
+        skip: index * postsPerPage,
+        pageCount,
+        currentPageNum: pageNum,
+        tag: tagName,
+        previousPage:
+          pageNum === 1
+            ? undefined
+            : `${pathPrefix}${pageNum - 1 === 1 ? '' : pageNum - 1}`,
+        nextPage:
+          pageNum === pageCount ? undefined : `${pathPrefix}/${pageNum + 1}`,
+        ...context,
+      },
+    })
   })
+}
+
+function createCategoryPages({ data, actions, tags }) {
+  if (!data.edges.length === 0) {
+    throw new Error('There are no posts!')
+  }
+
+  tags.forEach((tag) => {
+    const tagName = _.get(tag, 'node.name', [])
+
+    const blogsForCategory = data.edges.filter((edge) => {
+      const tagsForBlog = _.get(edge, 'node.fields.tags', [])
+
+      return tagsForBlog.includes(tagName)
+    })
+
+    createTags(actions.createPage, blogsForCategory, tagName)
+  })
+
   return null
 }
 
@@ -148,11 +199,18 @@ exports.createPages = async ({ actions, graphql }) => {
         description
         date
         redirects
-        categories
-        keywords
+        tags
       }
     }
     query {
+      tags: allTag {
+        edges {
+          node {
+            name
+            id
+          }
+        }
+      }
       blog: allMdx(
         filter: {
           frontmatter: { published: { ne: false } }
@@ -186,7 +244,30 @@ exports.createPages = async ({ actions, graphql }) => {
     return Promise.reject(errors)
   }
 
-  const { blog, products } = data
+  const {
+    blog,
+    products,
+    tags: { edges: tagEdges },
+  } = data
+
+  // Ensure all pages have valid tags
+  blog.edges.forEach(({ node }) => {
+    const invalidTags = _.differenceBy(
+      node.fields.tags,
+      tagEdges,
+      (x) => _.get(x, 'node.name') || x,
+    )
+
+    if (invalidTags.length > 0) {
+      console.warn(
+        `${
+          node.fields.title
+        } has an invalid tag! This will cause issues with Convertkit/n and the tags page! Missing tags are: ${invalidTags.join(
+          ', ',
+        )}`,
+      )
+    }
+  })
 
   createBlogPages({
     blogPath: '/blog',
@@ -199,9 +280,15 @@ exports.createPages = async ({ actions, graphql }) => {
     data: products,
     actions,
   })
+
+  createCategoryPages({
+    data: blog,
+    actions,
+    tags: tagEdges,
+  })
 }
 
-exports.onCreateNode = ({ node, actions }) => {
+exports.onCreateNode = async ({ node, actions }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `Mdx`) {
@@ -282,15 +369,9 @@ exports.onCreateNode = ({ node, actions }) => {
     })
 
     createNodeField({
-      name: 'categories',
+      name: 'tags',
       node,
-      value: node.frontmatter.categories || [],
-    })
-
-    createNodeField({
-      name: 'keywords',
-      node,
-      value: node.frontmatter.keywords || [],
+      value: node.frontmatter.tags || [],
     })
 
     createNodeField({
@@ -406,8 +487,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     ): Date!
     banner: File
     bannerCredit: String
-    categories: [String!]!
-    keywords: [String!]!
+    tags: [String!]!
     unlisted: Boolean!
     redirects: [String!]
     isBlog: Boolean!

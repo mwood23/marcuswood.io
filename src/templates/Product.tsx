@@ -25,7 +25,7 @@ const Product: FC<ProductProps> = ({ data: { mdx } }) => (
       {mdx?.body}
     </MdxRenderer>
     <Section noTopPadding>
-      <EmailCTA />
+      <EmailCTA tags={mdx?.fields.tags} />
       <ShareIcons
         description={mdx?.fields.description}
         // TODO
@@ -58,7 +58,6 @@ export const pageQuery = graphql`
     }
     mdx(fields: { id: { eq: $id } }) {
       fields {
-        categories
         date(formatString: "MMMM Do, YYYY")
         slug
         title

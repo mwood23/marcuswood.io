@@ -69,6 +69,13 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        path: `${__dirname}/content/tags.yaml`,
+        name: 'tags',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         path: `${__dirname}/content/products`,
         name: 'products',
       },
@@ -86,6 +93,10 @@ module.exports = {
         path: `${__dirname}/src`,
         name: 'src',
       },
+    },
+    {
+      resolve: 'gatsby-transformer-yaml',
+      options: { typeName: 'Tag', path: './content/tags.yaml' },
     },
     'gatsby-plugin-theme-ui',
     'gatsby-plugin-mdx',
@@ -158,7 +169,7 @@ module.exports = {
         theme_color: config.themeColor,
         // TODO!!!
         display: 'minimal-ui',
-        icon: 'src/images/marcus-hero.jpg', // This path is relative to the root of the site.
+        icon: 'src/images/marcus-profile-circle.png', // This path is relative to the root of the site.
       },
     },
     {
