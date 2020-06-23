@@ -113,6 +113,13 @@ const BlogItem: FC<{
           >
             {excerpt}
           </Text>
+          <Text
+            sx={{
+              color: 'secondary',
+            }}
+          >
+            Read more →
+          </Text>
         </Box>
       </Box>
     </animated.div>

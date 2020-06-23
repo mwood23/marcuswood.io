@@ -83,6 +83,13 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        path: `${__dirname}/content/standalone`,
+        name: 'standalone',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         path: `${__dirname}/src/images`,
         name: 'images',
       },
@@ -159,6 +166,17 @@ module.exports = {
       },
     },
     'gatsby-plugin-catch-links',
+    {
+      resolve: 'gatsby-plugin-sentry',
+      options: {
+        dsn:
+          'https://49701953b47d48d5bffd74fea8be75ba@o180781.ingest.sentry.io/5286164',
+        // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
+        environment: process.env.NODE_ENV,
+        enabled: (() =>
+          ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

@@ -5,7 +5,7 @@ import { FC } from 'react'
 import { Box, Heading, jsx } from 'theme-ui'
 
 import { TagsPageQuery } from '../../graphql-types'
-import { GatsbyLink, Layout, Section } from '../components'
+import { GatsbyLink, Layout, SEO } from '../components'
 
 type TagsProps = PageProps & {
   data: TagsPageQuery
@@ -13,6 +13,7 @@ type TagsProps = PageProps & {
 
 export const Tags: FC<TagsProps> = ({ data: { tags, posts } }) => (
   <Layout addTopPadding>
+    <SEO pageTitle="Tags" />
     <Heading as="h1" mb={4}>
       Tags
     </Heading>

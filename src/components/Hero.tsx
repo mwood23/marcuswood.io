@@ -76,7 +76,11 @@ export const Hero: FC<HeroProps> = () => {
           px: 3,
         }}
       >
-        <ImageContainer>
+        <ImageContainer
+          sx={{
+            pr: [0, 3, 0],
+          }}
+        >
           <Image sharpImage={data.heroImage} />
         </ImageContainer>
         <Heading
@@ -87,8 +91,8 @@ export const Hero: FC<HeroProps> = () => {
             width: [null, '50%'],
           }}
         >
-          Hi, I&apos;m Marcus. I build ambitious products with TypesScript,
-          React, and Graphql.
+          Hi, I&apos;m Marcus. I build products with TypesScript, React, and
+          Graphql.
         </Heading>
       </Container>
     </Box>

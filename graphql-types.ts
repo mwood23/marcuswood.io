@@ -739,8 +739,8 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___tags'
   | 'childMdx___frontmatter___unlisted'
   | 'childMdx___frontmatter___published'
-  | 'childMdx___frontmatter___bannerCredit'
   | 'childMdx___frontmatter___slug'
+  | 'childMdx___frontmatter___bannerCredit'
   | 'childMdx___frontmatter___productImage'
   | 'childMdx___frontmatter___redirects'
   | 'childMdx___body'
@@ -809,6 +809,7 @@ export type FileFieldsEnum =
   | 'childMdx___fields___historyLink'
   | 'childMdx___fields___productImage'
   | 'childMdx___fields___isProduct'
+  | 'childMdx___fields___isStandalone'
   | 'childMdx___id'
   | 'childMdx___parent___id'
   | 'childMdx___parent___parent___id'
@@ -1586,6 +1587,7 @@ export type MdxFields = {
   historyLink: Scalars['String'];
   productImage?: Maybe<Scalars['String']>;
   isProduct?: Maybe<Scalars['Boolean']>;
+  isStandalone?: Maybe<Scalars['Boolean']>;
 };
 
 
@@ -1671,8 +1673,8 @@ export type MdxFieldsEnum =
   | 'frontmatter___tags'
   | 'frontmatter___unlisted'
   | 'frontmatter___published'
-  | 'frontmatter___bannerCredit'
   | 'frontmatter___slug'
+  | 'frontmatter___bannerCredit'
   | 'frontmatter___productImage'
   | 'frontmatter___redirects'
   | 'body'
@@ -1769,6 +1771,7 @@ export type MdxFieldsEnum =
   | 'fields___historyLink'
   | 'fields___productImage'
   | 'fields___isProduct'
+  | 'fields___isStandalone'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -1875,6 +1878,7 @@ export type MdxFieldsFilterInput = {
   historyLink?: Maybe<StringQueryOperatorInput>;
   productImage?: Maybe<StringQueryOperatorInput>;
   isProduct?: Maybe<BooleanQueryOperatorInput>;
+  isStandalone?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type MdxFilterInput = {
@@ -1905,8 +1909,8 @@ export type MdxFrontmatter = {
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   unlisted?: Maybe<Scalars['Boolean']>;
   published?: Maybe<Scalars['Boolean']>;
-  bannerCredit?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
+  bannerCredit?: Maybe<Scalars['String']>;
   productImage?: Maybe<Scalars['String']>;
   redirects?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
@@ -1928,8 +1932,8 @@ export type MdxFrontmatterFilterInput = {
   tags?: Maybe<StringQueryOperatorInput>;
   unlisted?: Maybe<BooleanQueryOperatorInput>;
   published?: Maybe<BooleanQueryOperatorInput>;
-  bannerCredit?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
+  bannerCredit?: Maybe<StringQueryOperatorInput>;
   productImage?: Maybe<StringQueryOperatorInput>;
   redirects?: Maybe<StringQueryOperatorInput>;
 };
@@ -2973,6 +2977,9 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___target'
   | 'pluginCreator___pluginOptions___rel'
   | 'pluginCreator___pluginOptions___siteUrl'
+  | 'pluginCreator___pluginOptions___dsn'
+  | 'pluginCreator___pluginOptions___environment'
+  | 'pluginCreator___pluginOptions___enabled'
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
   | 'pluginCreator___pluginOptions___background_color'
@@ -3205,6 +3212,9 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___target'
   | 'pluginOptions___rel'
   | 'pluginOptions___siteUrl'
+  | 'pluginOptions___dsn'
+  | 'pluginOptions___environment'
+  | 'pluginOptions___enabled'
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
   | 'pluginOptions___background_color'
@@ -3352,6 +3362,9 @@ export type SitePluginPluginOptions = {
   target?: Maybe<Scalars['String']>;
   rel?: Maybe<Scalars['String']>;
   siteUrl?: Maybe<Scalars['String']>;
+  dsn?: Maybe<Scalars['String']>;
+  environment?: Maybe<Scalars['String']>;
+  enabled?: Maybe<Scalars['Boolean']>;
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
   background_color?: Maybe<Scalars['String']>;
@@ -3474,6 +3487,9 @@ export type SitePluginPluginOptionsFilterInput = {
   target?: Maybe<StringQueryOperatorInput>;
   rel?: Maybe<StringQueryOperatorInput>;
   siteUrl?: Maybe<StringQueryOperatorInput>;
+  dsn?: Maybe<StringQueryOperatorInput>;
+  environment?: Maybe<StringQueryOperatorInput>;
+  enabled?: Maybe<BooleanQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
   background_color?: Maybe<StringQueryOperatorInput>;
@@ -3814,7 +3830,7 @@ export type SeoSiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 export type SeoSiteMetadataQuery = { site?: Maybe<{ siteMetadata: (
       Pick<SiteSiteMetadata, 'title' | 'description' | 'canonicalUrl' | 'image'>
       & { author: Pick<SiteSiteMetadataAuthor, 'name'>, organization: Pick<SiteSiteMetadataOrganization, 'name' | 'url' | 'logo'>, social: Pick<SiteSiteMetadataSocial, 'twitter' | 'fbAppID'> }
-    ) }> };
+    ) }>, fallBackImage?: Maybe<{ childImageSharp?: Maybe<{ fixed?: Maybe<Pick<ImageSharpFixed, 'src'>> }> }> };
 
 export type ProductPostFragment = (
   Pick<Mdx, 'id' | 'timeToRead' | 'excerpt'>
@@ -3866,6 +3882,16 @@ export type ProductQueryVariables = Exact<{
 
 
 export type ProductQuery = { site?: Maybe<{ siteMetadata: Pick<SiteSiteMetadata, 'keywords' | 'siteUrl'> }>, mdx?: Maybe<(
+    Pick<Mdx, 'body'>
+    & { fields: Pick<MdxFields, 'date' | 'slug' | 'title'> }
+  )> };
+
+export type StandaloneQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type StandaloneQuery = { site?: Maybe<{ siteMetadata: Pick<SiteSiteMetadata, 'keywords' | 'siteUrl'> }>, mdx?: Maybe<(
     Pick<Mdx, 'body'>
     & { fields: Pick<MdxFields, 'date' | 'slug' | 'title'> }
   )> };

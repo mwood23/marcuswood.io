@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet'
 
 import config from '../../../config/website'
 import { SeoSiteMetadataQuery } from '../../../graphql-types'
-// import defaultMetaImage from '../../../static/images/metaImage.jpg'
 import SchemaOrg from './schema-org'
 
 export type SEOProps = {
@@ -36,9 +35,9 @@ const SEOComponent: FC<SEOProps> = ({
     (pageTitle ? `${pageTitle} | ${config.siteTitle}` : config.siteTitle)
   const description =
     postData.plainTextDescription ?? postData.description ?? seo.description
-  // TODO
-  // const image = `${seo.canonicalUrl}${metaImage ?? defaultMetaImage}`
-  const image = `${seo.canonicalUrl}${metaImage}`
+  const image =
+    `${seo.canonicalUrl}${metaImage}` ??
+    siteMetadata.fallBackImage?.childImageSharp?.fixed?.src
   const url = postData.slug
     ? `${seo.canonicalUrl}${postData.slug}`
     : seo.canonicalUrl
@@ -109,6 +108,13 @@ export const SEO: FC<Partial<SEOProps>> = ({
           social {
             twitter
             fbAppID
+          }
+        }
+      }
+      fallBackImage: file(name: { eq: "marcus-profile-circle" }) {
+        childImageSharp {
+          fixed(width: 100) {
+            src
           }
         }
       }

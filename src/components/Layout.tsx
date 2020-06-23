@@ -7,11 +7,12 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 import { graphql, useStaticQuery } from 'gatsby'
-import { FC, Fragment } from 'react'
-import { Container, ContainerProps, jsx } from 'theme-ui'
+import { FC } from 'react'
+import { Box, Container, ContainerProps, jsx } from 'theme-ui'
 
 import styled from '../style/styled'
 import { CommonComponentProps } from '../types'
+import ErrorBoundary from './ErrorBoundary'
 import { Footer } from './Footer'
 import { Nav } from './nav/Nav'
 
@@ -28,6 +29,8 @@ interface LayoutProps
 interface LayoutContainerProps extends LayoutProps {}
 
 const StyledContainer = styled(Container)`
+  flex: 1;
+
   /* the permalink icon */
   h1 .anchor svg,
   h2 .anchor svg,
@@ -107,19 +110,29 @@ export const Layout: FC<LayoutProps> = ({
   `)
 
   return (
-    <Fragment>
-      {showNav && <Nav siteTitle={data.site.siteMetadata.title} />}
-      <LayoutContainer
-        addTopPadding={addTopPadding}
-        fluid={fluid}
-        noTopMargin={noTopMargin}
-        showFooter={showFooter}
-        showNav={showNav}
-        {...rest}
+    <ErrorBoundary>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '100%',
+          height: '100%',
+          minHeight: '100vh',
+        }}
       >
-        {children}
-      </LayoutContainer>
-      {showFooter && <Footer />}
-    </Fragment>
+        {showNav && <Nav siteTitle={data.site.siteMetadata.title} />}
+        <LayoutContainer
+          addTopPadding={addTopPadding}
+          fluid={fluid}
+          noTopMargin={noTopMargin}
+          showFooter={showFooter}
+          showNav={showNav}
+          {...rest}
+        >
+          {children}
+        </LayoutContainer>
+        {showFooter && <Footer />}
+      </Box>
+    </ErrorBoundary>
   )
 }

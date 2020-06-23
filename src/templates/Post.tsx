@@ -6,7 +6,7 @@ import { FC } from 'react'
 import { Box, Heading, Link, jsx } from 'theme-ui'
 
 import { PostQuery } from '../../graphql-types'
-import { AboutBlurb, Image, Layout, SEO, Section } from '../components'
+import { AboutBlurb, Image, Layout, SEO, Section, TagList } from '../components'
 import { EmailCTA } from '../components/EmailCTA'
 import { ShareIcons } from '../components/ShareIcons'
 
@@ -28,9 +28,10 @@ const Post: FC<PostProps> = ({ data: { mdx } }) => (
       >
         {mdx?.fields.title}
       </Heading>
-      <Box sx={{ mb: 3 }}>
-        <Image sharpImage={mdx?.fields.banner} />
-      </Box>
+      <Image sharpImage={mdx?.fields.banner} sx={{ mb: 2 }} />
+      {mdx?.fields.tags && mdx?.fields.tags.length > 0 && (
+        <TagList tags={mdx?.fields.tags} />
+      )}
     </Section>
     <MdxRenderer>{mdx?.body}</MdxRenderer>
     <Section noTopPadding>

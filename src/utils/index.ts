@@ -14,3 +14,8 @@ export const createOptimizedCloudinary = (url = '', params = '') => {
 
   return `https://res.cloudinary.com/dfe5dv4zv/image/upload/f_auto,fl_progressive,c_crop,q_auto:good,${params}/${id}`
 }
+
+export const capitalize = (s: string) => {
+  if (typeof s !== 'string') return ''
+  return s.charAt(0).toUpperCase() + s.slice(1)
+}

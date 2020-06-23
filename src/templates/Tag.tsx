@@ -5,7 +5,8 @@ import { FC } from 'react'
 import { Box, Heading, jsx } from 'theme-ui'
 
 import { TagsQuery } from '../../graphql-types'
-import { BlogItemList, GatsbyLink, Layout, Section } from '../components'
+import { BlogItemList, GatsbyLink, Layout, SEO, Section } from '../components'
+import { capitalize } from '../utils'
 
 type TagsProps = PageProps & {
   data: TagsQuery
@@ -21,8 +22,9 @@ type TagsProps = PageProps & {
 
 export const Tags: FC<TagsProps> = ({ data, pageContext }) => (
   <Layout addTopPadding>
+    <SEO pageTitle={capitalize(pageContext.tag)} />
     <Heading as="h1" mb={4}>
-      # {pageContext.tag}
+      #{pageContext.tag}
     </Heading>
     {/* TODO: Guard empty */}
     <BlogItemList data={data} />

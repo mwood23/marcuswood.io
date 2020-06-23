@@ -132,7 +132,7 @@ export const Nav: FC<NavProps> = ({ siteTitle }) => {
         alignItems: 'center',
         height: ['mobileNavHeight', 'desktopNavHeight'],
         position: ['fixed', 'relative'],
-        width: ['100%', 'auto'],
+        width: '100%',
         top: [0, 'initial'],
         zIndex: 2,
         [`@media screen and (max-width: ${MOBILE_BREAKPOINT})`]: {

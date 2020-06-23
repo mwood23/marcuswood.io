@@ -181,6 +181,35 @@ function createProductPages({ data, actions }) {
   return null
 }
 
+const createStandalone = (createPage, edges) => {
+  edges.forEach(({ node }, i) => {
+    const prev = i === 0 ? null : edges[i - 1].node
+    const next = i === edges.length - 1 ? null : edges[i + 1].node
+    const pagePath = node.fields.slug
+
+    createPage({
+      path: pagePath,
+      component: path.resolve(`./src/templates/Standalone.tsx`),
+      context: {
+        id: node.id,
+        prev,
+        next,
+      },
+    })
+  })
+}
+
+function createStandalonePages({ data, actions }) {
+  if (!data.edges.length === 0) {
+    throw new Error('There are no standalone pages!')
+  }
+  const { edges } = data
+  const { createPage } = actions
+
+  createStandalone(createPage, edges)
+  return null
+}
+
 exports.createPages = async ({ actions, graphql }) => {
   const { data, errors } = await graphql(`
     fragment PostDetails on Mdx {
@@ -224,6 +253,19 @@ exports.createPages = async ({ actions, graphql }) => {
           }
         }
       }
+      standalone: allMdx(
+        filter: {
+          frontmatter: { published: { ne: false } }
+          fileAbsolutePath: { regex: "//content/standalone//" }
+        }
+        sort: { order: DESC, fields: [frontmatter___date] }
+      ) {
+        edges {
+          node {
+            ...PostDetails
+          }
+        }
+      }
       products: allMdx(
         filter: {
           frontmatter: { published: { ne: false } }
@@ -247,6 +289,7 @@ exports.createPages = async ({ actions, graphql }) => {
   const {
     blog,
     products,
+    standalone,
     tags: { edges: tagEdges },
   } = data
 
@@ -275,8 +318,12 @@ exports.createPages = async ({ actions, graphql }) => {
     actions,
   })
 
+  createStandalonePages({
+    data: standalone,
+    actions,
+  })
+
   createProductPages({
-    blogPath: '/products',
     data: products,
     actions,
   })
@@ -295,6 +342,7 @@ exports.onCreateNode = async ({ node, actions }) => {
     let slug = node.frontmatter.slug
     let isBlog = false
     let isProduct = false
+    let isStandalone = false
 
     if (node.fileAbsolutePath.includes('content/blog/')) {
       slug = `/blog/${node.frontmatter.slug || slugify(node.frontmatter.title)}`
@@ -306,6 +354,11 @@ exports.onCreateNode = async ({ node, actions }) => {
         node.frontmatter.slug || slugify(node.frontmatter.title)
       }`
       isProduct = true
+    }
+
+    if (node.fileAbsolutePath.includes('content/standalone/')) {
+      slug = `/${node.frontmatter.slug || slugify(node.frontmatter.title)}`
+      isStandalone = true
     }
 
     createNodeField({
@@ -396,6 +449,12 @@ exports.onCreateNode = async ({ node, actions }) => {
       name: 'isProduct',
       node,
       value: isProduct,
+    })
+
+    createNodeField({
+      name: 'isStandalone',
+      node,
+      value: isStandalone,
     })
 
     const productionUrl = new URL(config.siteUrl)
