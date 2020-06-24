@@ -4,7 +4,7 @@ import { css, keyframes } from '@emotion/core'
 import { useLocation } from '@reach/router'
 import React, { FC, useState } from 'react'
 import { animated, config, useTransition } from 'react-spring'
-import { Box, Button, Input, Label, Styled, Text, jsx } from 'theme-ui'
+import { Box, Button, Input, Label, Styled, jsx } from 'theme-ui'
 
 import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from '../style'
 import styled from '../style/styled'

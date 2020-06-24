@@ -4,7 +4,7 @@ import { useLocation } from '@reach/router'
 import cx from 'classnames'
 import { graphql, useStaticQuery } from 'gatsby'
 import { FC, useEffect, useState } from 'react'
-import { Box, Button, Flex, Styled, Text, jsx, useColorMode } from 'theme-ui'
+import { Box, Button, Flex, Styled, jsx, useColorMode } from 'theme-ui'
 
 import { AvatarImageQuery } from '../../../graphql-types'
 import { useScrollLock } from '../../hooks/useScrollLock'
