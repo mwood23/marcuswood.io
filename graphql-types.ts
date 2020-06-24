@@ -739,8 +739,8 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___tags'
   | 'childMdx___frontmatter___unlisted'
   | 'childMdx___frontmatter___published'
-  | 'childMdx___frontmatter___bannerCredit'
   | 'childMdx___frontmatter___slug'
+  | 'childMdx___frontmatter___bannerCredit'
   | 'childMdx___frontmatter___productImage'
   | 'childMdx___frontmatter___redirects'
   | 'childMdx___body'
@@ -1673,8 +1673,8 @@ export type MdxFieldsEnum =
   | 'frontmatter___tags'
   | 'frontmatter___unlisted'
   | 'frontmatter___published'
-  | 'frontmatter___bannerCredit'
   | 'frontmatter___slug'
+  | 'frontmatter___bannerCredit'
   | 'frontmatter___productImage'
   | 'frontmatter___redirects'
   | 'body'
@@ -1909,8 +1909,8 @@ export type MdxFrontmatter = {
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   unlisted?: Maybe<Scalars['Boolean']>;
   published?: Maybe<Scalars['Boolean']>;
-  bannerCredit?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
+  bannerCredit?: Maybe<Scalars['String']>;
   productImage?: Maybe<Scalars['String']>;
   redirects?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
@@ -1932,8 +1932,8 @@ export type MdxFrontmatterFilterInput = {
   tags?: Maybe<StringQueryOperatorInput>;
   unlisted?: Maybe<BooleanQueryOperatorInput>;
   published?: Maybe<BooleanQueryOperatorInput>;
-  bannerCredit?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
+  bannerCredit?: Maybe<StringQueryOperatorInput>;
   productImage?: Maybe<StringQueryOperatorInput>;
   redirects?: Maybe<StringQueryOperatorInput>;
 };
