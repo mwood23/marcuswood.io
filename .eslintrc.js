@@ -29,6 +29,7 @@ module.exports = {
     'unicorn/no-array-instanceof': ['error'],
     'unicorn/throw-new-error': ['error'],
     'unicorn/error-message': ['error'],
+    'react/jsx-pascal-case': ['off'],
     'react/jsx-sort-props': [
       'error',
       {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Heading, Text } from 'theme-ui'
+import { Flex, Styled, Text } from 'theme-ui'
 
 import { GatsbyLink } from './GatsbyLink'
 
@@ -40,6 +40,7 @@ export default class ErrorBoundary extends React.Component<
             height: '100vh',
             alignItems: 'center',
             justifyContent: 'center',
+            flexDirection: 'column',
           }}
         >
           <Text
@@ -51,12 +52,12 @@ export default class ErrorBoundary extends React.Component<
               😢
             </span>
           </Text>
-          <Heading as="h1">Something went wrong.</Heading>
-          <p>
+          <Styled.h1>Something went wrong.</Styled.h1>
+          <Styled.p>
             I&apos;ve been notified of the issue and will fix it soon! In the
             meantime, please check out the{' '}
             <GatsbyLink to="/blog">latest from my blog</GatsbyLink>!
-          </p>
+          </Styled.p>
         </Flex>
       )
     }

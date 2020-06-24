@@ -2,7 +2,7 @@
 
 import { PageProps, graphql } from 'gatsby'
 import { FC } from 'react'
-import { Box, Heading, jsx } from 'theme-ui'
+import { Box, Styled, jsx } from 'theme-ui'
 
 import { BlogListQuery } from '../../graphql-types'
 import { BlogItemList, GatsbyLink, Layout, Section } from '../components'
@@ -21,9 +21,7 @@ type BlogListProps = PageProps & {
 
 export const BlogList: FC<BlogListProps> = ({ data, pageContext }) => (
   <Layout addTopPadding>
-    <Heading as="h1" mb={4}>
-      Blog
-    </Heading>
+    <Styled.h1>Blog</Styled.h1>
     <BlogItemList data={data} />
     <Section
       sx={{
@@ -75,7 +73,7 @@ export const pageQuery = graphql`
       }
       bannerCredit
     }
-    excerpt(pruneLength: 250)
+    excerpt(pruneLength: 200)
   }
   query BlogList($skip: Int!, $limit: Int!) {
     allMdx(

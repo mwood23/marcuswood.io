@@ -1,7 +1,7 @@
 /** @jsx jsx */
 
 import { FC } from 'react'
-import { Box, Heading, Image, ImageProps, jsx } from 'theme-ui'
+import { Box, Image, ImageProps, Styled, jsx } from 'theme-ui'
 
 import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from '../style'
 import styled from '../style/styled'
@@ -142,7 +142,7 @@ export const ImageLinkSection: FC<ImageLinkSectionProps> = ({
       </Link>
     )}
     <Box>
-      <Heading as="h3">
+      <Styled.h3>
         <Link
           sx={{
             textDecoration: 'none',
@@ -151,7 +151,7 @@ export const ImageLinkSection: FC<ImageLinkSectionProps> = ({
         >
           {title}
         </Link>
-      </Heading>
+      </Styled.h3>
       {/* May need to check if function eventually */}
       {description}
     </Box>

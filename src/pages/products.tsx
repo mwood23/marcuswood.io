@@ -2,7 +2,7 @@
 
 import { PageProps, graphql } from 'gatsby'
 import { FC } from 'react'
-import { Heading, jsx } from 'theme-ui'
+import { Styled, jsx } from 'theme-ui'
 
 import { ProductsListQuery } from '../../graphql-types'
 import {
@@ -19,7 +19,18 @@ type ProductsProps = PageProps & {
 export const Products: FC<ProductsProps> = ({ data }) => (
   <Layout addTopPadding fluid>
     <LayoutContainer noTopMargin>
-      <Heading as="h1">Products</Heading>
+      <Styled.h1>Products</Styled.h1>
+      <Styled.p>
+        Below are some of the side projects I&apos;ve worked on and built over
+        the years. Some are thriving while others have been sunset into the
+        graveyard of my Github{' '}
+        <span aria-label="laughing" role="img">
+          😅
+        </span>
+        . While I did 100% of the development and product management on them, I
+        do have a small group of friends that help me with the design and user
+        experience so that&apos;s why I say we a lot!
+      </Styled.p>
     </LayoutContainer>
     <ProductsListWrapper noTopPadding>
       <ProductList data={data} />
@@ -45,7 +56,7 @@ export const pageQuery = graphql`
       productImage
       author
     }
-    excerpt(pruneLength: 250)
+    excerpt(pruneLength: 200)
   }
   query ProductsList {
     allMdx(

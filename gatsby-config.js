@@ -185,7 +185,6 @@ module.exports = {
         start_url: config.pathPrefix,
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
-        // TODO!!!
         display: 'minimal-ui',
         icon: 'src/images/marcus-profile-circle.png', // This path is relative to the root of the site.
       },
@@ -196,7 +195,7 @@ module.exports = {
         feeds: [
           getBlogFeed({
             filePathRegex: `//content/blog//`,
-            // TODO: Not used?
+            // This doesn't appear to be used
             blogUrl: 'https://www.marcuswood.io/blog',
             output: '/blog/rss.xml',
             title: 'Marcus Wood Blog RSS Feed',

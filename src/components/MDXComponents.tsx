@@ -164,7 +164,7 @@ export const FancyLayoutImage: FC<FancyLayoutImageProps> = ({
   medium,
   small,
   phoneImage,
-  optimizedCloudinary,
+  optimizedCloudinary = true,
   cloudinaryConfig,
   src,
   ...rest

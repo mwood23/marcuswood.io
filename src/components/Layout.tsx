@@ -77,6 +77,7 @@ export const LayoutContainer: FC<LayoutContainerProps> = ({
       pt: addTopPadding ? [4, 5] : 0,
       mx: 'auto',
       px: fluid ? 0 : 2,
+      pb: 4,
       ...(fluid
         ? {
             maxWidth: '100%',

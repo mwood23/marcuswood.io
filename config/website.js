@@ -11,7 +11,7 @@ module.exports = {
   siteDescription:
     'Come check out how Marcus Wood can help you with coding, entrepreneurship, and building products.',
   minibio: `
-      <strong>Marcus Wood</strong> is a JavaScript software engineer that focuses on building products that scale using Typescript, React, and Node. He has built and delivered solutions for some of the largest companies in the world.
+      <strong>Marcus Wood</strong> is a JavaScript software engineer that focuses on building products that scale using Typescript, React, and GraphQL. He has built and delivered solutions for some of the largest companies in the world.
     `,
   author: 'Marcus Wood', // Author for schemaORGJSONLD
   organization: 'Caldera, LLC',

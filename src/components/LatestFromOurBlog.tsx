@@ -3,7 +3,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import { FC } from 'react'
 import { animated, useSpring } from 'react-spring'
-import { Box, Heading, Text, jsx } from 'theme-ui'
+import { Box, Styled, jsx } from 'theme-ui'
 
 import { LatestBlogsQuery } from '../../graphql-types'
 import { CommonComponentProps } from '../types'
@@ -94,10 +94,8 @@ const BlogItem: FC<{
             flex: 1,
           }}
         >
-          <Heading as="h3" mb="2">
-            {title}
-          </Heading>
-          <Text
+          <Styled.h3>{title}</Styled.h3>
+          <Styled.p
             sx={{
               fontSize: 1,
               fontStyle: 'italic',
@@ -105,21 +103,24 @@ const BlogItem: FC<{
             }}
           >
             {date} / {timeToRead} minutes to read
-          </Text>
-          <Text
+          </Styled.p>
+          <Styled.p
             sx={{
               fontSize: 1,
             }}
           >
             {excerpt}
-          </Text>
-          <Text
+          </Styled.p>
+          <Styled.a
+            as="p"
             sx={{
-              color: 'secondary',
+              textAlign: 'right',
+              margin: 0,
+              textDecoration: 'underline',
             }}
           >
             Read more →
-          </Text>
+          </Styled.a>
         </Box>
       </Box>
     </animated.div>

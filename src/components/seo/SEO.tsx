@@ -41,7 +41,6 @@ const SEOComponent: FC<SEOProps> = ({
   const url = postData.slug
     ? `${seo.canonicalUrl}${postData.slug}`
     : seo.canonicalUrl
-  // TODO
   const datePublished = isBlogPost ? postData.datePublished ?? false : false
 
   return (

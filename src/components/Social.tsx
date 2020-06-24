@@ -5,7 +5,7 @@ import { alpha } from '@theme-ui/color'
  * Icons pulled from https://github.com/kentcdodds/kentcdodds.com/blob/edf7011bbd89be0a28fe9ffc629a771a04cb8adb/src/components/social.js
  */
 import { FC } from 'react'
-import { Link, jsx } from 'theme-ui'
+import { Styled, jsx } from 'theme-ui'
 
 import config from '../../config/website'
 
@@ -14,7 +14,7 @@ type SocialProps = {
 }
 
 export const Twitter: FC<SocialProps> = ({ url = `${config.twitter}` }) => (
-  <Link
+  <Styled.a
     aria-label="Visit my Twitter"
     href={url}
     sx={{
@@ -37,11 +37,11 @@ export const Twitter: FC<SocialProps> = ({ url = `${config.twitter}` }) => (
         fillRule="evenodd"
       />
     </svg>
-  </Link>
+  </Styled.a>
 )
 
 export const LinkedIn: FC<SocialProps> = ({ url = `${config.linkedin}` }) => (
-  <Link
+  <Styled.a
     aria-label="Visit my LinkedIn"
     href={url}
     sx={{
@@ -63,11 +63,11 @@ export const LinkedIn: FC<SocialProps> = ({ url = `${config.linkedin}` }) => (
         fill="currentColor"
       />
     </svg>
-  </Link>
+  </Styled.a>
 )
 
 export const GitHub: FC<SocialProps> = ({ url = `${config.github}` }) => (
-  <Link
+  <Styled.a
     aria-label="Visit my GitHub"
     href={url}
     sx={{
@@ -90,13 +90,13 @@ export const GitHub: FC<SocialProps> = ({ url = `${config.github}` }) => (
         fillRule="evenodd"
       />
     </svg>
-  </Link>
+  </Styled.a>
 )
 
 // export const YouTube: FC<SocialProps> = ({
 //   url = `${config.youtube}`,
 // }) => (
-//   <Link
+//   <Styled.a
 //     aria-label="Visit my YouTube"
 // sx={{
 //     color: theme => alpha(theme.colors.iconColor, 0.7),
@@ -118,11 +118,11 @@ export const GitHub: FC<SocialProps> = ({ url = `${config.github}` }) => (
 //         fill="currentColor"
 //       />
 //     </svg>
-//   </Link>
+//   </Styled.a>
 // )
 
 export const RSS: FC<SocialProps> = ({ url = `${config.rss}` }) => (
-  <Link
+  <Styled.a
     aria-label="Subscribe href my RSS Feed"
     href={url}
     sx={{
@@ -144,5 +144,5 @@ export const RSS: FC<SocialProps> = ({ url = `${config.rss}` }) => (
       <path d="m 1,4 a 3,3 0 0 1 3,3 h 1 a 4,4 0 0 0 -4,-4 z" />
       <path d="m 1,2 a 5,5 0 0 1 5,5 h 1 a 6,6 0 0 0 -6,-6 z" />
     </svg>
-  </Link>
+  </Styled.a>
 )

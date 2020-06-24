@@ -1,7 +1,7 @@
 /** @jsx jsx */
 
 import { FC } from 'react'
-import { Box, Flex, Heading, Text, jsx } from 'theme-ui'
+import { Box, Flex, Styled, jsx } from 'theme-ui'
 
 import { EmailForm } from './EmailForm'
 
@@ -26,13 +26,13 @@ export const EmailCTA: FC<EmailCTAProps> = ({ tags = [] }) => (
         borderRadius: '3px',
       }}
     >
-      <Heading sx={{ textAlign: 'center', mb: 2, fontSize: [3, 4] }}>
+      <Styled.h2 sx={{ textAlign: 'center', fontSize: [3, 4] }}>
         Want more content like this?
-      </Heading>
-      <Text sx={{ textAlign: 'center', mb: 3, fontSize: [1, 2] }}>
+      </Styled.h2>
+      <Styled.p sx={{ textAlign: 'center', mb: 3, fontSize: [1, 2] }}>
         Sign up to my newletter to be the first to see new content, get early
         access to my products, and more!
-      </Text>
+      </Styled.p>
       <EmailForm tags={tags} />
     </Flex>
   </Box>

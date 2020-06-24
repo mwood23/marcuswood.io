@@ -12,7 +12,7 @@ export const createOptimizedCloudinary = (url = '', params = '') => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, id] = url.split('image/upload/')
 
-  return `https://res.cloudinary.com/dfe5dv4zv/image/upload/f_auto,fl_progressive,c_crop,q_auto:good,${params}/${id}`
+  return `https://res.cloudinary.com/dfe5dv4zv/image/upload/f_auto,fl_progressive,q_auto:good,${params}/${id}`
 }
 
 export const capitalize = (s: string) => {

@@ -3,7 +3,7 @@
 import { PageProps, graphql } from 'gatsby'
 import MdxRenderer from 'gatsby-plugin-mdx/mdx-renderer'
 import { FC } from 'react'
-import { Box, Link, jsx } from 'theme-ui'
+import { Box, Styled, jsx } from 'theme-ui'
 
 import { PostQuery } from '../../graphql-types'
 import { AboutBlurb, Layout, SEO, Section } from '../components'
@@ -39,7 +39,7 @@ const Product: FC<ProductProps> = ({ data: { mdx } }) => (
           textAlign: 'right',
         }}
       >
-        <Link href={mdx?.fields.editLink}>Edit Post on Github</Link>
+        <Styled.a href={mdx?.fields.editLink}>Edit Post on Github</Styled.a>
       </Box>
       <AboutBlurb />
     </Section>
@@ -61,6 +61,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM Do, YYYY")
         slug
         title
+        editLink
       }
       body
     }

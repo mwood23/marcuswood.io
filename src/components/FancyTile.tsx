@@ -5,7 +5,7 @@ import styled from '../style/styled'
 
 export const FancyTile = styled(Box)`
   padding: 3rem 2rem;
-  border-radius: 60px;
+  border-radius: 20px;
   box-shadow: 0 0px 15px ${(props) => props.theme.colors.shadow};
   text-align: center;
   font-size: 2.5rem;

@@ -2,7 +2,7 @@
 
 import { graphql, useStaticQuery } from 'gatsby'
 import { FC } from 'react'
-import { Box, Container, Heading, jsx } from 'theme-ui'
+import { Box, Container, Styled, jsx } from 'theme-ui'
 
 import { MOBILE_BREAKPOINT } from '../style'
 import styled from '../style/styled'
@@ -83,7 +83,7 @@ export const Hero: FC<HeroProps> = () => {
         >
           <Image sharpImage={data.heroImage} />
         </ImageContainer>
-        <Heading
+        <Styled.h1
           as="h1"
           sx={{
             textAlign: ['center', 'left'],
@@ -92,8 +92,8 @@ export const Hero: FC<HeroProps> = () => {
           }}
         >
           Hi, I&apos;m Marcus. I build products with TypesScript, React, and
-          Graphql.
-        </Heading>
+          GraphQL.
+        </Styled.h1>
       </Container>
     </Box>
   )

@@ -40,7 +40,6 @@ export const AboutBlurb: FC<AboutBlurbProps> = () => {
         flexDirection: ['column', 'row'],
         justifyContent: 'space-between',
         alignItems: ['center', 'flex-start'],
-        mb: 4,
       }}
     >
       <Box

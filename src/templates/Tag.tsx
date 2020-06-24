@@ -2,7 +2,7 @@
 
 import { PageProps, graphql } from 'gatsby'
 import { FC } from 'react'
-import { Box, Heading, jsx } from 'theme-ui'
+import { Box, Styled, jsx } from 'theme-ui'
 
 import { TagsQuery } from '../../graphql-types'
 import { BlogItemList, GatsbyLink, Layout, SEO, Section } from '../components'
@@ -23,11 +23,16 @@ type TagsProps = PageProps & {
 export const Tags: FC<TagsProps> = ({ data, pageContext }) => (
   <Layout addTopPadding>
     <SEO pageTitle={capitalize(pageContext.tag)} />
-    <Heading as="h1" mb={4}>
-      #{pageContext.tag}
-    </Heading>
-    {/* TODO: Guard empty */}
-    <BlogItemList data={data} />
+    <Styled.h1>#{pageContext.tag}</Styled.h1>
+    {data.allMdx.edges.length > 0 ? (
+      <BlogItemList data={data} />
+    ) : (
+      <Styled.p>
+        No blogs exist for this tag.{' '}
+        <GatsbyLink to="/tags">Check out some others?</GatsbyLink>
+      </Styled.p>
+    )}
+
     <Section
       sx={{
         display: 'flex',

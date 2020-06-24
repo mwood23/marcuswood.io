@@ -4,7 +4,7 @@ import { css, keyframes } from '@emotion/core'
 import { useLocation } from '@reach/router'
 import React, { FC, useState } from 'react'
 import { animated, config, useTransition } from 'react-spring'
-import { Box, Button, Input, Label, Text, jsx } from 'theme-ui'
+import { Box, Button, Input, Label, Styled, Text, jsx } from 'theme-ui'
 
 import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from '../style'
 import styled from '../style/styled'
@@ -115,7 +115,7 @@ const StatusText = styled(Box)<{ warn?: boolean }>`
     margin-right: 10px;
   }
 
-  > div {
+  > p {
     font-size: ${FORM_ERROR_SIZE};
     margin-bottom: 0;
   }
@@ -127,7 +127,7 @@ const StatusText = styled(Box)<{ warn?: boolean }>`
       margin-right: 10px;
     }
 
-    > div {
+    > p {
       font-size: ${FORM_ERROR_SIZE_MOBILE};
     }
   }
@@ -139,7 +139,7 @@ const StatusText = styled(Box)<{ warn?: boolean }>`
       margin-right: 10px;
     }
 
-    > div {
+    > p {
       font-size: 12px;
     }
   }
@@ -234,7 +234,7 @@ const SubmitSuccessState = styled(Box)<{ micro?: boolean }>`
     animation: ${stroke} 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
   }
 
-  > div {
+  > p {
     color: ${(props) => props.theme.colors.text};
     font-size: 0.8rem;
     margin: 0 0 0 1rem;
@@ -243,7 +243,7 @@ const SubmitSuccessState = styled(Box)<{ micro?: boolean }>`
   ${(props) =>
     props.micro &&
     css`
-      > div {
+      > p {
         font-size: 0.75rem !important;
         margin: 0 0 0 0.5rem;
       }
@@ -389,16 +389,16 @@ export const EmailForm: FC<EmailFormProps> = ({
               {emailTouched && isEmailInvalid && !result && (
                 <StatusText>
                   <Error />
-                  <Text>Please enter a valid email address.</Text>
+                  <Styled.p>Please enter a valid email address.</Styled.p>
                 </StatusText>
               )}
               {result === 'ERROR' && (
                 <StatusText warn>
                   <Warn />
-                  <Text>
+                  <Styled.p>
                     Email is not valid or you have already subscribed, please
                     try again.
-                  </Text>
+                  </Styled.p>
                 </StatusText>
               )}
             </StyledEmailForm>
@@ -427,7 +427,7 @@ export const EmailForm: FC<EmailFormProps> = ({
                   />
                 </svg>
 
-                <Text>Thank you for subscribing!</Text>
+                <Styled.p>Thank you for subscribing!</Styled.p>
               </SubmitSuccessState>
             </SubmitSuccessWrapper>
           </animated.div>

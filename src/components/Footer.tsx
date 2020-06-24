@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Box, Flex, Heading } from 'theme-ui'
+import { Box, Flex, Styled } from 'theme-ui'
 
 import { EmailForm } from './EmailForm'
 import { Section } from './Section'
@@ -23,15 +23,13 @@ export const Footer: FC<FooterProps> = () => (
           textAlign: ['center', 'left'],
         }}
       >
-        <Heading
-          as={'h3'}
-          mb="2"
+        <Styled.h3
           sx={{
             display: ['none', 'block'],
           }}
         >
           Contact
-        </Heading>
+        </Styled.h3>
         <GitHub />
         <LinkedIn />
         <Twitter />
@@ -44,9 +42,7 @@ export const Footer: FC<FooterProps> = () => (
           mb: [3, 0],
         }}
       >
-        <Heading as={'h3'} mb="2">
-          Newsletter
-        </Heading>
+        <Styled.h3>Newsletter</Styled.h3>
         <EmailForm micro onDarkBackground />
       </Box>
     </Flex>

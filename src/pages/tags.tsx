@@ -2,7 +2,7 @@
 
 import { PageProps, graphql } from 'gatsby'
 import { FC } from 'react'
-import { Box, Heading, jsx } from 'theme-ui'
+import { Box, Styled, jsx } from 'theme-ui'
 
 import { TagsPageQuery } from '../../graphql-types'
 import { GatsbyLink, Layout, SEO } from '../components'
@@ -14,22 +14,20 @@ type TagsProps = PageProps & {
 export const Tags: FC<TagsProps> = ({ data: { tags, posts } }) => (
   <Layout addTopPadding>
     <SEO pageTitle="Tags" />
-    <Heading as="h1" mb={4}>
-      Tags
-    </Heading>
+    <Styled.h1>Tags</Styled.h1>
     <Box pb={4}>
-      <ul>
+      <Styled.ul>
         {/* TODO: Break this bad boy up */}
         {tags.edges
           .filter(({ node }) =>
             posts.edges.some((p) => p.node.fields.tags.includes(node.name!)),
           )
           .map(({ node }) => (
-            <li key={node.id}>
+            <Styled.li key={node.id}>
               <GatsbyLink to={`/tags/${node.name}`}>#{node.name}</GatsbyLink>
-            </li>
+            </Styled.li>
           ))}
-      </ul>
+      </Styled.ul>
     </Box>
   </Layout>
 )

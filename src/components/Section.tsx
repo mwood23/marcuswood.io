@@ -1,14 +1,7 @@
 /** @jsx jsx */
 
 import { Children, FC } from 'react'
-import {
-  Box,
-  BoxProps,
-  Container,
-  ContainerProps,
-  Heading,
-  jsx,
-} from 'theme-ui'
+import { Box, BoxProps, Container, ContainerProps, Styled, jsx } from 'theme-ui'
 
 import { MOBILE_BREAKPOINT } from '../style'
 import styled from '../style/styled'
@@ -185,13 +178,13 @@ export const Section: FC<SectionProps> = ({
     >
       {showLightBackgroundMiddleBar && <LightBackgroundMiddleBar />}
       {title && (
-        <Heading
+        <Styled.h2
           sx={{
             mb: [3, 4],
           }}
         >
           {title}
-        </Heading>
+        </Styled.h2>
       )}
 
       {twoColumn ? (

@@ -1,16 +1,7 @@
 /** @jsx jsx */
 
 import { FC } from 'react'
-import {
-  Box,
-  Heading,
-  Image,
-  ImageProps,
-  Link,
-  Text,
-  TextProps,
-  jsx,
-} from 'theme-ui'
+import { Box, Image, ImageProps, Styled, Text, TextProps, jsx } from 'theme-ui'
 
 import { createOptimizedCloudinary } from '../utils/'
 
@@ -88,23 +79,22 @@ export const ProductHero: FC<
         paddingRight: 4,
       }}
     >
-      <Heading
-        as={'h1'}
+      <Styled.h1
         sx={{
           fontSize: ['40px', '50px', '60px'],
         }}
       >
         {title}
-      </Heading>
+      </Styled.h1>
       {companyName &&
         (companyWebsite ? (
-          <Link
+          <Styled.a
             href={companyWebsite}
             sx={{ textDecoration: 'none' }}
             target="_blank"
           >
             <CompanyName borderColor={companyColor}>{companyName}</CompanyName>
-          </Link>
+          </Styled.a>
         ) : (
           <CompanyName borderColor={companyColor}>{companyName}</CompanyName>
         ))}

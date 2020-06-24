@@ -3,7 +3,7 @@
 import { PageProps, graphql } from 'gatsby'
 import MdxRenderer from 'gatsby-plugin-mdx/mdx-renderer'
 import { FC } from 'react'
-import { Box, Heading, Link, jsx } from 'theme-ui'
+import { Box, Styled, jsx } from 'theme-ui'
 
 import { PostQuery } from '../../graphql-types'
 import { AboutBlurb, Image, Layout, SEO, Section, TagList } from '../components'
@@ -18,8 +18,7 @@ const Post: FC<PostProps> = ({ data: { mdx } }) => (
   <Layout fluid>
     <SEO postData={mdx?.fields} />
     <Section style={{ paddingBottom: 0 }}>
-      <Heading
-        as="h1"
+      <Styled.h1
         sx={{
           fontSize: [4, 5],
           mb: [3, 4],
@@ -27,7 +26,7 @@ const Post: FC<PostProps> = ({ data: { mdx } }) => (
         }}
       >
         {mdx?.fields.title}
-      </Heading>
+      </Styled.h1>
       <Image sharpImage={mdx?.fields.banner} sx={{ mb: 2 }} />
       {mdx?.fields.tags && mdx?.fields.tags.length > 0 && (
         <TagList tags={mdx?.fields.tags} />
@@ -48,7 +47,7 @@ const Post: FC<PostProps> = ({ data: { mdx } }) => (
           textAlign: 'right',
         }}
       >
-        <Link href={mdx?.fields.editLink}>Edit Post on Github</Link>
+        <Styled.a href={mdx?.fields.editLink}>Edit Post on Github</Styled.a>
       </Box>
       <AboutBlurb />
     </Section>

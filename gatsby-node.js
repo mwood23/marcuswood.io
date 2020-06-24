@@ -466,21 +466,19 @@ exports.onCreateNode = async ({ node, actions }) => {
       value: productionUrl.toString(),
     })
 
-    // TODO
     createNodeField({
       name: 'editLink',
       node,
-      value: `https://github.com/todo/todo/edit/master${node.fileAbsolutePath.replace(
+      value: `https://github.com/mwood23/marcuswood.io/edit/master${node.fileAbsolutePath.replace(
         __dirname,
         '',
       )}`,
     })
 
-    // TODO
     createNodeField({
       name: 'historyLink',
       node,
-      value: `https://github.com/todo/todo/commits/master${node.fileAbsolutePath.replace(
+      value: `https://github.com/mwood23/marcuswood.io/edit/master${node.fileAbsolutePath.replace(
         __dirname,
         '',
       )}`,

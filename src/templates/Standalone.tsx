@@ -13,7 +13,7 @@ type StandaloneProps = PageProps & {
 }
 
 const Standalone: FC<StandaloneProps> = ({ data: { mdx } }) => (
-  <Layout fluid>
+  <Layout addTopPadding fluid>
     <SEO postData={mdx?.fields} />
     <MdxRenderer
       sx={{
@@ -22,25 +22,6 @@ const Standalone: FC<StandaloneProps> = ({ data: { mdx } }) => (
     >
       {mdx?.body}
     </MdxRenderer>
-    {/* <Section noTopPadding>
-      <EmailCTA tags={mdx?.fields.tags} />
-      <ShareIcons
-        description={mdx?.fields.description}
-        // TODO
-        // image={socialShareImage}
-        title={mdx?.fields.description}
-        url={mdx?.fields.productionUrl}
-      />
-      <Box
-        sx={{
-          mb: 3,
-          textAlign: 'right',
-        }}
-      >
-        <Link href={mdx?.fields.editLink}>Edit Post on Github</Link>
-      </Box>
-      <AboutBlurb />
-    </Section> */}
   </Layout>
 )
 
