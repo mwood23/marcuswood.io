@@ -70,7 +70,7 @@ export const pageQuery = graphql`
         bannerCredit
         banner {
           childImageSharp {
-            fluid(maxWidth: 810) {
+            fluid(maxWidth: 500) {
               # TODO: Needs types and global fragments don't work https://github.com/gatsbyjs/gatsby/blob/ad7cd6ba23d3460bdcd707c1a154adcbc45eb155/packages/gatsby-transformer-sharp/src/fragments.js
               base64
               aspectRatio
