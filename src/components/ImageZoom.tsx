@@ -27,10 +27,11 @@ type ZoomableProps = {
 export const ImageZoom: FC<ZoomableProps> = ({ children, ...rest }) => {
   const { theme } = useThemeUI()
 
+
   return (
     <Zoom
-      overlayBgColorEnd={alpha(theme.colors!.background, 0.95)}
-      overlayBgColorStart={alpha(theme.colors!.background, 0.1)}
+      overlayBgColorEnd={alpha(theme.colors!.background, 0.95)()}
+      overlayBgColorStart={alpha(theme.colors!.background, 0.1)()}
       wrapElement="span"
       zoomMargin={20}
       {...rest}

@@ -18,6 +18,7 @@ import {
   ResponsiveVideo,
   ZoomableImage,
 } from '../components/MDXComponents'
+import { FancyAlcamineGraphic } from '../components/productPageComponents/FancyAlcamineGraphic'
 
 /**
  * In case we need to add in more languages!
@@ -39,4 +40,5 @@ export default {
   FancyLayoutImage,
   ProductHero,
   ImageCollage,
+  FancyAlcamineGraphic,
 }

@@ -41,6 +41,10 @@ export default class ErrorBoundary extends React.Component<
             alignItems: 'center',
             justifyContent: 'center',
             flexDirection: 'column',
+            maxWidth: '700px',
+            padding: 2,
+            textAlign: 'center',
+            marginX: 'auto',
           }}
         >
           <Text
@@ -52,8 +56,10 @@ export default class ErrorBoundary extends React.Component<
               😢
             </span>
           </Text>
-          <Styled.h1>Something went wrong.</Styled.h1>
-          <Styled.p>
+          <Styled.h1 sx={{ textAlign: 'center' }}>
+            Something went wrong.
+          </Styled.h1>
+          <Styled.p sx={{ textAlign: 'center' }}>
             I&apos;ve been notified of the issue and will fix it soon! In the
             meantime, please check out the{' '}
             <GatsbyLink to="/blog">latest from my blog</GatsbyLink>!

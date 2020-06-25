@@ -6,6 +6,7 @@ import { Box, BoxProps, jsx } from 'theme-ui'
 
 import { LatestProductsQuery } from '../../graphql-types'
 import styled from '../style/styled'
+import { createOptimizedCloudinary } from '../utils'
 import { ImageLinkSection } from './ImageLinkSection'
 import { Section } from './Section'
 
@@ -42,7 +43,10 @@ export const ProductList: FC<{ data: LatestProductsQuery }> = ({
       <ImageLinkSection
         description={node.fields.description}
         // It'll be there for products
-        imageConfig={{ src: node.fields.productImage! }}
+        imageConfig={{
+          src: createOptimizedCloudinary(node.fields.productImage!),
+          alt: node.fields.title,
+        }}
         key={node.id}
         // Reverse if odd
         reverse={Boolean(i % 2)}

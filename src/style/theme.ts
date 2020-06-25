@@ -55,7 +55,7 @@ export const CUSTOM_THEME = merge(
       modes: {
         dark: {
           text: 'hsl(210, 50%, 96%)',
-          background: 'hsl(230, 25%, 18%)',
+          background: '#232739',
           secondaryBackground: '#11162B',
           primary: 'hsl(260, 100%, 80%)',
           secondary: 'hsl(290, 100%, 80%)',

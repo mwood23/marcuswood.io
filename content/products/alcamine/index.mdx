@@ -1,0 +1,130 @@
+---
+title: Alcamine
+author: Marcus Wood
+date: 2020-03-20
+description: Alcamine reimagines the job search process from the ground up using a special inbox to filter inbound opportunities from job boards, portfolios, and other parts of the web.
+productImage: https://res.cloudinary.com/dfe5dv4zv/image/upload/v1592973346/alcamine-hero_ffgibi.png
+unlisted: false
+published: true
+---
+
+<ProductHero
+  title={'Reimagining the job search'}
+  companyName={'Alcamine'}
+  companyColor={'#66CCB9'}
+  companySecondaryColor={'#18A7DB'}
+  companyWebsite={'https://www.alcamine.com/'}
+  heroImgConfig={{
+    src:
+      'https://res.cloudinary.com/dfe5dv4zv/image/upload/v1592973346/alcamine-hero_ffgibi.png',
+    alt: 'Alcamine landing page',
+  }}
+/>
+
+<Section smallPadding>
+
+## Alcamine
+
+Let’s face it, landing a new job is hard. You spend hours updating your resume, writing the perfect cover letter, and researching job opportunities in your area. You even dust off LinkedIn! You’re ready for the journey ahead, but what’s next? For most of us, it’s applying to jobs online. It’s quick and exciting, but as the weeks roll by no one reaches out. Sound familiar?
+
+You’re not alone, only [2%](https://www.webwire.com/ViewPressRel.asp?aId=184277#.Usw5G7GEit9) of candidates are interviewed for open positions, and [80%](https://www.forbes.com/sites/jacquelynsmith/2013/04/17/7-things-you-probably-didnt-know-about-your-job-search/#26b77e6c3811) of open jobs are never advertised. Alcamine is a job search platform that brings opportunities to you before they’re everywhere on the internet. We only show you the jobs you want to see so you don’t have to spend a second scrolling through job after job.
+
+</Section>
+
+<FancyAlcamineGraphic />
+
+<Section smallPadding>
+
+## How it Works
+
+It starts by creating a unique email address and inputting your job search preferences. From there, you add that email address to your portfolio, resume, Github, job boards, and anywhere else you're likely to get contacted by recruiters. When an opportunity comes into your inbox we score it based on what you're looking for and deliver you an email once a week of the best opportunities.
+
+Find a job you like? Take it offline! Alcamine only helps you organize the search and to send you additional opportunities from our partners we think you'll like. Starting the conversation with the recruiter is from your personal email address to maintain your privacy.
+
+</Section>
+
+<Section secondaryBackground style={{textAlign: 'center'}}>
+
+<FancyLayoutImage
+  src={
+    'https://res.cloudinary.com/dfe5dv4zv/image/upload/v1592973388/alcamine-app-login_jmx6t3.png'
+  }
+  alt="Alcamine connect job boards"
+  cloudinaryConfig="w_500,c_fit"
+  responsive
+  zoomable
+/>
+
+</Section>
+
+<Section >
+
+## Marketing
+
+Marketing this product had more challenges than we anticipated because it was tough to nail down the cove value proposition we wanted to go with. Was it a special inbox? A job aggregation platform? A job board scraper? A recruiting tool? Ultimately, we landed on making it an inbox first tool after conducting research within the community and based on our own experiences as developers that get bombarded by recruiter emails all the time.
+
+Being inbox first gave us a unique ability to pivot the product into various ways and to deliver on our ultimate vision of making the job search inbound, not outbound for the entire industry.
+
+<FancyTile>
+Our ultimate vision is to make the job search inbound, not outbound for everyone. Never apply online again.
+</FancyTile>
+
+</Section>
+
+<Section>
+
+## Tech Stack
+
+<FancyLayoutImage
+  src={
+    'https://res.cloudinary.com/dfe5dv4zv/image/upload/v1592973450/alcamine-mobile-home_o2r74h.png'
+  }
+  alt="Alcamine Mobile"
+  zoomable
+  floatLeft
+  phoneImage
+  cloudinaryConfig="w_300,c_fit"
+/>
+
+Creating an email service is something we've had never attempted before. There were a lot of unique challenges like ensuring email names are unique, scaling, ensuring deliverability, and scaling.
+
+### Frontend
+
+There are two frontend applications: the landing page and the web application. The landing page is built with Gatsby, React, and Styled Components. The web application is built with React, Typescript, Apollo GraphQL, Styled Components, Firebase Auth, Jest, and Ant-Design.
+
+### Backend
+
+For these quick hitting apps I traditionally choose Firebase to hit the ground running fast, but chose a more traditional infrastructure here to get closer to the metal. As we scale, we'll need a message queue, granular control over the DB, autoscaling, and machine learning. To accomplish this we went with Hasura, Postgres, Node, and AWS Lambda.
+
+To handle deployments we serve the frontend from Netlify to allow us to have nice CI integration with Github and to manage branch deploys + A/B testing. The entire server is deployed in AWS onto Fargate, ECS, and RDS with horizontal autoscaling. All of the code is housed in a monorepo to encourage reusability between every facet of the application which has sped up development time and stability by a lot.
+
+</Section>
+
+<Section smallPadding secondaryBackground>
+
+<FancyLayoutImage
+  src={
+    'https://res.cloudinary.com/dfe5dv4zv/image/upload/v1592973211/alcamine-weekly-email_yqpyp1.jpg'
+  }
+  alt="Alcamine Weekly Email"
+  responsive
+  zoomable
+/>
+
+</Section>
+
+<Section>
+
+## Where it is Now
+
+[Alcamine](https://www.alcamine.com/') is currently in beta and available to use! We are gathering feedback before starting on the next iteration of features. Please check it out if your on the job hunt or just want to avoid a bunch of recruiter spam.
+
+</Section>
+
+<Section>
+
+## Credits
+
+I couldn't have made this product a reality without the help of my friend [Aaron Decker](https://www.ard.ninja/). He helped architect out our Lambda based queing system for handling the emails and helped create the vision for Alcamine. Be sure to check out [his blog](https://www.iteachrecruiters.com/), especially if you're a recruiter 😉.
+
+</Section>
