@@ -22,5 +22,5 @@ export const Image: FC<{ sharpImage: any } & CommonComponentProps> = ({
   ...rest
 }) => (
   // @ts-ignore
-  <Img fluid={sharpImage?.childImageSharp?.fluid} {...rest} />
+  <Img fluid={sharpImage.childImageSharp.fluid} {...rest} />
 )
