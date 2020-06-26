@@ -5,18 +5,18 @@ import MdxRenderer from 'gatsby-plugin-mdx/mdx-renderer'
 import { FC } from 'react'
 import { Box, Styled, jsx } from 'theme-ui'
 
-import { PostQuery } from '../../graphql-types'
+import { ProductQuery } from '../../graphql-types'
 import { AboutBlurb, Layout, SEO, Section } from '../components'
 import { EmailCTA } from '../components/EmailCTA'
 import { ShareIcons } from '../components/ShareIcons'
 
 type ProductProps = PageProps & {
-  data: PostQuery
+  data: ProductQuery
 }
 
 const Product: FC<ProductProps> = ({ data: { mdx } }) => (
   <Layout fluid>
-    <SEO postData={mdx?.fields} />
+    <SEO metaImage={mdx?.fields?.productImage} postData={mdx?.fields} />
     <MdxRenderer
       sx={{
         mb: 2,
@@ -28,8 +28,7 @@ const Product: FC<ProductProps> = ({ data: { mdx } }) => (
       <EmailCTA tags={mdx?.fields.tags} />
       <ShareIcons
         description={mdx?.fields.description}
-        // TODO
-        // image={socialShareImage}
+        image={mdx?.fields?.productImage}
         title={mdx?.fields.description}
         url={mdx?.fields.productionUrl}
       />
@@ -62,6 +61,10 @@ export const pageQuery = graphql`
         slug
         title
         editLink
+        productImage
+        tags
+        description
+        productionUrl
       }
       body
     }

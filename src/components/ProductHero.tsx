@@ -64,7 +64,7 @@ export const ProductHero: FC<
   <Box
     sx={{
       position: 'relative',
-      height: '90vh',
+      height: ['85vh', '90vh'],
       display: 'flex',
       alignItems: ['flex-start', null, 'center'],
       justifyContent: ['flex-start', null, 'space-between'],

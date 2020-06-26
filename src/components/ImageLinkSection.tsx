@@ -136,7 +136,7 @@ export const ImageLinkSection: FC<ImageLinkSectionProps> = ({
     {...rest}
   >
     {imageConfig && (
-      <Link tabIndex={-1} to={to}>
+      <Link aria-label={title} tabIndex={-1} to={to}>
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <Image {...imageConfig} />
       </Link>
@@ -156,7 +156,7 @@ export const ImageLinkSection: FC<ImageLinkSectionProps> = ({
       {description}
     </Box>
     <OurWorkNavButton reverse={reverse}>
-      <Link to={to}>
+      <Link aria-label={title} to={to}>
         <ArrowRightCircle
           sx={{
             fill: 'accent',

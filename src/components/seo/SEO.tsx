@@ -16,7 +16,7 @@ export type SEOProps = {
     title?: string
     [x: string]: any
   }
-  metaImage?: string
+  metaImage?: string | null
   pageTitle?: string
   siteMetadata: SeoSiteMetadataQuery
 }

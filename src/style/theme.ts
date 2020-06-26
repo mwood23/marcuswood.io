@@ -48,7 +48,7 @@ export const CUSTOM_THEME = merge(
       secondaryBackground: '#F5F5F5',
       primary: '#187EAA',
       secondary: '#4770A7',
-      accent: '#5FDEFA',
+      accent: '#5fdefa',
       muted: '#b5b5b5',
       shadow: 'rgba(54, 163, 252, 0.3)',
       backgroundSection: 'rgba(158, 186, 206, 0.17)',

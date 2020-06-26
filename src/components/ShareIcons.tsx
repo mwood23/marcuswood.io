@@ -1,5 +1,6 @@
 /** @jsx jsx */
 
+import { graphql, useStaticQuery } from 'gatsby'
 import { CSSProperties, FC } from 'react'
 import {
   FacebookIcon,
@@ -16,6 +17,7 @@ import {
 import { Box, jsx } from 'theme-ui'
 
 import config from '../../config/website'
+import { ShareIconsQuery } from '../../graphql-types'
 import styled from '../style/styled'
 
 const ShareIconsContainer = styled(Box)`
@@ -37,7 +39,7 @@ export type ShareIconsProps = {
   description?: string
   title?: string
   urlParams?: string
-  image?: string
+  image?: string | null
   className?: string
   style?: CSSProperties
   onShareWindowClose?: () => void
@@ -50,13 +52,23 @@ export const ShareIcons: FC<ShareIconsProps> = ({
   copy = config.siteDescription,
   title = config.siteTitle,
   urlParams = '?ref=ss',
-  // TODO
-  // image = config.siteLinkPreview,
-  image = '',
+  image,
   className = '',
   style = {},
   onShareWindowClose = () => null,
 }) => {
+  const data = useStaticQuery<ShareIconsQuery>(graphql`
+    query ShareIcons {
+      fallBackImage: file(name: { eq: "marcus-profile-circle" }) {
+        childImageSharp {
+          fixed(width: 100) {
+            src
+          }
+        }
+      }
+    }
+  `)
+
   const url = `${baseUrl}/${urlParams}`
   return (
     <ShareIconsContainer className={className} style={style}>
@@ -82,11 +94,8 @@ export const ShareIcons: FC<ShareIconsProps> = ({
       >
         <TwitterIcon round={true} size={ICON_SIZE} />
       </TwitterShareButton>
-      {/* <WhatsappShareButton onShareWindowClose={onShareWindowClose} url={url}>
-        <WhatsappIcon round={true} size={ICON_SIZE} />
-      </WhatsappShareButton> */}
       <PinterestShareButton
-        media={image}
+        media={image ?? data.fallBackImage!.childImageSharp!.fixed!.src!}
         onShareWindowClose={onShareWindowClose}
         url={url}
       >
@@ -99,14 +108,6 @@ export const ShareIcons: FC<ShareIconsProps> = ({
       >
         <RedditIcon round={true} size={ICON_SIZE} />
       </RedditShareButton>
-      {/* <EmailShareButton
-        body={`Check this out! ${url}`}
-        onShareWindowClose={onShareWindowClose}
-        subject={title}
-        url={url}
-      >
-        <EmailIcon round={true} size={ICON_SIZE} />
-      </EmailShareButton> */}
     </ShareIconsContainer>
   )
 }
