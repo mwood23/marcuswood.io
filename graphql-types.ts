@@ -3729,6 +3729,11 @@ export type AboutBlurbQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type AboutBlurbQuery = { site?: Maybe<{ siteMetadata: { author: Pick<SiteSiteMetadataAuthor, 'minibio'> } }>, avatarImage?: Maybe<BannerImage260Fragment> };
 
+export type EmailFormTagsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type EmailFormTagsQuery = { allTag: { edges: Array<{ node: Pick<Tag, 'name' | 'id'> }> } };
+
 export type LatestProductsQueryVariables = Exact<{ [key: string]: never; }>;
 
 

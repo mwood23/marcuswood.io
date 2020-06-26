@@ -49,7 +49,7 @@ const ICON_SIZE = 36
 
 export const ShareIcons: FC<ShareIconsProps> = ({
   url: baseUrl = config.siteUrl,
-  copy = config.siteDescription,
+  // copy = config.siteDescription,
   title = config.siteTitle,
   urlParams = '?ref=ss',
   image,
@@ -74,21 +74,21 @@ export const ShareIcons: FC<ShareIconsProps> = ({
     <ShareIconsContainer className={className} style={style}>
       <FacebookShareButton
         onShareWindowClose={onShareWindowClose}
-        quote={copy}
+        quote={title}
         url={url}
       >
         <FacebookIcon round={true} size={ICON_SIZE} />
       </FacebookShareButton>
       <LinkedinShareButton
         onShareWindowClose={onShareWindowClose}
-        title={copy}
+        title={title}
         url={url}
       >
         <LinkedinIcon round={true} size={ICON_SIZE} />
       </LinkedinShareButton>
       <TwitterShareButton
         onShareWindowClose={onShareWindowClose}
-        title={copy}
+        title={title}
         url={url}
         via={config.twitterHandle}
       >

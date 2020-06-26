@@ -38,7 +38,7 @@ const Post: FC<PostProps> = ({ data: { mdx } }) => (
       <ShareIcons
         description={mdx?.fields.description}
         image={mdx?.fields?.banner?.childImageSharp?.fluid?.src}
-        title={mdx?.fields.description}
+        title={mdx?.fields.title}
         url={mdx?.fields.productionUrl}
       />
       <Box

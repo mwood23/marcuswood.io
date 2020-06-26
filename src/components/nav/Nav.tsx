@@ -60,8 +60,8 @@ const NavLink = styled(GatsbyLink)`
   @media screen and (max-width: ${MOBILE_BREAKPOINT}) {
     text-align: center;
     margin: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
 
     &.selected {
       font-weight: bold;

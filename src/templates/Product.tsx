@@ -29,7 +29,7 @@ const Product: FC<ProductProps> = ({ data: { mdx } }) => (
       <ShareIcons
         description={mdx?.fields.description}
         image={mdx?.fields?.productImage}
-        title={mdx?.fields.description}
+        title={mdx?.fields.title}
         url={mdx?.fields.productionUrl}
       />
       <Box

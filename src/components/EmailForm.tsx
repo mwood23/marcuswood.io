@@ -2,10 +2,12 @@
 
 import { css, keyframes } from '@emotion/core'
 import { useLocation } from '@reach/router'
+import { graphql, useStaticQuery } from 'gatsby'
 import React, { FC, useState } from 'react'
 import { animated, config, useTransition } from 'react-spring'
 import { Box, Button, Input, Label, Styled, jsx } from 'theme-ui'
 
+import { EmailFormTagsQuery } from '../../graphql-types'
 import { MOBILE_BREAKPOINT, TABLET_BREAKPOINT } from '../style'
 import styled from '../style/styled'
 import { emailIsValid } from '../utils'
@@ -302,6 +304,19 @@ export const EmailForm: FC<EmailFormProps> = ({
   onDarkBackground = false,
   tags = [],
 }) => {
+  const data = useStaticQuery<EmailFormTagsQuery>(graphql`
+    query EmailFormTags {
+      allTag {
+        edges {
+          node {
+            name
+            id
+          }
+        }
+      }
+    }
+  `)
+
   const [email, setEmail] = useState('')
   const [emailTouched, setEmailTouched] = useState(false)
   const [submitting, setSubmitting] = useState(false)
@@ -315,7 +330,11 @@ export const EmailForm: FC<EmailFormProps> = ({
     const referrer = getReferrer()
     const bodyString = JSON.stringify({
       email_address: email,
-      tags,
+      tags: tags.map(
+        (tagName) =>
+          data.allTag.edges.find((tagObject) => tagObject.node.name === tagName)
+            ?.node.id,
+      ),
       fields: {
         referrer: referrer.url,
         referrer_params: referrer.params,

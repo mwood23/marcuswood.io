@@ -24,7 +24,7 @@ module.exports = {
   ],
 
   // siteFBAppID: '123456789', // Facebook App ID - Optional
-  userTwitter: '@marcuswood23', // Twitter Username
+  userTwitter: 'marcuswood23', // Twitter Username
   ogSiteName: 'Marcus Wood', // Facebook Site Name
   ogLanguage: 'en_US',
 
