@@ -966,6 +966,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.10.3":
+  version "7.10.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.3.tgz#670d002655a7c366540c67f6fd3342cd09500364"
+  integrity sha512-RzGO0RLSdokm9Ipe/YD+7ww8X2Ro79qiXZF3HU9ljrM+qnJmH1Vqth+hbiQZy761LnMJTMitHDuKVYTk3k4dLw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/standalone@^7.9.6":
   version "7.10.2"
   resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.10.2.tgz#49dbbadcbc4b199df064d7d8b3e21c915b84abdb"
@@ -8137,6 +8144,13 @@ gatsby-plugin-react-helmet@^3.3.2:
   integrity sha512-uRZlX4ejy0Txlw+9qbIVkULsuc6iniSwDgD+Ed6BOryKmF42qaqmdbcc78ZwPVN2SZJCDhcZKXoJf6QftTwwDg==
   dependencies:
     "@babel/runtime" "^7.9.6"
+
+gatsby-plugin-remove-trailing-slashes@^2.3.7:
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-remove-trailing-slashes/-/gatsby-plugin-remove-trailing-slashes-2.3.7.tgz#d3026988c1ada52a353a3e0074f62ac113fc8415"
+  integrity sha512-4rNnnApOPIz3Tm3hVbvniznCatAm7vBgu0NkRmyLrFHizIUwnvhkLElhY//iKx2NQH5U4R1UCtuP+R9CztnvdQ==
+  dependencies:
+    "@babel/runtime" "^7.10.3"
 
 gatsby-plugin-robots-txt@^1.5.1:
   version "1.5.1"

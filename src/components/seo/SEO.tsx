@@ -16,7 +16,7 @@ export type SEOProps = {
     title?: string
     [x: string]: any
   }
-  metaImage?: string | null
+  metaImageURL?: string | null
   pageTitle?: string
   siteMetadata: SeoSiteMetadataQuery
 }
@@ -24,14 +24,13 @@ export type SEOProps = {
 const SEOComponent: FC<SEOProps> = ({
   siteMetadata,
   postData = {},
-  metaImage,
+  metaImageURL,
   isBlogPost,
   pageTitle,
 }) => {
   const seo = siteMetadata.site!.siteMetadata
 
   const socialShareImage =
-    metaImage ??
     postData?.banner?.childImageSharp?.fluid?.src ??
     siteMetadata.fallBackImage?.childImageSharp?.fixed?.src
 
@@ -39,14 +38,14 @@ const SEOComponent: FC<SEOProps> = ({
     isBlogPost && postData.title
       ? postData.title
       : postData.title
-      ? `${postData.title}  | ${config.siteTitle}`
+      ? `${postData.title} | ${config.siteTitle}`
       : pageTitle
       ? `${pageTitle} | ${config.siteTitle}`
       : config.siteTitle
 
   const description =
     postData.plainTextDescription ?? postData.description ?? seo.description
-  const image = `${seo.canonicalUrl}${socialShareImage}`
+  const image = metaImageURL ?? `${seo.canonicalUrl}${socialShareImage}`
   const url = postData.slug
     ? `${seo.canonicalUrl}${postData.slug}`
     : seo.canonicalUrl
@@ -94,7 +93,7 @@ const SEOComponent: FC<SEOProps> = ({
 export const SEO: FC<Partial<SEOProps>> = ({
   isBlogPost = false,
   postData = {},
-  metaImage,
+  metaImageURL,
   pageTitle,
 }) => {
   const data = useStaticQuery<SeoSiteMetadataQuery>(graphql`
@@ -132,7 +131,7 @@ export const SEO: FC<Partial<SEOProps>> = ({
   return (
     <SEOComponent
       isBlogPost={isBlogPost}
-      metaImage={metaImage}
+      metaImageURL={metaImageURL}
       pageTitle={pageTitle}
       postData={postData}
       siteMetadata={data}

@@ -16,7 +16,7 @@ type ProductProps = PageProps & {
 
 const Product: FC<ProductProps> = ({ data: { mdx } }) => (
   <Layout fluid>
-    <SEO metaImage={mdx?.fields?.productImage} postData={mdx?.fields} />
+    <SEO metaImageURL={mdx?.fields?.productImage} postData={mdx?.fields} />
     <MdxRenderer
       sx={{
         mb: 2,

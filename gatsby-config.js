@@ -173,6 +173,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-sharp',
+    'gatsby-plugin-remove-trailing-slashes',
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
