@@ -10,7 +10,7 @@ export const FancyTile = styled(Box)`
   text-align: center;
   font-size: 2.5rem;
   font-weight: bold;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.secondary};
   margin: 3rem 0;
 
   @media screen and (max-width: ${TABLET_BREAKPOINT}) {

@@ -16,7 +16,7 @@ type PostProps = PageProps & {
 
 const Post: FC<PostProps> = ({ data: { mdx } }) => (
   <Layout fluid>
-    <SEO postData={mdx?.fields} />
+    <SEO isBlogPost postData={mdx?.fields} />
     <Section style={{ paddingBottom: 0 }}>
       <Styled.h1
         sx={{

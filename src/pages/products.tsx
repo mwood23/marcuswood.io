@@ -10,6 +10,7 @@ import {
   LayoutContainer,
   ProductList,
   ProductsListWrapper,
+  SEO,
 } from '../components'
 
 type ProductsProps = PageProps & {
@@ -18,19 +19,25 @@ type ProductsProps = PageProps & {
 
 export const Products: FC<ProductsProps> = ({ data }) => (
   <Layout addTopPadding fluid>
-    <LayoutContainer noTopMargin>
+    <SEO pageTitle="Products" />
+    <LayoutContainer noTopMargin sx={{ py: 0 }}>
       <Styled.h1>Products</Styled.h1>
-      <Styled.p>
-        Below are some of the side projects I&apos;ve worked on and built over
-        the years. Some are thriving while others have been sunset into the
-        graveyard of my Github{' '}
+      <Styled.p sx={{ fontSize: [1, 2], margin: 0 }}>
+        Here you will find some of my personal projects I&apos;ve worked on and
+        built over the years. Some are alive and thriving while others have been
+        buried in the graveyard of my Github{' '}
         <span aria-label="laughing" role="img">
           😅
         </span>
-        . While I did 100% of the development and product management on them, I
-        do have a small group of friends that help me with the design and user
-        experience so that&apos;s why I say we a lot!
+        .
       </Styled.p>
+      {/* <Styled.p sx={{ fontSize: [1, 2], margin: 0 }}>
+        While I did most of the development and product management on each
+        product, I didn’t take these journeys alone. Throughout the years I have
+        worked with a small group of friends with design and UX expertise. So
+        wherever you see ‘we,’ that’s a nod towards great teamwork coming
+        together to bring a product to life.
+      </Styled.p> */}
     </LayoutContainer>
     <ProductsListWrapper noTopPadding>
       <ProductList data={data} />

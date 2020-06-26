@@ -82,7 +82,7 @@ export const Hero: FC<HeroProps> = () => {
             width: [null, '50%'],
           }}
         >
-          Hi, I&apos;m Marcus. I build products with TypesScript, React, and
+          Hi, I&apos;m Marcus. I build products with TypeScript, React, and
           GraphQL.
         </Styled.h1>
       </Container>

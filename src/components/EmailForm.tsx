@@ -37,6 +37,7 @@ const BUTTON_SPACING = '0px'
 const BUTTON_WIDTH = '120px'
 const FORM_ERROR_SIZE = '12px'
 const FORM_ERROR_SIZE_MOBILE = '12px'
+const INPUT_PADDING = '20px'
 
 const Wrapper = styled(Box)`
   /* Fixed so there's no jank on success animation */
@@ -77,13 +78,14 @@ const StyledFancyInput = styled(Input, {
       ? props.theme.colors.background
       : props.theme.colors.secondaryBackground};
   border: none;
-  padding-left: 20px;
-  padding-right: ${`calc(${BUTTON_WIDTH} + ${BUTTON_SPACING} + ${BUTTON_SPACING})`};
+  padding-left: ${INPUT_PADDING};
+  padding-right: ${`calc(${BUTTON_WIDTH} + ${BUTTON_SPACING} + ${BUTTON_SPACING} + ${INPUT_PADDING} + 10px)`};
   transition: all 200ms linear;
   color: ${(props) => props.theme.colors.text};
 
   @media screen and (max-width: ${TABLET_BREAKPOINT}) {
     height: ${INPUT_HEIGHT_MOBILE};
+    padding-right: ${`calc(${BUTTON_WIDTH} + ${BUTTON_SPACING} + ${BUTTON_SPACING})`};
     font-size: 16px;
   }
 
@@ -158,6 +160,8 @@ const FancyInputButton = styled(Button)<{
   height: ${`calc(${INPUT_HEIGHT} - ${BUTTON_SPACING} - ${BUTTON_SPACING})`};
   border: none;
   min-width: 140px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 
   &:hover {
     background-color: ${(props) => props.theme.colors.primary};

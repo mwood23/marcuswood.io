@@ -8,14 +8,14 @@ import styled from '../style/styled'
 import { GatsbyLink as Link } from './GatsbyLink'
 import { ArrowRightCircle } from './SVG'
 
-const WORK_DETAIL_HEIGHT = '275px'
+const WORK_DETAIL_HEIGHT = '250px'
 const WORK_OVERFLOW = '125px'
 const IMAGE_HEIGHT = `${WORK_DETAIL_HEIGHT} + ${WORK_OVERFLOW}`
 
 const StyledImageLinkSection = styled(Box)<{
   reverse: boolean
 }>`
-  background-color: rgba(0, 128, 238, 0.07);
+  background-color: ${(props) => props.theme.colors.backgroundSection};
   height: ${WORK_DETAIL_HEIGHT};
   border-radius: 30px;
   padding: 0 3rem;

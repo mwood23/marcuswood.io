@@ -30,14 +30,23 @@ const SEOComponent: FC<SEOProps> = ({
 }) => {
   const seo = siteMetadata.site!.siteMetadata
 
+  const socialShareImage =
+    metaImage ??
+    postData?.banner?.childImageSharp?.fluid?.src ??
+    siteMetadata.fallBackImage?.childImageSharp?.fixed?.src
+
   const title =
-    postData.title ??
-    (pageTitle ? `${pageTitle} | ${config.siteTitle}` : config.siteTitle)
+    isBlogPost && postData.title
+      ? postData.title
+      : postData.title
+      ? `${postData.title}  | ${config.siteTitle}`
+      : pageTitle
+      ? `${pageTitle} | ${config.siteTitle}`
+      : config.siteTitle
+
   const description =
     postData.plainTextDescription ?? postData.description ?? seo.description
-  const image =
-    `${seo.canonicalUrl}${metaImage}` ??
-    siteMetadata.fallBackImage?.childImageSharp?.fixed?.src
+  const image = `${seo.canonicalUrl}${socialShareImage}`
   const url = postData.slug
     ? `${seo.canonicalUrl}${postData.slug}`
     : seo.canonicalUrl

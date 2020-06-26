@@ -18,6 +18,7 @@ export const TagItem: FC<{ tagName: string }> = ({ tagName }) => (
       p: '5px 7px',
       textDecoration: 'none',
       fontSize: '.75rem',
+      mb: [1, 0],
     }}
     to={`tags/${tagName}`}
   >
@@ -26,7 +27,11 @@ export const TagItem: FC<{ tagName: string }> = ({ tagName }) => (
 )
 
 export const TagList: FC<TagListProps> = ({ tags }) => (
-  <Flex>
+  <Flex
+    sx={{
+      flexWrap: 'wrap',
+    }}
+  >
     {tags.map((t) => (
       <TagItem key={t} tagName={t} />
     ))}

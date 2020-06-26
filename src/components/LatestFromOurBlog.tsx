@@ -60,7 +60,7 @@ const BlogItem: FC<{
       }}
       sx={{
         mb: [3, 4],
-        boxShadow: (theme) => `0px 10px 30px -5px ${theme.colors.shadow}`,
+        boxShadow: (theme) => `0px 7px 30px -3px ${theme.colors.shadow}`,
         transition: 'box-shadow 0.5s',
         willChange: 'transform',
         borderRadius: '5px',
@@ -151,7 +151,7 @@ export const LatestFromOurBlog: FC<LatestFromOurBlogProps> = () => {
   const data = useStaticQuery<LatestBlogsQuery>(latestBlogsQuery)
 
   return (
-    <Section title="Blog">
+    <Section title="Articles">
       <BlogItemList data={data} />
     </Section>
   )

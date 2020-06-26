@@ -36,27 +36,13 @@ published: true
   cloudinaryConfig="w_350,c_fit"
 />
 
-Online dating is flooded with mobile apps that focus on throwing
-potential matches into "Yes" and "No" bins. It is impersonal and
-prevents users from interacting with people they might have found
-real, romantic connections with given just a little bit more time.
-
-Many of the popular dating apps attract people with decidedly
-unromantic intentions. Shocking and uncomfortable bios and pick-up
-lines, blunt propositions, racy pictures...it is pretty clear when the
-other user has no skin in the game. Even when you find someone
-attractive and pleasant to talk to, there always remains the question:
-What is their end goal? Just a chat buddy or an actual romantic
-partner?
+Online dating is flooded with mobile apps that focus on throwing potential matches into "Yes" or "No" bins, and not much else. Many of the popular dating apps attract people with decidedly unromantic intentions. Shocking and uncomfortable bios, blunt propositions, racy pictures...so much so that it’s pretty clear when the other user has no skin in the game. Even when users find someone attractive and pleasant to talk to, there always remains the question: What should our first date be? Will they like the date idea I come up with?
 
 </Section>
 
 <Section secondaryBackground>
 
-**Introducing It's a Date. It's a Date encourages human connections through
-shared experiences. We thoughtfully curate dates to make users excited not
-only for the person they are meeting, but also the overall experience they are
-agreeing to be a part of.**
+**I found this kind of approach to dating to be impersonal, and decided to throw my own idea in the mix. Introducing “It's a Date.” “It's a Date” encourages human connections through shared experiences. The app thoughtfully curates dates to make users excited not only for the person they are meeting, but also the overall experience they are agreeing to be a part of.**
 
 </Section>
 
@@ -93,33 +79,11 @@ sessions self-sustaining in terms of participant recruiting.
 
 ## Development
 
-**Frontend:** React Native with Expo and Styled Components.
-We loved using this stack for mobile apps because it gave us the
-ability to get started creating quickly and did not create
-guardrails for the design team. They were able to create the
-exact experience people were asking for without worrying about
-views not being technically feasible or taking an unrealistic
-amount of time. Styled components felt right at home in React
-Native, allowing us to compose complex themes with custom React
-components in perfect harmony.
+**Frontend:** The app was built using React Native with Expo and Styled Components. I loved using this stack for mobile apps because it easily allowed me to begin creating and didn’t impede the design team. The design team was able to create the exact experience people were asking for without worrying about views not being technically feasible or taking an unrealistic amount of time. Styled components felt right at home in React Native, allowing me to compose complex themes with custom React components in perfect harmony.
 
-**Backend:** Node, Express, Typescript, Firebase Cloud
-Firestore, and Google Cloud Platform. There is not a backend
-stack out there that allows you to create real-time applications
-faster. We created our messaging feature in one day! However,
-that speed came at the cost of in-depth domain expertise to the
-interworkings of Firebase and the Google Cloud Platform. The
-flexibility you take for granted in more traditional
-environments like scheduling, backups, integration testing, and
-other operations took a bit more effort to implement.
+**Backend:** This app used Node, Express, Typescript, Firebase Cloud Firestore, and Google Cloud Platform. There is not a backend stack out there that allows you to create real-time applications faster. We created our messaging feature in one day! However, that speed came at the cost of in-depth domain expertise to the interworkings of Firebase and the Google Cloud Platform. The flexibility I take for granted in more traditional environments like scheduling, backups, integration testing, and other operations took a bit more effort to implement.
 
-**Dev ops:** We created three environments: Development,
-Staging, and Production. Development served as a playground for
-new features and allowed our development team to try certain
-features on phones before letting our design and functional team
-touch it in staging. Once features from Staging were tested and
-verified, we could deploy from our continuous integration to
-production.
+**Dev ops:** I created three environments: Development, Staging, and Production. Development served as a playground for new features and allowed our development team to try certain features on phones before letting our design and functional team touch it in staging. Once features from Staging were tested and verified, we could deploy from our continuous integration to production.
 
 </SectionColumn>
 
@@ -129,12 +93,7 @@ production.
 
 ## The Landing Page
 
-With app development nearly complete and users asking about app, we
-created a landing page to generate hype around the product. The emails
-we captured were leveraged for user testing events and beta testing
-the app in its current state. With more feedback under our belt, we
-launched a blog and CMS for team members to write about cool events
-happening in the DC area.
+With app development nearly complete and users asking about the app, we created a landing page to generate hype around the product. The emails we captured were leveraged for user testing events and beta testing the app in its current state. With more feedback under our belt, I launched a blog and CMS for team members to write about cool events happening in the D.C. area.
 
 </Section>
 
@@ -154,18 +113,9 @@ happening in the DC area.
 
 ## Administrative Portal
 
-Adhereing to our design principles, we launched without many features
-users take for granted in a dating app, like blocking functionality
-and a support portal. Instead, we opted to create a personal concierge
-that would route messages directly to the team to take care of any
-issue. Not only did it align with our app's goal of being more
-personal to our audience, but it allowed us to cut the development
-runway by three weeks.
+Adhering to the team's design principles, the app launched without many features users normally take for granted in a dating app, like blocking functionality and a support portal. Instead, I opted to create a personal concierge that would route messages directly to the team to take care of any issue. Not only did it align with the app's goal of being more personal to our audience, but it allowed us to cut the development runway by three weeks.
 
-The admin portal was the place for our team to chat directly with
-users of the app, create new dates, and send push notifications. This
-was 100% integrated into the application and gave us fine grained
-control over how we interacted with users.
+The admin portal was the place for our team to chat directly with users of the app, create new dates, and send push notifications. This was 100% integrated into the application and gave us great control over how we interacted with users.
 
 <FancyLayoutImage
   src={
@@ -181,14 +131,7 @@ control over how we interacted with users.
 
 ## Design Thinking
 
-For an internal app venture, this was our first experience tackling a
-domain as intimate as online dating and wanted to get it right. We
-enlisted the help of the [SIDO Innovation](http://www.sidoinnovation.com/)
-team to help us run design thinking and facilitation sessions with
-friends and beta users. Through their proven techniques, we were able
-to pull out crucial insights on what users wanted and to see if we
-were on the mark with our hypothesis - something has to change in
-online dating.
+This was my first experience tackling a domain as intimate as online dating, and I wanted to ensure I got it right. I enlisted the help of the [SIDO Innovation](http://www.sidoinnovation.com/) team to help run design thinking and facilitation sessions with friends and beta users. Through their proven techniques, I was able to pull out crucial insights on what users wanted, and to see if I was on the mark with my hypothesis - something has to change in online dating.
 
 <FancyTile>
   Using proven design thinking techniques was crucial to the launch of It's a
@@ -235,23 +178,11 @@ team.
 
 ## Testing
 
-1. **Programmatic testing:** This involved taking the business rules
-   established and writing tests in the code to make sure there were no
-   errors. Errors like users getting matched up to the wrong gender or
-   someone's message going to the wrong recipient. This made it crucial
-   to make sure things worked as expected, especially on the backend.
-   On top of tests writing for the logic of the application, we wrote
-   the entire backend in Typescript to help us harden the code against
-   any potential defects.
+1. **Programmatic testing:** This involved taking the business rules established and writing tests in the code to make sure there were no errors. Errors like users getting matched up to the wrong gender or someone's message going to the wrong recipient. It was crucial to make sure things worked as expected, especially on the backend. On top of running tests for the logic of the application, I wrote the entire backend in Typescript to help harden the code against any potential defects.
 2. **UI Testing:** All of the team members assisted in running
    through the app and scanning for potential defects in our Staging
    environment before deploying new code to Production.
-3. **Focus Group Testing:** Immediately after launch, we offered
-   It's a Date to a user testing group of 20 participants. Users were
-   instructed to move through the main event flow with specific aid
-   only offered when requested. Points of approval, disapproval, and
-   suggestion were all noted by category, then ranked by their urgency
-   for continued development.
+3. **Focus Group Testing:** Immediately after launch, we offered “It's a Date” to a user testing group of 20 participants. Users were instructed to move through the main event flow with help only offered when requested. Points of approval, disapproval, and suggestion were all noted by category, then ranked by their urgency for continued development.
 
 </Section>
 
@@ -290,18 +221,16 @@ parameters.
 
 Our user testing events gave us a treasure trove of data to sift through along with the most telling data point of all. Even though people loved the events, our net promoter score was high, and people said they would absolutely use the app no one engaged with it after the events.
 
-Combine that with the runway needed to be competitive in the dating market, we decided to sunset the product. Although the need is there, and I still believe **this is the best way to foster meaningful human connection online**, the market is hyper competitive. Maybe one day I'll pick this one back up when I'm older and wiser!
+Combine that with the runway needed to be competitive in the dating market, I decided to sunset the product. Although the need is there, and I still believe this is the best way to foster meaningful human connection online, the market is hyper competitive. Maybe one day I'll pick this one back up and see where it can take the dating world.
 
 
 </Section>
 
 <Section>
 
-#### Other Documents
+#### Additional Information
 
-I'm really passionate about products and entrepreneurship so if I have an ambitious idea that
-requires a lot of work I write a business plan for it before coding to see how close it is to the money, what the runway needs look like, and it's viable. Sometimes I'll decide to build the product and put it in people's
-hands after writing it before deciding on choosing to continue with it full time or not.
+I'm really passionate about products and entrepreneurship, so if I have an ambitious idea that requires a lot of work, I write a business plan for it before coding anything. This allows me to see how close it is to the projected cost of production, what the runway needs look like, and if it’s viable. Sometimes I'll decide to build the product and put it in people's hands for testing before choosing to continue with it full time.
 
 - [Business Plan](/static/its-a-date-business-plan.pdf) (a brief history of the online dating market if you wanna read!)
 

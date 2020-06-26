@@ -25,9 +25,9 @@ published: true
 
 ## Alcamine
 
-Let’s face it, landing a new job is hard. You spend hours updating your resume, writing the perfect cover letter, and researching job opportunities in your area. You even dust off LinkedIn! You’re ready for the journey ahead, but what’s next? For most of us, it’s applying to jobs online. It’s quick and exciting, but as the weeks roll by no one reaches out. Sound familiar?
+As someone who has dallied in the job market, and is consistently spammed by recruiters, I was well aware of the frustrations of both looking and finding quality jobs. But when I tried to address these issues head on, I couldn’t find a way to keep my personal information from spammy recruiters or to find the quality job opportunities.
 
-You’re not alone, only [2%](https://www.webwire.com/ViewPressRel.asp?aId=184277#.Usw5G7GEit9) of candidates are interviewed for open positions, and [80%](https://www.forbes.com/sites/jacquelynsmith/2013/04/17/7-things-you-probably-didnt-know-about-your-job-search/#26b77e6c3811) of open jobs are never advertised. Alcamine is a job search platform that brings opportunities to you before they’re everywhere on the internet. We only show you the jobs you want to see so you don’t have to spend a second scrolling through job after job.
+ Alcamine is a job search platform that puts the job seeker in charge by filtering through the spam and sending special opportunities to their inbox each week. In addition, it only shows users the jobs they want to see so they don’t have to wade through irrelevant or spam emails.
 
 </Section>
 
@@ -37,9 +37,9 @@ You’re not alone, only [2%](https://www.webwire.com/ViewPressRel.asp?aId=18427
 
 ## How it Works
 
-It starts by creating a unique email address and inputting your job search preferences. From there, you add that email address to your portfolio, resume, Github, job boards, and anywhere else you're likely to get contacted by recruiters. When an opportunity comes into your inbox we score it based on what you're looking for and deliver you an email once a week of the best opportunities.
+I wanted to create a way that kept users' personal information safe and secure. With this in mind, I built Alcamine to allow users to create a unique email address and input their job search preferences. From there, they are able to add that email address to their portfolio, resume, Github, job boards, and anywhere else they are likely to get contacted by recruiters, taking their personal email out of it. When an opportunity comes into their inbox, Alcamine scores it based on what they have listed they are looking for and delivers an email once a week with the best opportunities.
 
-Find a job you like? Take it offline! Alcamine only helps you organize the search and to send you additional opportunities from our partners we think you'll like. Starting the conversation with the recruiter is from your personal email address to maintain your privacy.
+Once users find a job they're interested in they can take it offline. Alcamine only helps you organize the search and to send additional opportunities from our partners we think you'll like. Starting the conversation with the recruiter is from the user's personal email address to maintain privacy.
 
 </Section>
 
@@ -86,7 +86,7 @@ Our ultimate vision is to make the job search inbound, not outbound for everyone
   cloudinaryConfig="w_300,c_fit"
 />
 
-Creating an email service is something we've had never attempted before. There were a lot of unique challenges like ensuring email names are unique, scaling, ensuring deliverability, and scaling.
+Creating an email service is something I had never attempted before. There were a lot of unique challenges like ensuring email names are unique, ensuring deliverability, and scaling.
 
 ### Frontend
 
@@ -94,9 +94,9 @@ There are two frontend applications: the landing page and the web application. T
 
 ### Backend
 
-For these quick hitting apps I traditionally choose Firebase to hit the ground running fast, but chose a more traditional infrastructure here to get closer to the metal. As we scale, we'll need a message queue, granular control over the DB, autoscaling, and machine learning. To accomplish this we went with Hasura, Postgres, Node, and AWS Lambda.
+For these quick hitting apps, I traditionally choose Firebase to hit the ground running fast, but chose a more traditional infrastructure here to get closer to the metal. As Alcamine scale, it'll need a message queue, granular control over the DB, autoscaling, and machine learning. To accomplish this, I went with Hasura, Postgres, Node, and AWS Lambda.
 
-To handle deployments we serve the frontend from Netlify to allow us to have nice CI integration with Github and to manage branch deploys + A/B testing. The entire server is deployed in AWS onto Fargate, ECS, and RDS with horizontal autoscaling. All of the code is housed in a monorepo to encourage reusability between every facet of the application which has sped up development time and stability by a lot.
+To handle deployments I served the frontend from Netlify to allow us to have nice CI integration with Github and to manage branch deploys + A/B testing. The entire server was deployed in AWS onto Fargate, ECS, and RDS with horizontal autoscaling. All of the code was housed in a monorepo to encourage reusability between every facet of the application which has sped up development time and stability by a lot.
 
 </Section>
 
@@ -117,7 +117,7 @@ To handle deployments we serve the frontend from Netlify to allow us to have nic
 
 ## Where it is Now
 
-[Alcamine](https://www.alcamine.com/') is currently in beta and available to use! We are gathering feedback before starting on the next iteration of features. Please check it out if your on the job hunt or just want to avoid a bunch of recruiter spam.
+[Alcamine](https://www.alcamine.com/') is currently in beta and available to use! I am currently in the process of gathering feedback before starting on the next iteration of features. Check it out and let me know if you have any ideas - I would love to hear them as we grow!
 
 </Section>
 

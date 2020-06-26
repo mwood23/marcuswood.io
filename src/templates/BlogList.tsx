@@ -5,7 +5,7 @@ import { FC } from 'react'
 import { Box, Styled, jsx } from 'theme-ui'
 
 import { BlogListQuery } from '../../graphql-types'
-import { BlogItemList, GatsbyLink, Layout, Section } from '../components'
+import { BlogItemList, GatsbyLink, Layout, SEO, Section } from '../components'
 
 type BlogListProps = PageProps & {
   data: BlogListQuery
@@ -21,6 +21,7 @@ type BlogListProps = PageProps & {
 
 export const BlogList: FC<BlogListProps> = ({ data, pageContext }) => (
   <Layout addTopPadding>
+    <SEO pageTitle="Blog" />
     <Styled.h1>Blog</Styled.h1>
     <BlogItemList data={data} />
     <Section

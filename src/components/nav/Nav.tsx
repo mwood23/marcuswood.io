@@ -26,6 +26,7 @@ const NavLink = styled(GatsbyLink)`
   margin-right: 1rem;
   position: relative;
   cursor: pointer;
+  color: ${(props) => props.theme.colors.text};
 
   /* &:before, */
   &:after {

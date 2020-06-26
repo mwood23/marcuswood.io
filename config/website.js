@@ -29,9 +29,8 @@ module.exports = {
   ogLanguage: 'en_US',
 
   // Manifest and Progress color
-  // TODO
-  themeColor: '#4147DC',
-  backgroundColor: '#231C42',
+  themeColor: '#4660F6',
+  backgroundColor: '#232739',
 
   // Social component
   twitter: 'https://twitter.com/marcuswood23/',

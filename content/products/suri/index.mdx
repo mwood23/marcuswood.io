@@ -24,9 +24,9 @@ published: true
 
 ## Suri
 
-Over the past year, I have gotten more and more into financial markets and trading algorithms. After reading [Trend Following](https://www.amazon.com/Trend-Following-5th-Fortune-Markets/dp/1119371872) by Michael Cohen I was ready to build the next big algo with the best sharpe ratio in the business! It's definitely not that easy, and any idea you've thought off a hedge fund has likely already tried or is currently using.
+Over the past year, I have gotten more and more into financial markets and trading algorithms. After reading [Trend Following](https://www.amazon.com/Trend-Following-5th-Fortune-Markets/dp/1119371872) by Michael Cohen, I was ready to build the next big algo with the best sharpe ratio in the business! I discovered that this idea is not an easy one, and most ideas for hedge funds have already been tried or are currently in use.
 
-But what about the small ball algos? The ones that aren't big enough for hedge funds to spend time on, but still has considerable upside potential? That's what Suri is for. It's a playground to create trading algos, backtest them, and provide an enterprise grade UI to measure how it's doing.
+However, I did find something that wasn’t being captured; small ball algos. These are the ones that aren't big enough for hedge funds to spend time on, but still have considerable upside potential. That is what Suri is for. It is a playground to create trading algos, backtest them, and provide an enterprise grade UI to measure how it's doing.
 
 </Section>
 
@@ -34,7 +34,7 @@ But what about the small ball algos? The ones that aren't big enough for hedge f
 
 **Disclaimer**: The content on this site is for informational purposes only and is not advice to buy or sell any investment, security, currency, contract, or thing. Speculation is inherently risky. I make no explicit or implicit guarantee with respect to performance or the outcome of any investment or projections made. Seek a duly licensed professional for investment advice.
 
-Any code or software I provide on my site, blog or my Github is under the [MIT license](https://opensource.org/licenses/MIT). Specifically this means that all software is provided "as is" without any warranty of any kind. The full text of the MIT License is available in the link above.
+Any code or software I provide on my site, blog, or my Github is under the [MIT license](https://opensource.org/licenses/MIT). Specifically, this means that all software is provided "as is" without any warranty of any kind. The full text of the MIT License is available in the link above.
 
 </Section>
 
@@ -46,9 +46,9 @@ The first algo written into Suri uses the natural language processing to dictate
 
 ### Motivation
 
-With the advent of the coronavirus the stock market has been turbulent to say the least. One of the more interesting data points is just how much bearing the news has on the market and some stocks in particular like Boeing.
+With the arrival of the coronavirus, the stock market has been turbulent to say the least. One of the more interesting data points is just how much bearing the news has on the market and some stocks in particular - like Boeing.
 
-Watching the press event one evening I noticed that a lot of stocks were called out by name and decided to check my app (shameless Robinhood user but now TOS 🚀) only to see them going up by [huge margins](https://fortune.com/2020/03/13/walgreens-target-becton-dickinson-stocks-rise-trump-press-conference-coronavirus/). It wasn't extremely surprising considering the talk of bailouts and helping out these huge corporations, but I wondered it there was a way to be faster than the market.
+While watching a press event one evening, I noticed that many stocks were called out by name and decided to check my app (shameless Robinhood user but now TOS 🚀) only to see them going up by [huge margins](https://fortune.com/2020/03/13/walgreens-target-becton-dickinson-stocks-rise-trump-press-conference-coronavirus/). It wasn't very surprising considering the talk of bailouts and helping out these huge corporations, but I wondered it there was a way to be faster than the market?
 
 </Section>
 
@@ -71,9 +71,9 @@ Watching the press event one evening I noticed that a lot of stocks were called 
 
 ## Algo
 
-The premise of the algo is pretty simple. Use speech dictation to decode stock keywords faster than the market can and make a purchase decision before the pump and sell at the top. Since things are moving pretty quick the orders placed were bracket orders that would sell if the stock tanked (mentioned in a negative sentiment) and if they exceeded a certain threshold. I know it's a cardinal sin to not let your winners run, but with the pace of the information we thought it was prudent to allow for some automation.
+The premise of the algo is pretty simple. It uses speech dictation to decode stock keywords faster than the market and make a purchase decision before the pump and sell at the top. Since things move pretty quickly, the orders placed were bracket orders that would sell if the stock tanked (mentioned in a negative sentiment), or if they exceeded a certain threshold. I know it is a cardinal sin to not let your winners run, but with the pace of the information, it was prudent to allow for some automation.
 
-Perhaps the best things about this algo is that it can run off of any audio source. A TV, YouTube, a public speech, or an everyday conversation. That becomes more important when live streams of events are much faster for some networks. We noticed that CNN was about 15 seconds faster than YouTube live and that's a lot of potential profit.
+The best thing about this algo is that it can run off of any audio source. A T.V., YouTube, a public speech, or an everyday conversation. This part of the build becomes important when live streams of events are happening faster on some networks then others. For example, we noticed that CNN was about 15 seconds faster than YouTube live, and that there is a lot of potential profit in those 15 seconds.
 
 </SectionColumn>
 
@@ -89,7 +89,7 @@ Perhaps the best things about this algo is that it can run off of any audio sour
 
 ## Results
 
-Unfortunately that daily press conferences that would pump the stock market were moved to after hours by the time we had backtested and built the platform. We have ran it on paper accounts with some success (all screenshots above are from paper accounts not my actual portfolio amounts).
+Unfortunately, the daily press conferences that would have typically pumped the stock market were moved to after hours by the time we had back tested and built the platform. We have run it on paper accounts with some success (all screenshots above are from paper accounts, not my actual portfolio amounts).
 
 </Section>
 
@@ -97,7 +97,7 @@ Unfortunately that daily press conferences that would pump the stock market were
 
 ## Tech
 
-The platform was built using React, Typescript, Styled Components, BlueprintJS, Socket-IO, Node, and Express. This is a sandbox for personal trading algos using the [Alpaca API](https://alpaca.markets/) so it's built and ran locally. If you're interested in making this open source and adding more algorithms to it please reach out!
+The platform was built using React, Typescript, Styled Components, BlueprintJS, Socket-IO, Node, and Express. This is a sandbox for personal trading algos using the [Alpaca API](https://alpaca.markets/) so it's built and ran locally. If you would be interested in making this open source and adding more algorithms to it, please reach out.
 
 </Section>
 
@@ -105,7 +105,7 @@ The platform was built using React, Typescript, Styled Components, BlueprintJS, 
 
 ## Want to Learn More?
 
-I couldn't have made this product a reality without the help of my friend [Aaron Decker](https://www.ard.ninja/). He has a ton of knowledge about trading and the financial markets that helped make this system a reality. We worked together on building the platform and backtesting the first algo. Check out [his blog](https://www.ard.ninja/) for more details on Donnie Pump and other algos he has written!
+ This product would not have become a reality without the help of my friend [Aaron Decker](https://www.ard.ninja/). He has a ton of knowledge about trading and the financial markets that allowed this system to come to life. We worked together on building the platform and backtesting the first algo. Check out [his blog](https://www.ard.ninja/) for more details on Donnie Pump and other algos he has written!
 
 </Section>
 

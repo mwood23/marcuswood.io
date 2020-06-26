@@ -2,8 +2,6 @@
 
 import { CSSProperties, FC } from 'react'
 import {
-  EmailIcon,
-  EmailShareButton,
   FacebookIcon,
   FacebookShareButton,
   LinkedinIcon,
@@ -14,8 +12,6 @@ import {
   RedditShareButton,
   TwitterIcon,
   TwitterShareButton,
-  WhatsappIcon,
-  WhatsappShareButton,
 } from 'react-share'
 import { Box, jsx } from 'theme-ui'
 
@@ -29,7 +25,8 @@ const ShareIconsContainer = styled(Box)`
   margin-bottom: 1rem;
 
   > button {
-    margin: 0 5px;
+    margin: 0 2px;
+    padding: 5px !important;
     cursor: pointer;
   }
 `
@@ -45,6 +42,8 @@ export type ShareIconsProps = {
   style?: CSSProperties
   onShareWindowClose?: () => void
 }
+
+const ICON_SIZE = 36
 
 export const ShareIcons: FC<ShareIconsProps> = ({
   url: baseUrl = config.siteUrl,
@@ -66,14 +65,14 @@ export const ShareIcons: FC<ShareIconsProps> = ({
         quote={copy}
         url={url}
       >
-        <FacebookIcon round={true} size={32} />
+        <FacebookIcon round={true} size={ICON_SIZE} />
       </FacebookShareButton>
       <LinkedinShareButton
         onShareWindowClose={onShareWindowClose}
         title={copy}
         url={url}
       >
-        <LinkedinIcon round={true} size={32} />
+        <LinkedinIcon round={true} size={ICON_SIZE} />
       </LinkedinShareButton>
       <TwitterShareButton
         onShareWindowClose={onShareWindowClose}
@@ -81,33 +80,33 @@ export const ShareIcons: FC<ShareIconsProps> = ({
         url={url}
         via={config.twitterHandle}
       >
-        <TwitterIcon round={true} size={32} />
+        <TwitterIcon round={true} size={ICON_SIZE} />
       </TwitterShareButton>
-      <WhatsappShareButton onShareWindowClose={onShareWindowClose} url={url}>
-        <WhatsappIcon round={true} size={32} />
-      </WhatsappShareButton>
+      {/* <WhatsappShareButton onShareWindowClose={onShareWindowClose} url={url}>
+        <WhatsappIcon round={true} size={ICON_SIZE} />
+      </WhatsappShareButton> */}
       <PinterestShareButton
         media={image}
         onShareWindowClose={onShareWindowClose}
         url={url}
       >
-        <PinterestIcon round={true} size={32} />
+        <PinterestIcon round={true} size={ICON_SIZE} />
       </PinterestShareButton>
       <RedditShareButton
         onShareWindowClose={onShareWindowClose}
         title={title}
         url={url}
       >
-        <RedditIcon round={true} size={32} />
+        <RedditIcon round={true} size={ICON_SIZE} />
       </RedditShareButton>
-      <EmailShareButton
+      {/* <EmailShareButton
         body={`Check this out! ${url}`}
         onShareWindowClose={onShareWindowClose}
         subject={title}
         url={url}
       >
-        <EmailIcon round={true} size={32} />
-      </EmailShareButton>
+        <EmailIcon round={true} size={ICON_SIZE} />
+      </EmailShareButton> */}
     </ShareIconsContainer>
   )
 }
