@@ -27,7 +27,6 @@ type ZoomableProps = {
 export const ImageZoom: FC<ZoomableProps> = ({ children, ...rest }) => {
   const { theme } = useThemeUI()
 
-
   return (
     <Zoom
       overlayBgColorEnd={alpha(theme.colors!.background, 0.95)()}

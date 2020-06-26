@@ -101,6 +101,7 @@ module.exports = {
         name: 'src',
       },
     },
+    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-transformer-yaml',
       options: { typeName: 'Tag', path: './content/tags.yaml' },
@@ -133,6 +134,7 @@ module.exports = {
             removeAccents: true,
             enableCustomId: true,
           },
+          'gatsby-transformer-sharp',
           {
             resolve: 'gatsby-remark-images',
             options: {
@@ -143,7 +145,6 @@ module.exports = {
         ],
       },
     },
-    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-remark-images',
       options: {

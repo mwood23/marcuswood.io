@@ -46,7 +46,39 @@ export const BlogList: FC<BlogListProps> = ({ data, pageContext }) => (
 
 export default BlogList
 
+// CodeGen can't pick up on types
+// https://github.com/gatsbyjs/gatsby/blob/ad7cd6ba23d3460bdcd707c1a154adcbc45eb155/packages/gatsby-transformer-sharp/src/fragments.js
 export const pageQuery = graphql`
+  fragment GatsbyImageSharpFluid_withWebp_tracedSVG on ImageSharpFluid {
+    tracedSVG
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+  }
+  fragment bannerImage260 on File {
+    childImageSharp {
+      fluid(maxWidth: 260, traceSVG: { color: "#573ede" }, quality: 50) {
+        ...GatsbyImageSharpFluid_withWebp_tracedSVG
+      }
+    }
+  }
+  fragment bannerImage640 on File {
+    childImageSharp {
+      fluid(maxWidth: 640, traceSVG: { color: "#573ede" }) {
+        ...GatsbyImageSharpFluid_withWebp_tracedSVG
+      }
+    }
+  }
+  fragment bannerImage720 on File {
+    childImageSharp {
+      fluid(maxWidth: 720, traceSVG: { color: "#573ede" }, quality: 75) {
+        ...GatsbyImageSharpFluid_withWebp_tracedSVG
+      }
+    }
+  }
   fragment BlogPost on Mdx {
     timeToRead
     # The field date doesn't work for some reason
@@ -60,16 +92,7 @@ export const pageQuery = graphql`
       description
       author
       banner {
-        childImageSharp {
-          fluid(maxWidth: 700) {
-            # TODO: Needs types and global fragments don't work https://github.com/gatsbyjs/gatsby/blob/ad7cd6ba23d3460bdcd707c1a154adcbc45eb155/packages/gatsby-transformer-sharp/src/fragments.js
-            base64
-            aspectRatio
-            src
-            srcSet
-            sizes
-          }
-        }
+        ...bannerImage640
       }
       bannerCredit
     }

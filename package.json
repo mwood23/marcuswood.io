@@ -108,7 +108,8 @@
     "eslint:fix": "yarn eslint --fix",
     "tsc": "tsc -p tsconfig.json",
     "lint": "run-s tsc eslint",
-    "lint:fix": "yarn tsc && yarn eslint:fix"
+    "lint:fix": "yarn tsc && yarn eslint:fix",
+    "deploy": "yarn lint:fix && yarn build && netlify deploy --prod"
   },
   "repository": {
     "type": "git",

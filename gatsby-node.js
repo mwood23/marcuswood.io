@@ -542,7 +542,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       difference: String
       locale: String
     ): Date!
-    banner: File
     bannerCredit: String
     tags: [String!]!
     unlisted: Boolean!

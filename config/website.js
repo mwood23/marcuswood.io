@@ -20,6 +20,7 @@ module.exports = {
     'React Engineer',
     'Enterprise web developer',
     'Typescript Training',
+    'Product Manager',
   ],
 
   // siteFBAppID: '123456789', // Facebook App ID - Optional
