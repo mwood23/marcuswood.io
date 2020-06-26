@@ -108,12 +108,12 @@ module.exports = {
     },
     'gatsby-plugin-theme-ui',
     'gatsby-plugin-mdx',
-    {
-      resolve: 'gatsby-plugin-graphql-codegen',
-      options: {
-        documentPaths: ['./src/**/*.{ts,tsx}'],
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-graphql-codegen',
+    //   options: {
+    //     documentPaths: ['./src/**/*.{ts,tsx}'],
+    //   },
+    // },
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
