@@ -295,6 +295,7 @@ function getBlogFeed({ filePathRegex, blogUrl, ...overrides }) {
            filter: {
              frontmatter: {published: {ne: false}}
              fileAbsolutePath: {regex: "${filePathRegex}"}
+             isFuture: { eq: false }
            }
            sort: { order: DESC, fields: [frontmatter___date] }
          ) {
