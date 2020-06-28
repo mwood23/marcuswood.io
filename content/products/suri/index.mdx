@@ -51,6 +51,14 @@ With the arrival of the coronavirus, the stock market has been turbulent to say 
 
 While watching a press event one evening, I noticed that many stocks were called out by name and decided to check my app (shameless Robinhood user but now TOS 🚀) only to see them going up by [huge margins](https://fortune.com/2020/03/13/walgreens-target-becton-dickinson-stocks-rise-trump-press-conference-coronavirus/). It wasn't very surprising considering the talk of bailouts and helping out these huge corporations, but I wondered it there was a way to be faster than the market?
 
+<FancyLayoutImage
+  src={
+    'https://res.cloudinary.com/dfe5dv4zv/image/upload/v1593387316/press-conf-screenshot-1_tzw1la.png'
+  }
+  alt="Trump pumping the market"
+  responsive
+/>
+
 </Section>
 
 <Section noPadding secondaryBackground fluid twoColumn bottomAlignItems>
@@ -75,6 +83,12 @@ While watching a press event one evening, I noticed that many stocks were called
 The premise of the algo is pretty simple. It uses speech dictation to decode stock keywords faster than the market and make a purchase decision before the pump and sell at the top. Since things move pretty quickly, the orders placed were bracket orders that would sell if the stock tanked (mentioned in a negative sentiment), or if they exceeded a certain threshold. I know it is a cardinal sin to not let your winners run, but with the pace of the information, it was prudent to allow for some automation.
 
 The best thing about this algo is that it can run off of any audio source. A T.V., YouTube, a public speech, or an everyday conversation. This part of the build becomes important when live streams of events are happening faster on some networks then others. For example, we noticed that CNN was about 15 seconds faster than YouTube live, and that there is a lot of potential profit in those 15 seconds.
+
+<Note>
+
+Want more details on the inner workings of the algo? Check out [this blog](https://www.ard.ninja/blog/2020-06-28-donnie-pump-covid-press-conference-trading-system/) written by Aaron Decker.
+
+</Note>
 
 </SectionColumn>
 
