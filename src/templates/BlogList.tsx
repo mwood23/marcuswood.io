@@ -110,7 +110,10 @@ export const pageQuery = graphql`
   }
   query BlogList($skip: Int!, $limit: Int!) {
     allMdx(
-      filter: { fields: { isBlog: { eq: true }, unlisted: { eq: false } } }
+      filter: {
+        fields: { isBlog: { eq: true }, unlisted: { eq: false } }
+        isFuture: { eq: false }
+      }
       sort: { fields: frontmatter___date, order: DESC }
       limit: $limit
       skip: $skip

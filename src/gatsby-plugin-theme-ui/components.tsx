@@ -9,6 +9,7 @@ import {
   FancyStepsStep,
   FancyTile,
   ImageCollage,
+  Note,
   ProductHero,
   Section,
   SectionColumn,
@@ -41,4 +42,5 @@ export default {
   ProductHero,
   ImageCollage,
   FancyAlcamineGraphic,
+  Note,
 }

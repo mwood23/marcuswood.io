@@ -15,7 +15,7 @@ const IMAGE_HEIGHT = `${WORK_DETAIL_HEIGHT} + ${WORK_OVERFLOW}`
 const StyledImageLinkSection = styled(Box)<{
   reverse: boolean
 }>`
-  background-color: ${(props) => props.theme.colors.backgroundSection};
+  background-color: ${(props) => props.theme.colors.highlight};
   height: ${WORK_DETAIL_HEIGHT};
   border-radius: 30px;
   padding: 0 3rem;

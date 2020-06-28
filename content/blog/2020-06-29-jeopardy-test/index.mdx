@@ -1,0 +1,94 @@
+---
+title: Does your Code Pass the Jeopardy Test?
+author: Marcus Wood
+date: 2020-06-29
+banner: ./images/hero.jpg
+description: One easy tip the game show can show us to save your future self and other heartache in the future.
+tags: ['documentation', 'javascript', 'style']
+unlisted: false
+published: true
+isFancy: false
+---
+
+We've all heard the quote, "There are only two hard things in Computer Science: cache invalidation and naming things." While naming something isn't inherently difficult, giving a name that describes the lasting intent is. I think that's ultimately what makes it so hard when you're coding because slapping a variable name on something while you're in the zone is inconsequential. You say, "I'll always remember what that means down the line" and then two months later you go back and have no idea why the variable name is `bananaTrees`.
+
+This is where the Jeopardy test comes into play. Every time you declare a `boolean` variable phrase it in a question. Instead of an `enabled` flag add `isEnabled`. The reason is because it's the first thing that someone (or your future self) is going to ask when they read it is, "What is enabled?"
+
+> Prepend every boolean variable declaration with "is"
+
+## A Brief History on Jeopardy
+
+If you're not familiar, Jeopardy is an American game show where contestants are quizzed on various topics and they have to answer in a form of a question. This game came off the heels of the 50s quiz show rigging scandals causing ratings to plummet. So how do you keep people from rigging the shows? [By giving the answers first](https://www.smithsonianmag.com/arts-culture/How-Merv-Griffin-Came-Up-With-That-Weird-Question-Answer-Format-for-Jeopardy-180949815/) and having the contestants guess the answers! The format of Jeopardy has changed from it's early days, but the answering in a phrase of a question is still around
+
+## Take out the Guesswork
+
+That's what so beautiful and simple about prepending any boolean variable name with intent. You're not trying to guess the answer of what the thing does because you're giving your future self the answer. This can be applied to any language, but is most important in dynamically typed langauges like JavaScript since there are no type annotations to help you along. For example, you'll often see the flag `enabled` declared.
+
+
+```js
+// Doesn't tell us much
+const enabled = false
+
+// A little better, now we know the intent and that that the variable
+// is a boolean
+const isEnabled = false
+
+
+// Perfect! From the name we can infer the type of the variable
+// and what it's describing
+const isUserEnabled = false
+```
+
+Most of the time you can assume that `enabled` or `disabled` will be booleans since it's fairly standard throughout languages and APIs. But let's say we're defining an email document that will be stored in a database. An example document might look like this:
+
+```js
+const emailDocument = {
+  subject: 'Welcome!',
+  id: '123456',
+  body: 'Hey there!',
+  user: '435',
+  admin: true,
+  read: false,
+  enabled: true,
+  sent: '2020-02-03'
+}
+```
+
+When you have the data attached, it's not too hard to determine what each property name is. However, let's take those off:
+
+```js
+const emailDocument = {
+  subject,
+  id,
+  body,
+  user,
+  admin,
+  read,
+  enabled,
+  sent
+}
+```
+
+What is "sent"? What is "user"? What is "admin"? If you don't have the data available, it's impossible to determine what these properties mean. This introduces friction into what you're coding and can create bugs. Let's clean it up:
+
+```js
+const emailDocument = {
+  subject: 'Welcome!',
+  id: '123456',
+  body: 'Hey there!',
+  fromUser: '435',
+  isAdministrativeEmail: true,
+  isRead: false,
+  isEnabled: true,
+  sentOn: '2020-02-03'
+}
+```
+
+<Note>
+
+I know I added more than just "is", and will be writing more posts on why in the future!
+
+</Note>
+
+
+Now we don't need to know the data or even consult the docs (if there are any) on what a property means. It is hard to name things, especially when working on large teams or creating an API. This is one small tip that I've seen pay off big in the long run and hope it helps!

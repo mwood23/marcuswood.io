@@ -45,7 +45,10 @@ export const pageQuery = graphql`
       }
     }
     posts: allMdx(
-      filter: { fields: { isBlog: { eq: true }, unlisted: { eq: false } } }
+      filter: {
+        fields: { isBlog: { eq: true }, unlisted: { eq: false } }
+        isFuture: { eq: false }
+      }
       sort: { fields: frontmatter___date, order: DESC }
     ) {
       edges {

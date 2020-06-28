@@ -739,8 +739,9 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___tags'
   | 'childMdx___frontmatter___unlisted'
   | 'childMdx___frontmatter___published'
-  | 'childMdx___frontmatter___bannerCredit'
+  | 'childMdx___frontmatter___isFancy'
   | 'childMdx___frontmatter___slug'
+  | 'childMdx___frontmatter___bannerCredit'
   | 'childMdx___frontmatter___productImage'
   | 'childMdx___frontmatter___redirects'
   | 'childMdx___body'
@@ -755,6 +756,7 @@ export type FileFieldsEnum =
   | 'childMdx___wordCount___paragraphs'
   | 'childMdx___wordCount___sentences'
   | 'childMdx___wordCount___words'
+  | 'childMdx___isFuture'
   | 'childMdx___fields___id'
   | 'childMdx___fields___title'
   | 'childMdx___fields___author'
@@ -765,6 +767,7 @@ export type FileFieldsEnum =
   | 'childMdx___fields___bannerCredit'
   | 'childMdx___fields___tags'
   | 'childMdx___fields___unlisted'
+  | 'childMdx___fields___isFancy'
   | 'childMdx___fields___redirects'
   | 'childMdx___fields___isBlog'
   | 'childMdx___fields___productionUrl'
@@ -1518,6 +1521,7 @@ export type Mdx = Node & {
   tableOfContents?: Maybe<Scalars['JSON']>;
   timeToRead?: Maybe<Scalars['Int']>;
   wordCount?: Maybe<MdxWordCount>;
+  isFuture: Scalars['Boolean'];
   fields: MdxFields;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -1579,6 +1583,7 @@ export type MdxFields = {
   bannerCredit?: Maybe<Scalars['String']>;
   tags: Array<Scalars['String']>;
   unlisted: Scalars['Boolean'];
+  isFancy: Scalars['Boolean'];
   redirects?: Maybe<Array<Scalars['String']>>;
   isBlog: Scalars['Boolean'];
   productionUrl: Scalars['String'];
@@ -1663,6 +1668,7 @@ export type MdxFieldsEnum =
   | 'frontmatter___banner___childMdx___mdxAST'
   | 'frontmatter___banner___childMdx___tableOfContents'
   | 'frontmatter___banner___childMdx___timeToRead'
+  | 'frontmatter___banner___childMdx___isFuture'
   | 'frontmatter___banner___childMdx___id'
   | 'frontmatter___banner___childMdx___children'
   | 'frontmatter___banner___childrenTag'
@@ -1673,8 +1679,9 @@ export type MdxFieldsEnum =
   | 'frontmatter___tags'
   | 'frontmatter___unlisted'
   | 'frontmatter___published'
-  | 'frontmatter___bannerCredit'
+  | 'frontmatter___isFancy'
   | 'frontmatter___slug'
+  | 'frontmatter___bannerCredit'
   | 'frontmatter___productImage'
   | 'frontmatter___redirects'
   | 'body'
@@ -1689,6 +1696,7 @@ export type MdxFieldsEnum =
   | 'wordCount___paragraphs'
   | 'wordCount___sentences'
   | 'wordCount___words'
+  | 'isFuture'
   | 'fields___id'
   | 'fields___title'
   | 'fields___author'
@@ -1699,6 +1707,7 @@ export type MdxFieldsEnum =
   | 'fields___bannerCredit'
   | 'fields___tags'
   | 'fields___unlisted'
+  | 'fields___isFancy'
   | 'fields___redirects'
   | 'fields___isBlog'
   | 'fields___productionUrl'
@@ -1763,6 +1772,7 @@ export type MdxFieldsEnum =
   | 'fields___banner___childMdx___mdxAST'
   | 'fields___banner___childMdx___tableOfContents'
   | 'fields___banner___childMdx___timeToRead'
+  | 'fields___banner___childMdx___isFuture'
   | 'fields___banner___childMdx___id'
   | 'fields___banner___childMdx___children'
   | 'fields___banner___childrenTag'
@@ -1870,6 +1880,7 @@ export type MdxFieldsFilterInput = {
   bannerCredit?: Maybe<StringQueryOperatorInput>;
   tags?: Maybe<StringQueryOperatorInput>;
   unlisted?: Maybe<BooleanQueryOperatorInput>;
+  isFancy?: Maybe<BooleanQueryOperatorInput>;
   redirects?: Maybe<StringQueryOperatorInput>;
   isBlog?: Maybe<BooleanQueryOperatorInput>;
   productionUrl?: Maybe<StringQueryOperatorInput>;
@@ -1893,6 +1904,7 @@ export type MdxFilterInput = {
   tableOfContents?: Maybe<JsonQueryOperatorInput>;
   timeToRead?: Maybe<IntQueryOperatorInput>;
   wordCount?: Maybe<MdxWordCountFilterInput>;
+  isFuture?: Maybe<BooleanQueryOperatorInput>;
   fields?: Maybe<MdxFieldsFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -1909,8 +1921,9 @@ export type MdxFrontmatter = {
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   unlisted?: Maybe<Scalars['Boolean']>;
   published?: Maybe<Scalars['Boolean']>;
-  bannerCredit?: Maybe<Scalars['String']>;
+  isFancy?: Maybe<Scalars['Boolean']>;
   slug?: Maybe<Scalars['String']>;
+  bannerCredit?: Maybe<Scalars['String']>;
   productImage?: Maybe<Scalars['String']>;
   redirects?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
@@ -1932,8 +1945,9 @@ export type MdxFrontmatterFilterInput = {
   tags?: Maybe<StringQueryOperatorInput>;
   unlisted?: Maybe<BooleanQueryOperatorInput>;
   published?: Maybe<BooleanQueryOperatorInput>;
-  bannerCredit?: Maybe<StringQueryOperatorInput>;
+  isFancy?: Maybe<BooleanQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
+  bannerCredit?: Maybe<StringQueryOperatorInput>;
   productImage?: Maybe<StringQueryOperatorInput>;
   redirects?: Maybe<StringQueryOperatorInput>;
 };
@@ -2233,6 +2247,7 @@ export type QueryMdxArgs = {
   tableOfContents?: Maybe<JsonQueryOperatorInput>;
   timeToRead?: Maybe<IntQueryOperatorInput>;
   wordCount?: Maybe<MdxWordCountFilterInput>;
+  isFuture?: Maybe<BooleanQueryOperatorInput>;
   fields?: Maybe<MdxFieldsFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -3819,7 +3834,7 @@ export type PostQueryVariables = Exact<{
 export type PostQuery = { site?: Maybe<{ siteMetadata: Pick<SiteSiteMetadata, 'keywords' | 'siteUrl'> }>, mdx?: Maybe<(
     Pick<Mdx, 'body'>
     & { fields: (
-      Pick<MdxFields, 'author' | 'bannerCredit' | 'tags' | 'date' | 'description' | 'editLink' | 'historyLink' | 'plainTextDescription' | 'id' | 'isBlog' | 'productionUrl' | 'slug' | 'title'>
+      Pick<MdxFields, 'author' | 'bannerCredit' | 'tags' | 'date' | 'description' | 'editLink' | 'historyLink' | 'plainTextDescription' | 'id' | 'isBlog' | 'productionUrl' | 'slug' | 'title' | 'isFancy'>
       & { banner?: Maybe<BannerImage640Fragment> }
     ) }
   )> };

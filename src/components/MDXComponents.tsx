@@ -208,3 +208,19 @@ export const ResponsiveVideo = styled.div`
     position: absolute;
   }
 `
+
+export const Note: FC = ({ children }) => (
+  <aside
+    // @ts-ignore
+    sx={{
+      // fontWeight: 'bold',
+      padding: 3,
+      bg: 'highlight',
+      borderRadius: 4,
+      borderLeft: (t) => `8px solid ${t.colors.accent}`,
+      mb: 2,
+    }}
+  >
+    {children}
+  </aside>
+)

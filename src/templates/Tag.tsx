@@ -65,6 +65,7 @@ export const pageQuery = graphql`
           unlisted: { eq: false }
           tags: { in: $tag }
         }
+        isFuture: { eq: false }
       }
       sort: { fields: frontmatter___date, order: DESC }
       limit: $limit

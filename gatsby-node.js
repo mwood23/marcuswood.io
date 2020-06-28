@@ -244,6 +244,7 @@ exports.createPages = async ({ actions, graphql }) => {
         filter: {
           frontmatter: { published: { ne: false } }
           fileAbsolutePath: { regex: "//content/blog//" }
+          isFuture: { eq: false }
         }
         sort: { order: DESC, fields: [frontmatter___date] }
       ) {
@@ -434,6 +435,12 @@ exports.onCreateNode = async ({ node, actions }) => {
     })
 
     createNodeField({
+      name: 'isFancy',
+      node,
+      value: node.frontmatter.isFancy || false,
+    })
+
+    createNodeField({
       name: 'redirects',
       node,
       value: node.frontmatter.redirects,
@@ -489,7 +496,7 @@ exports.onCreateNode = async ({ node, actions }) => {
 /**
  * Helping schema inference so that the types work.
  */
-exports.createSchemaCustomization = ({ actions }) => {
+exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions
   const typeDefs = `
   type Site implements Node {
@@ -545,6 +552,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     bannerCredit: String
     tags: [String!]!
     unlisted: Boolean!
+    isFancy: Boolean!
     redirects: [String!]
     isBlog: Boolean!
     productionUrl: String!
@@ -552,6 +560,21 @@ exports.createSchemaCustomization = ({ actions }) => {
     historyLink: String!
     }
 `
+
+  actions.createTypes([
+    schema.buildObjectType({
+      name: 'Mdx',
+      interfaces: ['Node'],
+      fields: {
+        isFuture: {
+          type: 'Boolean!',
+          resolve: (source) =>
+            process.env.NODE_ENV === 'production' &&
+            new Date(source.frontmatter.date) > new Date(),
+        },
+      },
+    }),
+  ])
 
   createTypes(typeDefs)
 }

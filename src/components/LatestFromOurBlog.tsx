@@ -16,7 +16,10 @@ export interface LatestFromOurBlogProps extends CommonComponentProps {}
 export const latestBlogsQuery = graphql`
   query LatestBlogs {
     allMdx(
-      filter: { fields: { isBlog: { eq: true }, unlisted: { eq: false } } }
+      filter: {
+        fields: { isBlog: { eq: true }, unlisted: { eq: false } }
+        isFuture: { eq: false }
+      }
       limit: 4
       sort: { fields: frontmatter___date, order: DESC }
     ) {

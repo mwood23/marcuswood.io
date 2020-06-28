@@ -51,7 +51,7 @@ export const CUSTOM_THEME = merge(
       accent: '#17ade8',
       muted: '#b5b5b5',
       shadow: 'rgba(54, 163, 252, 0.3)',
-      backgroundSection: 'rgba(158, 186, 206, 0.17)',
+      highlight: 'rgba(158, 186, 206, 0.17)',
       iconColor: '#000000',
       modes: {
         dark: {
@@ -63,7 +63,7 @@ export const CUSTOM_THEME = merge(
           accent: '#06D6A0',
           muted: 'hsla(230, 20%, 0%, 20%)',
           shadow: 'rgba(64, 87, 253, 0.3)',
-          backgroundSection: 'rgba(0, 128, 238, 0.07)',
+          highlight: 'rgba(0, 128, 238, 0.07)',
           iconColor: '#FFFFFF',
         },
       },
@@ -74,6 +74,18 @@ export const CUSTOM_THEME = merge(
       },
       a: {
         color: 'secondary',
+      },
+      blockquote: {
+        fontWeight: 'bold',
+        borderLeft: '3px solid',
+        borderColor: 'accent',
+        fontSize: [2, 3],
+        paddingLeft: 2,
+      },
+      inlineCode: {
+        backgroundColor: 'secondaryBackground',
+        borderRadius: '5px',
+        p: '3px 5px',
       },
     },
     buttons: {

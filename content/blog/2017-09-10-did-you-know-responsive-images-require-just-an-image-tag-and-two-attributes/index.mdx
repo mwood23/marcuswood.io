@@ -8,9 +8,8 @@ description: Web performance matters. Studies show that 40 percent of your visit
 tags: ['performance', 'frontend']
 published: true
 unlisted: false
+isFancy: false
 ---
-
-<Section>
 
 Web performance matters. [Studies show](https://blog.kissmetrics.com/loading-time/) that 40 percent of your visitors will abandon your page if it takes more than three seconds to load. If you are developing a new site or trying to make your current one faster, optimizing images and enabling the browser to choose the right image depending on the device and screen size will yield the most impressive gains. We’ll be using Cloudinary, a cloud-based image management solution to optimize, host, transform, and create responsive images.
 Cloudinary offers a variety of ways to optimize the images on your website. Their convenient API allows you to make transformations to images by using parameters in the URL of the image to make sure you always have what you need. This makes it a great fit for creating responsive images and shaving precious kilobytes off your initial page load time. We’ll be using a script I wrote to upload and generate responsive image tags to replace the current ones on your website.
@@ -112,5 +111,3 @@ alt=””
 
 Now you just need to replace the image tag in your app with the one above and you will have performant, responsive images. The image optimization alone should take a good amount of time off page rendering times. Combine that with responsive images and you’ve created a better user experience with just a couple hours of work (depending on how many images you have). This method works great for server-side rendered apps, static sites, or web apps where you don’t want to introduce another dependency into your app to optimize a couple of images. However, if your web app is heavily focuses on uploading and showing images Cloudinary has a [Javascript solution](http://cloudinary.com/documentation/responsive_images#step_3_call_the_cloudinary_responsive_method) that works well.
 Let me know what kind of performance gains this did for you by running a [Lighthouse test](https://developers.google.com/web/tools/lighthouse/) before and after on your app!
-
-</Section>
