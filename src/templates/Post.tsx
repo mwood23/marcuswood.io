@@ -19,8 +19,6 @@ const Post: FC<PostProps> = ({ data: { mdx } }) => {
   // Fancy allows for case study style blogs where the section is part of the MDX
   const RendererWrapper = mdx?.fields.isFancy ? Stub : Section
 
-  console.log(mdx?.fields)
-
   return (
     <Layout fluid>
       <SEO isBlogPost postData={mdx?.fields} />
