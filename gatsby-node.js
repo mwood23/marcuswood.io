@@ -572,7 +572,8 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
             // If in production do date check otherwise return false so we can see
             // scheduled events in staging and local development environments.
             process.env.NODE_ENV === 'production'
-              ? new Date(source.frontmatter.date) > new Date()
+              ? new Date(source.frontmatter.date.split('T')[0].split('-')) >
+                new Date()
               : false,
         },
       },
