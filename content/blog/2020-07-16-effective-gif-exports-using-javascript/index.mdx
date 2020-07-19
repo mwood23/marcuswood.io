@@ -1,0 +1,69 @@
+---
+title: Effective Gif Exports Using Javascript
+author: Marcus Wood
+date: 2020-07-15
+banner: ./images/hero.jpg
+description: See how to create effective GIF exports of DOM Elements using Javascript.
+tags: ['animation', 'javascript', 'serverless']
+unlisted: false
+published: true
+isFancy: false
+---
+
+For my latest product, [Wave Snippets](https://www.wavesnippets.com/), I wanted to create a way for people to explain code through motion with the ability to share on Twitter, Github, blogs, and anywhere else. This is an in depth exploration of everything I learned and pitfalls to watch out for when creating GIFs from the browser.
+
+I'm going to hop directly in the code for this one, but if you're curious about GIFs, why they're still here, or where they came from I recommend [this article](https://www.wired.com/2017/05/gif-turns-30-ancient-format-changed-internet/).
+
+## There's a browser API for this, right?
+
+Sort of, but not really. My initial thought was to use the [Screen Capture API](https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture) to record videos of the elements and splice all the frames up to feed into [GIF.js](https://jnordberg.github.io/gif.js/). Here's the catch - you can only record the **entire screen** or **media elements**. That automatically takes out Javascript animations like Wave Snippets, D3 charts, and pretty much every other format you can think of.
+
+I briefly considered recording the entire screen and cropping, but overall it didn't seem very viable and required a lot of effort from the user to grant the permission, click the right screen to record and postprocess stuff out. Not to mention, GIF.js, is taxing to create a GIF even if you do spin up multiple workers.
+
+<Note>
+
+Check out [Gifcap](https://gifcap.dev/) if you'd like to see this method in action. It lets you record a screen with this API and exports from a GIF completely client side. The code is open source and they use a web assembly version of [Gifsicle](https://github.com/kohler/gifsicle) to create the GIF. Pretty cool stuff!
+
+</Note>
+
+## Stitch Images Together in the Browser
+
+Gifs are a collection of image frames so my next thought was I'll play the animation in the browser and take images of the animation every X seconds (depending on the frame rate I wanted). Once I had the images, I'll stitch them all together to create a completely client side Gif. Hooray!
+
+This sort of worked, but is flawed for most approaches due to the follow reasons:
+
+1. The best library I know of for taking pictures of DOM elements is [DOM to Image](https://github.com/tsayen/dom-to-image). While it works great in a lot of cases, it's heavy to take a lot of screenshots and your CSS isn't perfect in the render. What I ran into is that certain transforms wouldn't work so my GIFs came out droopy. :(
+2. Let's say you want to take an 8 second video and turn into a GIF. A good framerate for a GIF is around 20 frames per second so you'd need 160 images stored in memory on the client before you could start processing the GIF. **That's an image taken every 50 milliseconds synchronously**.
+3. It's synchronous and blocking. The user has to watch the animation play, but since it's snapping at such a high frequency the view looks janky.
+
+Would love to see first class support for screenshots of elements eventually because [this makes my head hurt](https://github.com/tsayen/dom-to-image#how-it-works) just thinking about it.
+
+I did try this method and had some mediocre success. I think it would also work on mobile as well long as the image was sized how you wanted it to be exported. Here's an experimental hook I open sourced from it if you'd like to check it out.
+
+## Popping Portals
+
+I never tried this, but my guess is that it would work. If you've read using a [Using a React 16 Portal to do something cool
+](https://medium.com/hackernoon/using-a-react-16-portal-to-do-something-cool-2a2d627b0202) you know that it's possible to pop open a new window and shoot state through there. I'm guessing you could do this in vanilla JS as well.
+
+One thing I considered is popping a portal with the exact aspect ratio I wanted for my export, putting that dom element in there, recording that window with the Screen Capture API, closing the window when done, and then create the GIF from the recorded video using gifsicle. 🤯
+
+Woof, that would have been a wild ride. I never tried this because I have no idea if it would work on mobile, what the UX would be, or if the browser would be able to handle it.
+
+<Note>
+
+If you try this let me know how it goes!
+
+</Note>
+
+## Puppeteer to the Rescue
+
+By this time, I was down but not out. There had to be a way to do this and I was just missing it. I did some digging and decided to boot up a serverless function to run Puppeteer. I had see Cypress do this so I knew it had to be possible. But then I found issue number [478](https://github.com/puppeteer/puppeteer/issues/478). Oh no, three years and still open. Is my dream of beautiful code snippets dead.
+
+I franticly read the issue up and down trying to find any clues on how to solve my problem.
+
+## Puppeteer Screencast API
+
+This was it! A screencast API to record a video and then from there I can make my coveted GIF, brilliant! The code to get it going was so easy. Even better, it's all server side so I can be in control of the render environment and deliver a good experience regardless of device.
+
+But then I saw the video. It was about 5 fps and although it did work, my website promised gorgeous GIFs, not screensharing in the 90s GIFs. Regardless,
+
