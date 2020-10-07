@@ -218,7 +218,7 @@ export const Note: FC = ({ children }) => (
       bg: 'highlight',
       borderRadius: 4,
       borderLeft: (t) => `8px solid ${t.colors.accent}`,
-      mb: 2,
+      mb: 3,
     }}
   >
     {children}
